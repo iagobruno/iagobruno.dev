@@ -1,6 +1,7 @@
 export default function Header() {
   return (
     <>
+      {/* @ts-ignore */}
       <header style={{'--max-width': '960px'}} className="min-h-screen w-full px-5 py-6 flex flex-col justify-between bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat text-center md:text-left">
         <div className="grow w-full max-w-[--max-width] mx-auto flex flex-col justify-between gap-5">
           <div className="w-full text-right invisible md:visible">
