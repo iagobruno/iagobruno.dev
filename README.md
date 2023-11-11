@@ -1,6 +1,7 @@
 # iagobruno.dev
 
 [![Visitar website](https://img.shields.io/website/https/iagobruno.is-a.dev.svg)](https://iagobruno.is-a.dev/)
+[![Deploy Status](https://github.com/iagobruno/iagobruno.dev/actions/workflows/deploy.yml/badge.svg)](https://github.com/iagobruno/iagobruno.dev/actions/workflows/deploy.yml)
 
 - Next.JS
 - Tailwind CSS
