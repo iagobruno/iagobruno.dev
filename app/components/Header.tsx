@@ -3,9 +3,10 @@ export default function Header() {
     <>
       <header style={{'--max-width': '960px'}} className="min-h-screen w-full px-5 py-6 flex flex-col justify-between bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat text-center md:text-left">
         <div className="grow w-full max-w-[--max-width] mx-auto flex flex-col justify-between gap-5">
-          <div className="w-full text-right">
+          <div className="w-full text-right invisible md:visible">
             <nav className="bg-white rounded-full py-2 px-4 ml-auto inline-flex gap-3">
               <a href="#contact">Contato</a>
+              <a href="#about">Sobre mim</a>
               <a href="#projects">Projetos</a>
               <a href="https://github.com/iagobruno">GitHub</a>
             </nav>
