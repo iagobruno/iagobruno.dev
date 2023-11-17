@@ -10,7 +10,7 @@ const images = [
 
 export default function SlideShow({ duration = 6_000 }) {
   const [index, setIndex] = useState(0)
-  const imgRef = useRef<HTMLImgElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
     loadAllImages()
