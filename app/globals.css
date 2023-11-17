@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
+  --max-content-width: 960px;
   font-size: 17px;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {
