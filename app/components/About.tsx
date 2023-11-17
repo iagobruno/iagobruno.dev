@@ -8,13 +8,14 @@ export default function About() {
     }, [])
 
     return (
-        <section id="about" className="w-full py-20 px-6 bg-neutral-100">
+        <section id="about" className="w-full p-6 md:py-16 bg-neutral-100 dark:bg-neutral-900">
             <div className="max-w-[--max-content-width] mx-auto">
                 <div className="flex flex-col md:flex-row items-start gap-7">
                     <SlideShow />
 
                     <div className="grow text-lg space-y-5">
-                        <h3 className="text-md text-sky-600 font-medium uppercase">Sobre mim</h3>
+                        <h3 className="text-md font-medium uppercase text-sky-600 dark:text-sky-500">Sobre mim</h3>
+
                         <p>Tenho {age} anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
                         <p>JavaScript é a linguagem com a qual tenho mais confiança para trabalhar (tanto no lado cliente quanto no lado servidor) e atualmente estou estudando PHP com Laravel para ampliar meus conhecimentos.
                         <br/>

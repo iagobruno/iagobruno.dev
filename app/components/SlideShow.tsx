@@ -31,7 +31,7 @@ export default function SlideShow({ duration = 6_000 }) {
     <img
       ref={imgRef}
       src={images[index]}
-      className={"block md:w-[40%] rounded-md shadow transition-opacity opacity-100"}
+      className={"block md:w-[40%] rounded-md shadow-lg transition-opacity opacity-100"}
     />
   )
 }
