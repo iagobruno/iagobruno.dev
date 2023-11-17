@@ -23,10 +23,12 @@ export default function DarkToggle() {
   )
 }
 
-function checkDarkModeIsEnabled() {
+function checkDarkModeIsEnabled(): boolean {
+  if (typeof window === 'undefined') return false
+
   return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 }
 
-if (typeof window !== 'undelined') {
-  document.documentElement.classList.toggle('dark', checkDarkModeIsEnabled())
+if (typeof window !== 'undefined') {
+    document.documentElement.classList.toggle('dark', checkDarkModeIsEnabled())
 }
