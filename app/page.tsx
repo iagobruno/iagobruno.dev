@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Header from './components/Header'
+import About from './components/About'
 import Footer from './components/Footer'
 import type { Metadata } from 'next'
 
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <About />
       <Footer />
     </>
   )

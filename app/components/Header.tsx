@@ -18,7 +18,20 @@ export default function Header() {
           </div>
 
           <div className="flex flex-col justify-center items-center gap-5 h-full w-full md:flex-row">
-            <img src="https://github.com/iagobruno.png" className="rounded-full w-[240px] h-[240px] md:w-[340px] md:h-[340px] border-[5px] border-white shadow-lg animate-[morph_8s_ease-in-out_infinite] order-1 md:order-2" />
+            <div className="relative order-1 md:order-2">
+              <img src="https://github.com/iagobruno.png" className="rounded-full aspect-square w-[260px] md:w-[340px] border-[5px] border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite]" />
+              <div className="hidden md:block pointer-events-none">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute -top-4 -right-4 animate-spin [animation-duration:10s]" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="50px" height="50px" className="absolute -bottom-10 right-4 opacity-70 animate-[whale_8s_linear_infinite]"/>
+                <div className="absolute top-[52px] -left-[34px] text-xs z-0 flex flex-col opacity-90">
+                  <span className="ml-8">{'<body>'}</span>
+                  <span className="-ml-2">{'<div class="block">'}</span>
+                  <span className="ml-4">{'<header>'}</span>
+                  <span className="ml-1.5">{'<img src="">'}</span>
+                </div>
+              </div>
+            </div>
+
             <div className="md:grow order-2 md:order-1 ">
               <h2 className="font-bold text-[2.5rem]/[3rem] md:text-6xl/[4.2rem] mb-5">Programador<br/>JavaScript<br/>Full-Stack</h2>
               <p className="font-medium text-lg text-green-600">Estou disponível para novas oportunidades!</p>
