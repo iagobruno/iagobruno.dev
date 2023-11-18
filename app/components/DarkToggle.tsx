@@ -1,12 +1,17 @@
 "use client";
 import { useState, useEffect } from 'react'
+import useMount from 'react-use/esm/useMount'
 
 export default function DarkToggle() {
-  const [enabled, setEnabled] = useState<boolean>(() => checkDarkModeIsEnabled())
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', enabled)
   }, [enabled])
+
+  useMount(() => {
+    setEnabled(checkDarkModeIsEnabled())
+  })
 
   function toggle () {
     localStorage.theme = (enabled ? 'light' : 'dark')
@@ -24,8 +29,6 @@ export default function DarkToggle() {
 }
 
 function checkDarkModeIsEnabled(): boolean {
-  if (typeof window === 'undefined') return false
-
   return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 }
 
