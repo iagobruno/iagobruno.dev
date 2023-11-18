@@ -3,13 +3,13 @@ import Age from './Age'
 
 export default function About() {
     return (
-        <section id="about" className="w-full p-6 md:py-16 bg-neutral-100 dark:bg-neutral-900">
+        <section id="about" className="w-full px-6 py-10 md:py-16 bg-neutral-100 dark:bg-neutral-900/80">
             <div className="max-w-[--max-content-width] mx-auto">
                 <div className="flex flex-col md:flex-row items-start gap-7">
                     <SlideShow />
 
                     <div className="grow text-lg space-y-5">
-                        <h3 className="text-md font-medium uppercase text-sky-600 dark:text-sky-500">Sobre mim</h3>
+                        <h3 className="text-sky-600 dark:text-sky-500 text-md font-medium uppercase tracking-wider">Sobre mim</h3>
 
                         <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
                         <p>JavaScript é a linguagem com a qual tenho mais confiança para trabalhar (tanto no lado cliente quanto no lado servidor) e atualmente estou estudando PHP com Laravel para ampliar meus conhecimentos.
@@ -32,10 +32,8 @@ export default function About() {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" width="40px" height="40px" title="GraphQL" alt="GraphQL Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" width="40px" height="40px" title="Jest" alt="Jest Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40px" height="40px" title="Git" alt="Git Logo"/>
-                    <picture>
-                        <source srcSet="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only" media="(prefers-color-scheme: dark)"/>
-                        <img src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only" width="40px" height="40px" title="GitHub" alt="GitHub Logo"/>
-                    </picture>
+                    <img src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only" width="40px" height="40px" title="GitHub" alt="GitHub Logo" className="hidden dark:block" />
+                    <img src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only" width="40px" height="40px" title="GitHub" alt="GitHub Logo" className="block dark:hidden" />
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="40px" height="40px" title="npm" alt="Node Package Manager Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" width="40px" height="40px" title="HTML" alt="HTML5 Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" width="40px" height="40px" title="CSS" alt="CSS3 Logo"/>

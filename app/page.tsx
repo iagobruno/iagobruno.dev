@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   icons: {
     icon: 'https://github.com/iagobruno.png',
   },
+  metadataBase: new URL('https://iagobruno.is-a.dev'),
   openGraph: {
     type: "website",
     url: "https://iagobruno.is-a.dev",

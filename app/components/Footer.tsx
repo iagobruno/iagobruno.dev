@@ -2,8 +2,8 @@ import DarkToggle from './DarkToggle'
 
 export default function Footer () {
   return (
-    <footer id="contact" className="relative w-full pt-16 pb-28 px-6 text-center bg-neutral-200 dark:bg-neutral-950 overflow-hidden">
-      <div className="text-4xl font-semibold mb-6">Contato</div>
+    <footer id="contact" className="relative w-full pt-16 pb-28 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden">
+      <div className="text-4xl font-semibold mb-5">Contato</div>
       <div className="text-lg flex gap-x-5 gap-y-1 justify-center items-center flex-wrap mx-auto">
         <a href="mailto:iagobruno.dev@gmail.com">Email</a>
         <a href="https://wa.me/558897174798">WhatsApp</a>
