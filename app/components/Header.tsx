@@ -9,7 +9,7 @@ export default function Header() {
               <img src="/IagoBruno.png" className="h-[44px] inline" alt="Iago Bruno" />
             </a>
 
-            <nav className="bg-white dark:bg-neutral-950 rounded-full py-2 px-4 gap-3 hidden md:inline-flex">
+            <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-2 px-4 gap-3 hidden md:inline-flex">
               <a href="#contact">Contato</a>
               <a href="#about">Sobre mim</a>
               <a href="#projects">Projetos</a>
@@ -22,7 +22,7 @@ export default function Header() {
               <img src="https://github.com/iagobruno.png" className="rounded-full aspect-square w-[260px] md:w-[340px] border-[5px] border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite]" />
               <div className="hidden md:block pointer-events-none">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute -top-3 -right-2 animate-spin [animation-duration:10s]" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="50px" height="50px" className="absolute -bottom-13 right-10 opacity-70 animate-[whale_8s_linear_infinite]"/>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="50px" height="50px" className="blur-[0.5px] absolute -bottom-13 right-10 opacity-70 animate-[whale_8s_linear_infinite]"/>
                 <div className="absolute top-[52px] -left-[34px] text-xs z-0 flex flex-col dark:text-gray-200">
                   <span className="ml-8">{'<body>'}</span>
                   <span className="-ml-2">{'<div class="block">'}</span>
@@ -33,7 +33,7 @@ export default function Header() {
             </div>
 
             <div className="md:grow order-2 md:order-1 ">
-              <h2 className="font-bold text-[2.5rem]/[3rem] md:text-6xl/[4.5rem] dark:text-gray-100 dark:drop-shadow-md">Programador<br/>JavaScript<br/>Full-Stack</h2>
+              <h2 className="font-bold text-[2.5rem]/[3rem] md:text-[3.7rem]/[4.5rem] [text-wrap:wrap] dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
               <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p>
             </div>
           </div>
