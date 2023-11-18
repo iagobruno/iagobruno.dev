@@ -1,12 +1,7 @@
-import { useMemo } from 'react'
-import { differenceInYears } from 'date-fns'
 import SlideShow from './SlideShow'
+import Age from './Age'
 
 export default function About() {
-    const age = useMemo(() => {
-        return differenceInYears(Date.now(), new Date(1996, 7, 26))
-    }, [])
-
     return (
         <section id="about" className="w-full p-6 md:py-16 bg-neutral-100 dark:bg-neutral-900">
             <div className="max-w-[--max-content-width] mx-auto">
@@ -16,7 +11,7 @@ export default function About() {
                     <div className="grow text-lg space-y-5">
                         <h3 className="text-md font-medium uppercase text-sky-600 dark:text-sky-500">Sobre mim</h3>
 
-                        <p>Tenho {age} anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
+                        <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
                         <p>JavaScript é a linguagem com a qual tenho mais confiança para trabalhar (tanto no lado cliente quanto no lado servidor) e atualmente estou estudando PHP com Laravel para ampliar meus conhecimentos.
                         <br/>
                         Você pode conferir minhas outras habilidades abaixo.</p>
