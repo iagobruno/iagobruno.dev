@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <>
-      <header className="min-h-[100svh] w-full px-5 py-6 flex flex-col justify-between bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat text-center md:text-left">
+      <header className="min-h-[100svh] w-full px-6 py-7 flex flex-col justify-between bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950 text-center md:text-left relative z-10">
         <div className="grow w-full max-w-[--max-content-width] mx-auto flex flex-col justify-between gap-5">
 
           <div className="w-full flex items-center justify-center md:justify-between">

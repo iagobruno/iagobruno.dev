@@ -3,9 +3,9 @@ import Age from './Age'
 
 export default function About() {
     return (
-        <section id="about" className="w-full px-6 py-10 md:py-16 bg-neutral-100 dark:bg-neutral-900/80">
+        <section id="about" className="w-full px-6 py-10 md:py-16 relative z-10 bg-neutral-100 dark:bg-neutral-900">
             <div className="max-w-[--max-content-width] mx-auto">
-                <div className="flex flex-col md:flex-row items-start gap-7">
+                <div className="flex flex-col md:flex-row items-start gap-8">
                     <SlideShow />
 
                     <div className="grow text-lg space-y-5">
@@ -18,7 +18,7 @@ export default function About() {
                     </div>
                 </div>
                 <div className="font-semibold text-lg mt-8">Minhas habilidades e ferramentas:</div>
-                <div className="flex flex-row flex-wrap gap-2 mt-4">
+                <div className="flex flex-row flex-wrap gap-2 mt-5">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="40px" height="40px" title="NodeJS" alt="NodeJS Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40px" height="40px" title="TypeScript" alt="TypeScript Logo"/>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain-wordmark.svg" width="40px" height="40px" title="Laravel" alt="Laravel Logo"/>
