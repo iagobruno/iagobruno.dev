@@ -1,3 +1,7 @@
+import { Caveat } from 'next/font/google'
+
+const caveat = Caveat({ subsets: ['latin'] })
+
 export default function Header() {
   return (
     <>
@@ -9,12 +13,11 @@ export default function Header() {
               <img src="/IagoBruno.png" className="h-[44px] inline" alt="Iago Bruno" />
             </a>
 
-            <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-2 px-4 gap-3 hidden md:inline-flex">
-              <a href="#contact">Contato</a>
+            <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4 pr-2 gap-3 items-center hidden md:inline-flex">
               <a href="#about">Sobre mim</a>
               <a href="#projects">Projetos</a>
               <a href="#services">Serviços</a>
-              <a href="https://github.com/iagobruno">GitHub</a>
+              <a href="#contact" className="bg-sky-500 !text-white rounded-full py-1 px-3 !no-underline">Contato</a>
             </nav>
           </div>
 
@@ -33,7 +36,8 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="md:grow order-2 md:order-1 ">
+            <div className="md:grow order-2 md:order-1 md:-mt-2.5">
+              <div className={caveat.className + " text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK]"}>👋 Oi, me chamo Iago</div>
               <h2 className="font-bold text-[2.2rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] [text-wrap:wrap] dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
               <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p>
             </div>
