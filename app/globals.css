@@ -52,3 +52,49 @@ body {
     transform: rotate(-15deg) translate(0%, 10%);
   }
 }
+
+@keyframes scale-reveal {
+	from {
+    transform: scale(0.6);
+	}
+	to {
+    transform: scale(1);
+	}
+}
+
+@keyframes opacity-reveal {
+	from {
+    opacity: 0;
+	}
+	to {
+    opacity: 1;
+	}
+}
+
+.scale-scroll-reveal {
+	/* Create View Timeline */
+	view-timeline-name: --revealing-element;
+	view-timeline-axis: block;
+
+  /* Attach animation, linked to the  View Timeline */
+	animation: scale-reveal linear both;
+	animation-timeline: --revealing-element;
+
+	/* Tweak range when effect should run*/
+	animation-range: entry 0% cover 20%;
+}
+
+.opacity-scroll-reveal {
+	/* Create View Timeline */
+	view-timeline-name: --revealing-element;
+	view-timeline-axis: block;
+
+  /* Attach animation, linked to the  View Timeline */
+	animation: opacity-reveal linear both;
+	animation-timeline: --revealing-element;
+
+	/* Tweak range when effect should run*/
+	animation-range:
+    entry var(--reveal-start, 10%)
+    cover calc(var(--reveal-start, 10%) + var(--reveal-range, 10%));
+}
