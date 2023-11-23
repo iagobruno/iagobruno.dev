@@ -1,3 +1,16 @@
+import concatClasses, { ArgumentArray } from 'classnames'
+import { twMerge } from 'tailwind-merge'
+
+/**
+ * Efficiently merge Tailwind CSS classes without style conflicts.
+ * It also suports conditional classes!
+ */
+export function cn(...classnames: ArgumentArray) {
+  return twMerge(
+    concatClasses(classnames)
+  )
+}
+
 export function sleep(ms = 1000) {
   return new Promise(resolve => {
     setTimeout(resolve, ms)

@@ -19,7 +19,7 @@
 }
 
 a {
-  @apply text-sky-600 dark:text-sky-500 hover:md:underline;
+  @apply text-sky-600 dark:text-sky-500 hover:md:underline hover:brightness-[0.92] dark:hover:brightness-110;
 }
 
 body {

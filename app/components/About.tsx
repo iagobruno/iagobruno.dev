@@ -8,8 +8,8 @@ export default function About() {
                 <div className="flex flex-col md:flex-row items-start gap-8">
                     <SlideShow />
 
-                    <div className="grow text-lg space-y-5">
-                        <h3 className="text-sky-600 dark:text-sky-500 text-md font-medium uppercase tracking-wider">Sobre mim</h3>
+                    <div className="grow md:text-lg space-y-5">
+                        <h3 className="text-sky-600 dark:text-sky-500 text-center md:text-left text-base font-medium uppercase tracking-wider">Sobre</h3>
 
                         <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
                         <p>JavaScript é a linguagem com a qual tenho mais confiança para trabalhar (tanto no lado cliente quanto no lado servidor) e atualmente estou estudando PHP com Laravel para ampliar meus conhecimentos.
