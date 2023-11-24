@@ -95,11 +95,11 @@ export default function Projects () {
 function Card({ project }) {
   return (
     <div
-      className="group/card text-neutral-950 dark:!text-neutral-200 flex gap-2 md:gap-7 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse opacity-scroll-reveal"
+      className="group/card text-neutral-950 dark:!text-neutral-200 flex gap-2 md:gap-7 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse scroll-reveal [--reveal-range:15%]"
     >
       <img
         src={project.image}
-        className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/60 dark:border-stone-400/30 duration-300 ease-out scale-[1] hover:delay-500 hover:md:!scale-[1.3] hover:md:shadow-2xl hover:md:dark:shadow-white/20 scale-scroll-reveal"
+        className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/60 dark:border-stone-400/30 scale-[1] hover:md:!scale-[1.3] hover:md:shadow-2xl hover:md:dark:shadow-white/20 scroll-reveal [--reveal-effect:scale] [--reveal-range:15%]"
       />
       <div className="grow md:group-even/card:text-right">
         <div className="font-medium text-[1.35rem]/[1.9rem]">{project.title}</div>

@@ -26,6 +26,16 @@ body {
   @apply dark:bg-neutral-950 dark:text-neutral-200;
 }
 
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: var(--reveal-effect, opacity) linear both;
+    animation-timeline: view();
+    animation-range:
+      cover var(--reveal-start, 6%)
+      cover calc(var(--reveal-start, 6%) + var(--reveal-range, 10%));
+  }
+}
+
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -53,7 +63,7 @@ body {
   }
 }
 
-@keyframes scale-reveal {
+@keyframes scale {
 	from {
     transform: scale(0.6);
 	}
@@ -62,39 +72,11 @@ body {
 	}
 }
 
-@keyframes opacity-reveal {
+@keyframes opacity {
 	from {
     opacity: 0;
 	}
 	to {
     opacity: 1;
 	}
-}
-
-.scale-scroll-reveal {
-	/* Create View Timeline */
-	view-timeline-name: --revealing-element;
-	view-timeline-axis: block;
-
-  /* Attach animation, linked to the  View Timeline */
-	animation: scale-reveal linear both;
-	animation-timeline: --revealing-element;
-
-	/* Tweak range when effect should run*/
-	animation-range: entry 0% cover 20%;
-}
-
-.opacity-scroll-reveal {
-	/* Create View Timeline */
-	view-timeline-name: --revealing-element;
-	view-timeline-axis: block;
-
-  /* Attach animation, linked to the  View Timeline */
-	animation: opacity-reveal linear both;
-	animation-timeline: --revealing-element;
-
-	/* Tweak range when effect should run*/
-	animation-range:
-    entry var(--reveal-start, 10%)
-    cover calc(var(--reveal-start, 10%) + var(--reveal-range, 10%));
 }

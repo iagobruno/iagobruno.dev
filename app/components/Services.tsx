@@ -19,7 +19,7 @@ export default function Services() {
           <Card
             heading="Desenvolvimento de sites e webapps"
             icon="/icons/development.png"
-            className="md:![--reveal-start:30%]"
+            className="md:![--reveal-start:20%]"
           >
             Criação servidores, landing pages, aplicativos web altamente
             interativos (Progressive Web Apps), manutenção de sistemas, entre
@@ -28,7 +28,7 @@ export default function Services() {
           <Card
             heading="Design de interfaces e prototipação"
             icon="/icons/design.png"
-            className="md:![--reveal-start:40%]"
+            className="md:![--reveal-start:26%]"
           >
             Posso criar uma interface visual para seu site ou aplicativo que
             melhor atenda as necessidades do seu negócio e público-alvo.
@@ -36,7 +36,7 @@ export default function Services() {
           <Card
             heading="Manutenção e melhoria de sistemas"
             icon="/icons/worker.png"
-            className="md:![--reveal-start:50%]"
+            className="md:![--reveal-start:32%]"
           >
             Identificar e corrigir problemas, otimização de desempenho, adição
             de novas funções e alterações casuais como freelancer.
@@ -55,7 +55,7 @@ export default function Services() {
 
 function Card({ icon, heading, children, className}) {
   return (
-    <div className={cn('rounded-lg w-full max-w-[320px] md:w-1/3 opacity-scroll-reveal [--reveal-start:30%] [--reveal-range:5%]', className)}>
+    <div className={cn('rounded-lg w-full max-w-[320px] md:w-1/3 scroll-reveal [--reveal-start:10%] [--reveal-range:10%]', className)}>
       <img
         src={icon}
         className="block object-contain w-[40px] max-h-[40px] mb-3 md:mb-5"
