@@ -5,14 +5,14 @@ const projects = [
     image: '/images/fabi-bolos-print.png',
     title: 'Bolos da Fabi',
     year: '2023',
-    description: 'Um app de delivery feito sob medida para uma confeitaria que precisava solucionar um problema que a plataforma que eles usavam não atendia. \nFeito com React, Typescript, Tailwind e Firebase.',
+    description: 'Um app de delivery feito sob medida para uma confeitaria, atendendo a uma necessidade não suprida pela plataforma que utilizavam anteriormente. \nFeito com React, Typescript, Tailwind e Firebase.',
     url: 'https://tulipa-cake.web.app/'
   },
   {
     image: '/images/point-burguer-print.png',
     title: 'Point Burguer',
     year: '2022',
-    description: 'Um app de delivery para uma hamburgueria que queria fugir das taxas das grandes plataformas. \nFeito com React, Typescript e Firebase.',
+    description: 'Um app de delivery para uma hamburgueria que buscava se desvincular das grandes plataformas. \nFeito com React, Typescript e Firebase.',
     url: 'https://pointburguer.web.app/'
   },
   {
@@ -31,9 +31,9 @@ const projects = [
   },
   {
     image: '/images/delivery-app-print.png',
-    title: 'Delivery webapp',
+    title: 'Delivery app',
     year: '2021',
-    description: 'Um app de delivery onde os usuários podem navegar pelo cardápio de um restaurante e adicionar pratos e complementos a sacola. \nFeito com React.',
+    description: 'Um app de delivery onde os clientes podem navegar pelo cardápio e adicionar pratos e complementos à sacola. \nFeito com React.',
     url: 'https://iagobruno.is-a.dev/delivery-webapp-demo'
   },
   {
@@ -53,7 +53,7 @@ const projects = [
     image: '/images/lembretes-print.jpg',
     title: 'Lembretes App',
     year: '2014',
-    description: 'Ele era é um simples aplicativo de lista de tarefas e é meu xodó até hoje, pois foi desenvolvendo ele que dei meus primeiros passos a fundo em JavaScript.',
+    description: 'Ele era um simples aplicativo de lista de tarefas e é meu xodó até hoje, pois foi ao desenvolvê-lo que dei meus primeiros passos a fundo em JavaScript.',
   },
   {
     image: '/images/rede-social-beta-print.jpg',
