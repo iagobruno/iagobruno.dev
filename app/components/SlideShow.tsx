@@ -3,9 +3,9 @@ import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import { eventListenerTrigger, loadImage } from '../helpers'
 
 const images = [
-  '/snippets/html.png',
-  '/snippets/react.png',
-  '/snippets/laravel.png',
+  '/images/react-snippet.png',
+  '/images/laravel-snippet.png',
+  '/images/html-snippet.png',
 ]
 
 export default function SlideShow({ duration = 6_000 }) {
@@ -31,7 +31,7 @@ export default function SlideShow({ duration = 6_000 }) {
     <img
       ref={imgRef}
       src={images[index]}
-      className={"block md:w-[40%] rounded-lg shadow-lg transition-opacity opacity-100"}
+      className={"block object-cover object-top aspect-[16/15] md:w-[40%] rounded-lg shadow-lg transition-opacity opacity-100"}
     />
   )
 }

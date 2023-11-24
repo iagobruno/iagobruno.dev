@@ -5,7 +5,7 @@ export default function About() {
     return (
         <section className="w-full px-6 py-10 md:py-16 relative z-10 bg-neutral-100 dark:bg-neutral-900">
             <div className="max-w-[--max-content-width] mx-auto">
-                <div className="flex flex-col md:flex-row items-start gap-8">
+                <div className="flex flex-col md:flex-row md:items-center gap-8">
                     <SlideShow />
 
                     <div className="grow md:text-lg space-y-5">
