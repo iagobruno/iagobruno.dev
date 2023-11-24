@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Iago Bruno | Full-Stack Developer",
     description: "Iago's portfolio",
     images: [{
-      url: "https://iagobruno.is-a.dev/printscreen.png",
+      url: "https://iagobruno.is-a.dev/screenshot.png",
     }],
   }
 }
