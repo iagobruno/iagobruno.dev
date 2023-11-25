@@ -100,6 +100,7 @@ function Card({ project }) {
       <img
         src={project.image}
         className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/60 dark:border-stone-400/30 scale-[1] hover:md:!scale-[1.3] hover:md:shadow-2xl hover:md:dark:shadow-white/20 scroll-reveal [--reveal-effect:scale] [--reveal-range:15%]"
+        loading="lazy"
       />
       <div className="grow md:group-even/card:text-right">
         <div className="font-medium text-[1.35rem]/[1.9rem]">{project.title}</div>
