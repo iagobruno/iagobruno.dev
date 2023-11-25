@@ -9,29 +9,11 @@ import type { Metadata } from 'next'
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header compact={false} />
       <About />
       <Services />
       <Projects />
       <Footer />
     </>
   )
-}
-
-export const metadata: Metadata = {
-  title: 'Iago Bruno | Full-Stack Developer',
-  description: "Iago's portfolio",
-  icons: {
-    icon: 'https://github.com/iagobruno.png',
-  },
-  metadataBase: new URL('https://iagobruno.is-a.dev'),
-  openGraph: {
-    type: "website",
-    url: "https://iagobruno.is-a.dev",
-    title: "Iago Bruno | Full-Stack Developer",
-    description: "Iago's portfolio",
-    images: [{
-      url: "https://iagobruno.is-a.dev/screenshot.png",
-    }],
-  }
 }

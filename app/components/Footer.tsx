@@ -13,7 +13,7 @@ export default function Footer () {
 
   return (
     <>
-      <footer className="fixed left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
+      <footer className="fixed z-[0] left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
         <div className="max-w-[--max-content-width] mx-auto">
           <div className="text-4xl font-semibold mb-5">Contato</div>
           <div className="text-lg flex gap-x-5 gap-y-1 justify-center items-center flex-wrap mx-auto">
@@ -35,7 +35,7 @@ export default function Footer () {
         </div>
       </footer>
 
-      <div id="contact" className="relative block w-full pointer-events-none" style={{ height }}>
+      <div id="contact" className="relative !z-[0] block w-full pointer-events-none" style={{ height }}>
         <div className="blur-3xl bg-cyan-600 dark:bg-cyan-500/70 w-[60%] min-w-[200px] aspect-[4/3] rounded-full absolute bottom-[100%] left-[35%] -translate-x-2/4" />
         <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-[4/3] rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
       </div>
