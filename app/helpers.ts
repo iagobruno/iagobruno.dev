@@ -11,6 +11,10 @@ export function cn(...classnames: ArgumentArray) {
   )
 }
 
+export function checkDarkModeIsEnabled(): boolean {
+  return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+}
+
 export function sleep(ms = 1000) {
   return new Promise(resolve => {
     setTimeout(resolve, ms)

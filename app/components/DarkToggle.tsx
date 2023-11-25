@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react'
 import useMount from 'react-use/esm/useMount'
+import { checkDarkModeIsEnabled } from '../helpers'
 
 export default function DarkToggle() {
   const [enabled, setEnabled] = useState(false)
@@ -26,12 +27,4 @@ export default function DarkToggle() {
       <span className="text-base">🌑</span>
     </label>
   )
-}
-
-function checkDarkModeIsEnabled(): boolean {
-  return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-}
-
-if (typeof window !== 'undefined') {
-    document.documentElement.classList.toggle('dark', checkDarkModeIsEnabled())
 }
