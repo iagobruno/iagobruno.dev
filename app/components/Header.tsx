@@ -13,7 +13,7 @@ export default function Header({ compact = true, className }: Props) {
   return (
     <>
       <header className={cn('w-full px-6 py-7 flex flex-col justify-between text-center md:text-left relative z-10', {
-        'min-h-[100svh]': !compact
+        'min-h-[100svh] blurred-background': !compact
       }, className)}>
         <div className="grow w-full max-w-[--max-content-width] mx-auto flex flex-col justify-between gap-5">
 

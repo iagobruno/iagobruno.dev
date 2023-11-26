@@ -31,7 +31,7 @@ body > *:not(.blurred-background, footer) {
 }
 
 .blurred-background {
-  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950 absolute z-[4] min-h-[100svh] top-0 left-0 w-full;
+  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950;
 }
 
 @supports (animation-timeline: view()) {

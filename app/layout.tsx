@@ -16,7 +16,8 @@ export default function RootLayout({
         <script src="/client.js" />
       </head>
       <body className={inter.className}>
-        <div className="blurred-background" />
+        <div className="blurred-background !bg-bottom absolute z-[4] min-h-[100svh] w-full top-0 left-0" />
+
         {children}
         <ProgressBar />
       </body>
