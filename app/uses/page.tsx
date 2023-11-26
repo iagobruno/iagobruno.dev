@@ -44,9 +44,5 @@ export default function Uses() {
 }
 
 export const metadata: Metadata = {
-  title: 'Uses | Iago Bruno',
-  openGraph: {
-    ...rootMetadata.openGraph,
-    title: 'Uses | Iago Bruno',
-  }
+  title: 'Uses',
 }

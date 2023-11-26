@@ -23,16 +23,10 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: 'Iago Bruno | Full-Stack Developer',
+  title: {
+    template: '%s | Iago Bruno',
+    default: 'Iago Bruno | Full-Stack Developer',
+  },
   description: "Iago's portfolio",
   metadataBase: new URL('https://iagobruno.is-a.dev'),
-  openGraph: {
-    type: "website",
-    url: "https://iagobruno.is-a.dev",
-    title: "Iago Bruno | Full-Stack Developer",
-    description: "Iago's portfolio",
-    images: [{
-      url: "https://iagobruno.is-a.dev/screenshot.png",
-    }],
-  }
 }
