@@ -18,7 +18,7 @@ export default function Uses() {
 
       <div className="w-full max-w-[--max-content-width] mx-auto">
         <header className="pt-6 pb-14 max-w-[600px]">
-          <div className="text-sky-600 text-base font-medium uppercase tracking-wider mb-2">
+          <div className="dark:text-white text-base font-medium uppercase tracking-wider opacity-70 dark:opacity-80 mb-2">
             Uses
           </div>
           <h3 className="text-2xl/7 md:text-3xl/10 font-semibold dark:text-white dark:drop-shadow-md">

@@ -88,3 +88,16 @@ body > *:not(.blurred-background, footer) {
     opacity: 1;
 	}
 }
+
+.hamburger-icon {
+  @apply relative drop-shadow;
+  @apply before:block before:rounded-full before:h-[4px] before:w-[32px] before:duration-300 before:bg-black before:dark:bg-white before:content-[''];
+  @apply after:block after:rounded-full after:h-[4px] after:w-[32px] after:duration-300 after:bg-black after:dark:bg-white after:content-[''] after:mt-[12px];
+}
+.hamburger-icon.close-icon {
+  @apply before:[transform:rotateZ(134deg)_translate(6px,-7px)] after:[transform:rotateZ(-135deg)_translate(4px,5px)];
+}
+
+#nprogress .spinner {
+  display: none !important;
+}

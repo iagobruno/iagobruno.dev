@@ -1,5 +1,5 @@
 import { Caveat } from 'next/font/google'
-import Link from 'next/link'
+import { HeaderNav } from './Nav'
 import { cn } from '../helpers'
 
 const caveat = Caveat({ subsets: ['latin'] })
@@ -49,23 +49,5 @@ export default function Header({ compact = true, className }: Props) {
         </div>
       </header>
     </>
-  )
-}
-
-function HeaderNav() {
-  return (
-    <div className="w-full flex items-center justify-center md:justify-between">
-      <Link href="/">
-        <img src="/IagoBruno.png" className="h-[44px] inline" alt="Iago Bruno" />
-      </Link>
-
-      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4 pr-2 gap-3 items-center hidden md:inline-flex">
-        <Link href="/#about">Sobre mim</Link>
-        <Link href="/#projects">Projetos</Link>
-        <Link href="/#services">Serviços</Link>
-        <Link href="/uses">Uses</Link>
-        <Link href="/#contact" className="bg-sky-500 !text-white rounded-full py-1 px-3 !no-underline">Contato</Link>
-      </nav>
-    </div>
   )
 }

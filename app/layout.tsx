@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { MobileNav } from './components/Nav'
 import ProgressBar from 'nextjs-toploader'
 import './globals.css'
 
@@ -19,6 +20,8 @@ export default function RootLayout({
         <div className="blurred-background !bg-bottom absolute z-[4] min-h-[100svh] w-full top-0 left-0" />
 
         {children}
+
+        <MobileNav />
         <ProgressBar />
       </body>
     </html>

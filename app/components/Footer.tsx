@@ -16,7 +16,7 @@ export default function Footer () {
       <footer className="fixed z-[0] left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
         <div className="max-w-[--max-content-width] mx-auto">
           <div className="text-4xl font-semibold mb-5">Contato</div>
-          <div className="text-lg flex gap-x-5 gap-y-1 justify-center items-center flex-wrap mx-auto">
+          <div className="text-lg flex gap-x-5 gap-y-1 justify-center items-center flex-wrap mx-auto mb-10">
             <a href="mailto:iagobruno.dev@gmail.com">Email</a>
             <a href="https://wa.me/558897174708">WhatsApp</a>
             <a href="https://github.com/iagobruno">GitHub</a>
