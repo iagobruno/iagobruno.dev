@@ -1,15 +1,15 @@
 import { Caveat } from 'next/font/google'
-import { HeaderNav } from './Nav'
-import { cn } from '../helpers'
+import { HeaderNav } from '@/components/Nav'
+import { cn } from '@/lib/utils'
 
-const caveat = Caveat({ subsets: ['latin'] })
+const caveatFont = Caveat({ subsets: ['latin'] })
 
-interface Props {
+interface HeaderProps {
   compact?: boolean,
   className?: string,
 }
 
-export default function Header({ compact = true, className }: Props) {
+export default function Header({ compact = true, className }: HeaderProps) {
   return (
     <>
       <header className={cn('w-full px-6 py-7 flex flex-col justify-between text-center md:text-left relative z-10', {
@@ -36,7 +36,7 @@ export default function Header({ compact = true, className }: Props) {
               </div>
 
               <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                <div className={caveat.className + " text-2xl font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK]"}>👋 Oi, me chamo Iago</div>
+                <div className={caveatFont.className + " text-2xl font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK]"}>👋 Oi, me chamo Iago</div>
                 <h2 className="font-bold text-[2.2rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] [text-wrap:wrap] dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
                 <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p>
               </div>

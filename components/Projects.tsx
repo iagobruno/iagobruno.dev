@@ -63,7 +63,7 @@ const projects = [
   },
 ]
 
-export default function Projects () {
+export default function Projects() {
   return (
     <section
       id="projects"
@@ -92,7 +92,11 @@ export default function Projects () {
   )
 }
 
-function Card({ project }) {
+interface CardProps {
+  project: typeof projects[number]
+}
+
+function Card({ project }: CardProps) {
   return (
     <div
       className="group/card text-neutral-950 dark:!text-neutral-200 flex gap-2 md:gap-7 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse scroll-reveal [--reveal-range:15%]"

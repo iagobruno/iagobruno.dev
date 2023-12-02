@@ -1,5 +1,6 @@
-import { cn } from '../helpers'
+import { cn } from '@/lib/utils'
 import Button from './Button'
+import type { PropsWithChildren } from 'react'
 
 export default function Services() {
   return (
@@ -53,7 +54,13 @@ export default function Services() {
   )
 }
 
-function Card({ icon, heading, children, className}) {
+interface CardProps extends PropsWithChildren {
+  icon: string,
+  heading: string,
+  className?: string,
+}
+
+function Card({ icon, heading, children, className }: CardProps) {
   return (
     <div className={cn('rounded-lg w-full max-w-[320px] md:w-1/3 scroll-reveal [--reveal-start:10%] [--reveal-range:10%]', className)}>
       <img

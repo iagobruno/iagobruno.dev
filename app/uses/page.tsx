@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Header from '../components/Header'
-import { metadata as rootMetadata } from '../layout'
+import Header from '@/components/Header'
 
 type Tools = Array<[category: string, list: Array<string>]>
 

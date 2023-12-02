@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { cn } from '../helpers'
+import { cn } from '@/lib/utils'
 
 interface Props extends PropsWithChildren {
   href: string,

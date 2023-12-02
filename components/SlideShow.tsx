@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-import { eventListenerTrigger, loadImage } from '../helpers'
+import { useState, useRef } from 'react'
+import useMount from 'react-use/esm/useMount'
+import useInterval from '@/hooks/useInterval'
+import { loadImage } from '@/lib/utils'
 
 const images = [
   '/images/react-snippet.png',
@@ -8,23 +10,22 @@ const images = [
   '/images/html-snippet.png',
 ]
 
-export default function SlideShow({ duration = 6_000 }) {
+function loadAllImages() {
+  Promise.all(images.map(loadImage))
+}
+
+export default function SlideShow() {
   const [index, setIndex] = useState(0)
   const imgRef = useRef<HTMLImageElement>(null)
 
-  useEffect(() => {
+  useMount(() => {
     loadAllImages()
+  })
 
-    const interval = setInterval(nextSlide, duration)
-    return () => clearInterval(interval)
-  }, [])
+  useInterval(nextSlide, 6000)
 
-  async function nextSlide() {
+  function nextSlide() {
     setIndex(index => (index >= (images.length - 1)) ? 0 : (index + 1))
-  }
-
-  function loadAllImages () {
-    Promise.all(images.map(loadImage))
   }
 
   return (

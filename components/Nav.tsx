@@ -3,9 +3,11 @@ import { useState, useRef } from 'react'
 import Link from 'next/link'
 import DarkToggle from './DarkToggle'
 import { CSSTransition } from 'react-transition-group'
-import { cn } from '../helpers'
+import { cn } from '@/lib/utils'
 
-const links = [
+type Links = Array<[title: string, url: string]>
+
+const links: Links = [
   ['Sobre mim', '/#about'],
   ['Projetos', '/#projects'],
   ['Serviços', '/#services'],
@@ -81,7 +83,7 @@ export function MobileNav() {
             {links.map((link, index) => (
               <Link
                 href={link[1]}
-                style={{ 'transition-delay': (60*index)+'ms' }}
+                style={{ 'transitionDelay': (60*index)+'ms' }}
                 key={link[0]}
               >
                 {link[0]}

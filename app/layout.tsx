@@ -1,22 +1,19 @@
 import type { Metadata } from 'next'
+import type { PropsWithChildren } from 'react'
 import { Inter } from 'next/font/google'
-import { MobileNav } from './components/Nav'
+import { MobileNav } from '@/components/Nav'
 import ProgressBar from 'nextjs-toploader'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const interFont = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script src="/client.js" />
       </head>
-      <body className={inter.className}>
+      <body className={interFont.className}>
         <div className="blurred-background !bg-bottom absolute z-[4] min-h-[100svh] w-full top-0 left-0" />
 
         {children}

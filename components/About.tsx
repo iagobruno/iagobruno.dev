@@ -1,6 +1,6 @@
 import SlideShow from './SlideShow'
-import Age from './Age'
-import { cn } from '../helpers'
+import Age from '@/components/Age'
+import { cn } from '@/lib/utils'
 
 type Skills = Array<{ name: string, icon: string }>
 

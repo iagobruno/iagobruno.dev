@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from 'react'
 import useMount from 'react-use/esm/useMount'
-import { checkDarkModeIsEnabled } from '../helpers'
+import { checkDarkModeIsEnabled } from '@/lib/utils'
 
-type Props = Record<string, unknow>
+type Props = Record<string, unknown>
 
 export default function DarkToggle(props: Props) {
   const [enabled, setEnabled] = useState(false)
