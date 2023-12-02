@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react'
 import Link from 'next/link'
-import DarkToggle from './DarkToggle'
+import ThemeToggle from './ThemeToggle'
 import { CSSTransition } from 'react-transition-group'
 import { cn } from '@/lib/utils'
 
@@ -91,7 +91,7 @@ export function MobileNav() {
             ))}
           </div>
 
-          <DarkToggle onClick={(e => e.stopPropagation())} />
+          <ThemeToggle onClick={(e => e.stopPropagation())} />
         </nav>
       </CSSTransition>
     </div>

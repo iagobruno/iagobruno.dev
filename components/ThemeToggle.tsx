@@ -1,32 +1,23 @@
 "use client";
-import { useState, useEffect } from 'react'
-import useMount from 'react-use/esm/useMount'
-import { checkDarkModeIsEnabled } from '@/lib/utils'
+import { useTheme } from 'next-themes'
 
-type Props = Record<string, unknown>
+type Props = JSX.IntrinsicElements['label']
 
-export default function DarkToggle(props: Props) {
-  const [enabled, setEnabled] = useState(false)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', enabled)
-  }, [enabled])
-
-  useMount(() => {
-    setEnabled(checkDarkModeIsEnabled())
-  })
+export default function ThemeToggle(props: Props) {
+  const { theme, setTheme } = useTheme()
 
   function toggle () {
-    localStorage.theme = (enabled ? 'light' : 'dark')
-    setEnabled(!enabled)
+    setTheme(theme === 'light' ? 'dark' : 'light')
   }
+
+  if (typeof theme === undefined) return null
 
   return (
     <label className="inline-flex items-center cursor-pointer gap-1" {...props}>
       <input
         type="checkbox"
         className="sr-only peer"
-        checked={enabled}
+        checked={theme === 'dark'}
         onChange={toggle}
       />
       <span className="text-base">☀️</span>
