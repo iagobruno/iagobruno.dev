@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Header from '@/components/Header'
+import Hero from '@/components/Hero'
 
 type Tools = Array<[category: string, list: Array<string>]>
 
@@ -7,13 +7,13 @@ const tools: Tools = [
   ['Programas', ['Visual Studio Code', 'Chrome', 'Firefox', 'Windows Terminal', 'Figma',]],
   ['Ferramentas', ['WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'Vercel', 'Firebase',]],
   ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
-  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'Restful APIs', 'GraphQL', 'Yarn', 'Jest / Mocha', 'Pest', 'jQuery', 'Alpine.js',]]
+  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'Yarn', 'PNPM', 'Jest / Mocha / Pest',]]
 ]
 
 export default function Uses() {
   return (
     <div className="[--max-content-width:800px] px-8">
-      <Header className="px-0" />
+      <Hero className="px-0" />
 
       <div className="w-full max-w-[--max-content-width] mx-auto">
         <header className="pt-6 pb-14 max-w-[600px]">

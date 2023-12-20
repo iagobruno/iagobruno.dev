@@ -15,7 +15,7 @@ const links: Links = [
   ['Contato', '/#contact'],
 ]
 
-export function HeaderNav() {
+export function HeroNav() {
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
       <Link href="/">

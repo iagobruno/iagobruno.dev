@@ -1,15 +1,15 @@
 import { Caveat } from 'next/font/google'
-import { HeaderNav } from '@/components/Nav'
+import { HeroNav } from '@/components/Nav'
 import { cn } from '@/lib/utils'
 
 const caveatFont = Caveat({ subsets: ['latin'] })
 
-interface HeaderProps {
+interface HeroProps {
   compact?: boolean,
   className?: string,
 }
 
-export default function Header({ compact = true, className }: HeaderProps) {
+export default function Hero({ compact = true, className }: HeroProps) {
   return (
     <>
       <header className={cn('w-full px-6 py-7 flex flex-col justify-between text-center md:text-left relative z-10', {
@@ -17,7 +17,7 @@ export default function Header({ compact = true, className }: HeaderProps) {
       }, className)}>
         <div className="grow w-full max-w-[--max-content-width] mx-auto flex flex-col justify-between gap-5">
 
-          <HeaderNav />
+          <HeroNav />
 
           {compact === false && <>
             <div className="flex flex-col justify-center items-center gap-5 h-full w-full md:flex-row">
