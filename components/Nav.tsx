@@ -75,9 +75,9 @@ export function MobileNav() {
           className="invisible fixed z-40 inset-0 flex flex-col items-start gap-12 justify-center p-8 overscroll-contain bg-[linear-gradient(to_right,_var(--nav-bg,white)_20%,_transparent_300%)] dark:[--nav-bg:black]"
           onClick={close}
         >
-          <div className={cn('flex flex-col gap-5 text-2xl w-fit children:!text-inherit children:duration-300 children:ease-in-out', {
-            'children:!-translate-x-[110%]': !showMobileNav,
-            'children:translate-x-0': showMobileNav,
+          <div className={cn('flex flex-col gap-5 text-2xl w-fit *:!text-inherit *:duration-300 *:ease-in-out', {
+            '*:!-translate-x-[110%]': !showMobileNav,
+            '*:translate-x-0': showMobileNav,
           })}>
             <Link href="/#">Início</Link>
             {links.map((link, index) => (

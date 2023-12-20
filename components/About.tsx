@@ -57,7 +57,7 @@ export default function About() {
             >
               <img
                 src={'/icons/' + skill.icon}
-                className="h-[43px] w-[43px] object-contain"
+                className="size-[43px] object-contain"
                 alt={skill.name + ' Logo'}
               />
               <span className="block text-[0.5rem] opacity-70 dark:opacity-50 mt-1">{skill.name}</span>

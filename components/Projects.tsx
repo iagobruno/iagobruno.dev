@@ -67,7 +67,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-white border-t border-t-gray-300 dark:border-t-stone-700 w-full px-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
+      className="bg-white w-full px-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
     >
       <div className="max-w-[--max-content-width] mx-auto">
         <div className="text-sky-600 dark:text-sky-500 text-base font-medium uppercase text-center tracking-wider mb-1">

@@ -24,7 +24,7 @@ dependencies:
     specifier: ^2.30.0
     version: 2.30.0
   next:
-    specifier: 14.0.1
+    specifier: ^14.0.1
     version: 14.0.1(react-dom@18.2.0)(react@18.2.0)
   next-themes:
     specifier: ^0.2.1
@@ -51,11 +51,11 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.0
   tailwindcss:
-    specifier: ^3.3.0
-    version: 3.3.5
+    specifier: ^3.4
+    version: 3.4.0
   typescript:
-    specifier: ^5
-    version: 5.2.2
+    specifier: ^5.3
+    version: 5.3.3
 
 packages:
 
@@ -1108,8 +1108,8 @@ packages:
       '@babel/runtime': 7.23.4
     dev: false
 
-  /tailwindcss@3.3.5:
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.4.0:
+    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -1180,8 +1180,8 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
 
-  /typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: false

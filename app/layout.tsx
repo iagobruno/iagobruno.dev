@@ -14,7 +14,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head />
       <body className={interFont.className}>
         <Providers>
-          <div className="blurred-background !bg-bottom absolute z-[4] min-h-[100svh] w-full top-0 left-0" />
+          <div className="blurred-background !bg-bottom absolute z-[4] min-h-svh w-full top-0 left-0" />
 
           {children}
 

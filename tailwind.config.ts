@@ -11,9 +11,9 @@ const config: Config = {
     extend: {},
   },
   plugins: [
-    function({ addVariant }) {
-      addVariant('children', '& > *')
-    },
+    // function({ addVariant }) {
+    //   addVariant('children', '& > *')
+    // },
   ],
 }
 export default config
