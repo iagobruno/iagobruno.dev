@@ -12,7 +12,7 @@ const modes = ['light', 'system', 'dark'] as const
 export default function ThemeToggle(props: Props) {
   const { theme, setTheme } = useTheme()
 
-  if (typeof theme === undefined) return null
+  if (theme === undefined) return null
 
   return (
     <label className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1" {...props}>
@@ -22,6 +22,8 @@ export default function ThemeToggle(props: Props) {
             'bg-black/15 dark:bg-white/20': mode === theme,
           })}
           onClick={() => setTheme(mode)}
+          key={mode}
+          suppressHydrationWarning
         >
           {mode === 'light' ? <SunIcon className="size-4" />
           : mode === 'dark' ? <MoonIcon className="size-4" />
