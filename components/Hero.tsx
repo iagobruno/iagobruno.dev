@@ -38,7 +38,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
               <div className="md:grow order-2 md:order-1 md:-mt-2.5">
                 <div className={caveatFont.className + " text-2xl font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK]"}>👋 Oi, me chamo Iago</div>
                 <h2 className="font-bold text-[2.2rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] [text-wrap:wrap] dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
-                <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p>
+                {/* <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p> */}
               </div>
             </div>
 

@@ -90,7 +90,7 @@ body > *:not(.blurred-background, footer) {
 }
 
 .hamburger-icon {
-  @apply relative drop-shadow;
+  @apply relative drop-shadow-lg;
   @apply before:block before:rounded-full before:h-[4px] before:w-[32px] before:duration-300 before:bg-black before:dark:bg-white before:content-[''];
   @apply after:block after:rounded-full after:h-[4px] after:w-[32px] after:duration-300 after:bg-black after:dark:bg-white after:content-[''] after:mt-[12px];
 }
