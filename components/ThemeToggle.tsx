@@ -1,28 +1,37 @@
 "use client";
 import { useTheme } from 'next-themes'
+import { FiSun as SunIcon, FiMoon as MoonIcon } from "react-icons/fi"
+import { RiComputerLine as ComputerIcon } from "react-icons/ri"
+import { MdPhoneAndroid as PhoneIcon } from "react-icons/md"
+import { cn } from '@/lib/utils'
 
 type Props = JSX.IntrinsicElements['label']
+
+const modes = ['light', 'system', 'dark'] as const
 
 export default function ThemeToggle(props: Props) {
   const { theme, setTheme } = useTheme()
 
-  function toggle () {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
-
   if (typeof theme === undefined) return null
 
   return (
-    <label className="inline-flex items-center cursor-pointer gap-1" {...props}>
-      <input
-        type="checkbox"
-        className="sr-only peer"
-        checked={theme === 'dark'}
-        onChange={toggle}
-      />
-      <span className="text-base">☀️</span>
-      <div className="w-11 h-6 relative bg-gray-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-      <span className="text-base">🌑</span>
+    <label className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1" {...props}>
+      {modes.map(mode => (
+        <span
+          className={cn('rounded-full text-base p-1.5', {
+            'bg-black/15 dark:bg-white/20': mode === theme,
+          })}
+          onClick={() => setTheme(mode)}
+        >
+          {mode === 'light' ? <SunIcon className="size-4" />
+          : mode === 'dark' ? <MoonIcon className="size-4" />
+          : <>
+            <PhoneIcon className="size-4 md:hidden" />
+            <ComputerIcon className="size-4 hidden md:block" />
+          </>
+          }
+        </span>
+      ))}
     </label>
   )
 }
