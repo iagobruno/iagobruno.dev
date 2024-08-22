@@ -25,7 +25,7 @@ export default function Footer () {
           <div className="font-semibold mb-8 text-4xl md:text-5xl">Contato</div>
           <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 [&>a]:opacity-90 [&>a]:text-inherit hover:[&>a]:text-sky-500 [&>a]:transition-[color]">
             <a href="mailto:iagobruno.dev@gmail.com"><EmailIcon className="size-8 md:size-9" /></a>
-            <a href="https://wa.me/5519976006485"><WhatsappIcon className="size-7 md:size-8" /></a>
+            <a href="https://wa.me/558897174708"><WhatsappIcon className="size-7 md:size-8" /></a>
             <a href="https://github.com/iagobruno"><GithubIcon className="size-7 md:size-8" /></a>
             <a href="https://linkedin.com/in/iagobruno-dev"><LinkedinIcon className="size-7 md:size-8" /></a>
             <a href="https://instagram.com/iagobruno.dev"><InstaIcon className="size-7 md:size-8"/></a>
