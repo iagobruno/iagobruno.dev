@@ -2,6 +2,13 @@ import Button from './Button'
 
 const projects = [
   {
+    image: '/images/bs-pay-print.png',
+    title: 'BS PAY',
+    year: '2024',
+    description: 'Atualmente, trabalho como desenvolvedor front-end na BS PAY, uma empresa de pagamentos online. Minha função envolve a criação e manutenção de interfaces de usuário eficientes e intuitivas, utilizando tecnologias como React, TypeScript e Tailwind CSS.',
+    url: 'https://bspay.co/'
+  },
+  {
     image: '/images/fabi-bolos-print.png',
     title: 'Bolos da Fabi',
     year: '2023',
