@@ -45,7 +45,7 @@ export default function About() {
         </div>
 
         <div className="font-semibold text-lg mt-8">Minhas habilidades e ferramentas:</div>
-        <div className="flex flex-row flex-wrap gap-2 md:gap-3 mt-5 text-center max-w-[800px]">
+        <div className="flex flex-row flex-wrap gap-2 gap-y-4 md:gap-x-3 mt-5 text-center max-w-[800px] xl:max-w-[930px]">
           {skills.map(skill => (
             <span
               key={skill.icon}
@@ -57,10 +57,10 @@ export default function About() {
             >
               <img
                 src={'/icons/' + skill.icon}
-                className="size-[43px] object-contain"
+                className="size-11 object-contain"
                 alt={skill.name + ' Logo'}
               />
-              <span className="block text-[0.5rem] opacity-70 dark:opacity-50 mt-1">{skill.name}</span>
+              <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-50 mt-1">{skill.name}</span>
             </span>
           ))}
         </div>

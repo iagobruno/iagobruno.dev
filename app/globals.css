@@ -5,8 +5,7 @@
 :root {
   --max-content-width: 1024px;
 
-  font-size: 17px;
-  scroll-behavior: smooth;
+  @apply scroll-smooth text-[17px] xl:text-[19px] xl:[--max-content-width:1280px];
 }
 
 @media (prefers-color-scheme: dark) {

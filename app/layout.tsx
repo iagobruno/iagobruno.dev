@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import { Inter } from 'next/font/google'
 import { MobileNav } from '@/components/Nav'
+import TailwindBreakpoints from '@/components/TailwindBreakpoints '
 import { Providers } from './providers'
 import ProgressBar from 'nextjs-toploader'
 import './globals.css'
@@ -21,6 +22,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <MobileNav />
           <ProgressBar />
         </Providers>
+
+        <TailwindBreakpoints />
       </body>
     </html>
   )

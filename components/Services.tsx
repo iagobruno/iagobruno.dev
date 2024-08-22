@@ -16,7 +16,7 @@ export default function Services() {
           O que eu posso fazer por você
         </h3>
 
-        <div className="flex items-start justify-center gap-8 md:gap-10 flex-col md:flex-row md:gap-8">
+        <div className="flex items-start justify-center gap-8 md:gap-10 xl:gap-16 flex-col md:flex-row">
           <Card
             heading="Desenvolvimento de sites e webapps"
             icon="/icons/development.png"
