@@ -4,8 +4,8 @@ import Hero from '@/components/Hero'
 type Tools = Array<[category: string, list: Array<string>]>
 
 const tools: Tools = [
-  ['Programas', ['Visual Studio Code', 'Chrome', 'Firefox', 'Windows Terminal', 'Figma',]],
-  ['Ferramentas', ['WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'Vercel', 'Firebase',]],
+  ['Programas', ['Visual Studio Code', 'Chrome', 'Firefox', 'Windows Terminal', 'Insomnia / Postman', 'Figma',]],
+  ['Ferramentas', ['WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot', 'Vercel',]],
   ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
   ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'Yarn', 'PNPM', 'Jest / Mocha / Pest',]]
 ]
