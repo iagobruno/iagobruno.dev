@@ -84,7 +84,7 @@ export default function Projects() {
           Meus trabalhos e experimentos
         </h3>
 
-        <div className="space-y-7 md:space-y-9 mx-auto max-w-[1210px]">
+        <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map(project => (
             <Card project={project} key={project.title} />
           ))}
@@ -106,11 +106,11 @@ interface CardProps {
 function Card({ project }: CardProps) {
   return (
     <div
-      className="group/card text-neutral-950 dark:!text-neutral-200 flex gap-2 md:gap-7 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse scroll-reveal [--reveal-range:15%]"
+      className="project group/card text-neutral-950 dark:!text-neutral-200 flex gap-y-2 gap-x-8 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse scroll-reveal [--reveal-range:15%]"
     >
       <img
         src={project.image}
-        className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/60 dark:border-stone-400/30 scale-[1] scroll-reveal [--reveal-effect:scale] [--reveal-range:15%]"
+        className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/40 dark:border-white/5"
         loading="lazy"
       />
       <div className="grow md:group-even/card:text-right">
