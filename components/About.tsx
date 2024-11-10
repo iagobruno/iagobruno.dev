@@ -9,20 +9,19 @@ const skills: Skills = [
   { name: 'TypeScript', icon: 'typescript.svg' },
   { name: 'Laravel', icon: 'laravel.svg' },
   { name: 'Docker', icon: 'docker.svg' },
-  { name: 'React', icon: 'react.svg' },
-  { name: 'Redux', icon: 'redux.svg' },
   { name: 'NextJS', icon: 'nextjs-dark.svg' },
   { name: 'NextJS', icon: 'nextjs-light.svg' },
+  { name: 'React', icon: 'react.svg' },
   { name: 'Vue', icon: 'vuejs.svg' },
   { name: 'Svelte', icon: 'svelte.png' },
   { name: 'GraphQL', icon: 'graphql.svg' },
   { name: 'TDD', icon: 'jest.svg' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
-  { name: 'SASS', icon: 'sass.svg' },
   { name: 'GitHub', icon: 'github-dark.png' },
   { name: 'GitHub', icon: 'github-light.png' },
   { name: 'Git', icon: 'git.svg' },
   { name: 'NPM', icon: 'npm.svg' },
+  { name: 'SASS', icon: 'sass.svg' },
   { name: 'HTML5', icon: 'html5.svg' },
   { name: 'CSS3', icon: 'css3.svg' },
 ]
@@ -45,7 +44,7 @@ export default function About() {
         </div>
 
         <div className="font-semibold text-lg mt-8">Minhas habilidades e ferramentas:</div>
-        <div className="flex flex-row flex-wrap gap-2 gap-y-4 md:gap-x-3 mt-5 text-center max-w-[800px] xl:max-w-[930px]">
+        <div className="flex flex-row flex-wrap gap-x-2 gap-y-4 md:gap-x-3 mt-5 text-center max-w-[880px]">
           {skills.map(skill => (
             <span
               key={skill.icon}
@@ -57,7 +56,7 @@ export default function About() {
             >
               <img
                 src={'/icons/' + skill.icon}
-                className="size-11 object-contain"
+                className="size-11 md:size-12 object-contain"
                 alt={skill.name + ' Logo'}
               />
               <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-50 mt-1">{skill.name}</span>
