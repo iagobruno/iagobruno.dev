@@ -43,7 +43,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
 function Photo() {
   return (
     <div className="relative order-1 md:order-2">
-      <img src="https://github.com/iagobruno.png" className="rounded-full size-[260px] md:size-[340px] xl:size-[420px] border-[5px] bg-white border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite] will-change-[border-radius]" />
+      <img src="https://github.com/iagobruno.png" className="rounded-full aspect-1/1 w-[260px] md:w-[340px] xl:w-[420px] border-[5px] bg-white border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite] will-change-[border-radius]" />
 
       <div className="hidden md:block pointer-events-none">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute blur-[0px] -top-3 -right-2 animate-spin [animation-duration:10s]" />
