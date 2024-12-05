@@ -6,8 +6,6 @@
 /* Tailwind configuration */
 @theme {
   --color-primary: var(--color-sky-500);
-  --color-background: light-dark(var(--color-white), var(--color-neutral-950));
-  --color-default-text-color: light-dark(var(--color-black), var(--color-text-neutral-200));
 
   --font-inter: var(--font-family-inter);
   --font-caveat: var(--font-family-caveat);
@@ -37,7 +35,7 @@
 
 @layer base {
   body {
-    @apply font-inter relative bg-background text-default-text-color text-[17px] xl:text-[19px];
+    @apply font-inter relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
   }
 
   * {
@@ -55,7 +53,7 @@ body > *:not(.blurred-background, footer) {
 }
 
 .blurred-background {
-  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-background;
+  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950;
 }
 
 
