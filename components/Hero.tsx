@@ -21,7 +21,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
               <Photo />
 
               <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                <div className="font-caveat text-[1.6rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center gap-2">
+                <div className="font-caveat text-[1.6rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-center md:justify-start gap-2">
                   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" className="size-[1em]" />
                   Oi, me chamo Iago
                 </div>
