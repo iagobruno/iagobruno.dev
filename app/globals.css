@@ -1,36 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Use a selector-based strategy in your project for dark mode */
+@variant dark (&:is(.dark *));
+
+/* Tailwind configuration */
+@theme {
+  --color-primary: var(--color-sky-500);
+  --color-background: light-dark(var(--color-white), var(--color-neutral-950));
+  --color-default-text-color: light-dark(var(--color-black), var(--color-text-neutral-200));
+
+  --font-inter: var(--font-family-inter);
+  --font-caveat: var(--font-family-caveat);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
 
 :root {
   --max-content-width: 1024px;
 
-  @apply scroll-smooth text-[17px] xl:text-[19px] xl:[--max-content-width:1280px];
+  @apply scroll-smooth xl:[--max-content-width:1280px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+@layer base {
+  body {
+    @apply font-inter relative bg-background text-default-text-color text-[17px] xl:text-[19px];
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    @apply text-primary md:hover:underline hover:brightness-[0.92] dark:hover:brightness-110;
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
-a {
-  @apply text-sky-600 dark:text-sky-500 hover:md:underline hover:brightness-[0.92] dark:hover:brightness-110;
-}
-
-body {
-  @apply relative dark:bg-neutral-950 dark:text-neutral-200;
-}
 
 body > *:not(.blurred-background, footer) {
-  @apply relative z-[5];
+  @apply relative z-5;
 }
 
 .blurred-background {
-  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950;
+  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-background;
 }
 
 
@@ -113,8 +138,8 @@ body > *:not(.blurred-background, footer) {
 
 .hamburger-icon {
   @apply relative drop-shadow-lg;
-  @apply before:block before:rounded-full before:h-[4px] before:w-[32px] before:duration-300 before:bg-black before:dark:bg-white before:content-[''];
-  @apply after:block after:rounded-full after:h-[4px] after:w-[32px] after:duration-300 after:bg-black after:dark:bg-white after:content-[''] after:mt-[12px];
+  @apply before:block before:rounded-full before:h-[4px] before:w-[32px] before:duration-300 before:bg-black dark:before:bg-white before:content-[''];
+  @apply after:block after:rounded-full after:h-[4px] after:w-[32px] after:duration-300 after:bg-black dark:after:bg-white after:content-[''] after:mt-[12px];
 }
 .hamburger-icon.close-icon {
   @apply before:[transform:rotateZ(134deg)_translate(7px,-7px)] after:[transform:rotateZ(-135deg)_translate(4px,5px)];

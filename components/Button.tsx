@@ -14,7 +14,7 @@ export default function Button({ children, className, growOnHover = true , ...pr
     <a
       {...props}
       className={cn(
-        "inline-block group/button bg-sky-500 !text-white text-sm md:text-base uppercase tracking-wide rounded-full px-6 cursor-pointer !no-underline overflow-hidden transition-all duration-300 [-webkit-tap-highlight-color:transparent]",
+        "inline-block group/button bg-primary text-white! text-sm md:text-base uppercase tracking-wide rounded-full px-6 cursor-pointer no-underline! overflow-hidden transition-all duration-300 [-webkit-tap-highlight-color:transparent]",
         {
           'hover:-rotate-3 hover:scale-[1.06] hover:px-8': growOnHover
         },

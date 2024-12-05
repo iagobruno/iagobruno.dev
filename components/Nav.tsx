@@ -27,7 +27,7 @@ export function HeroNav() {
           <Link
             href={link[1]}
             className={cn({
-              'bg-sky-500 !text-white rounded-full py-1 px-3 !no-underline': link[0] === 'Contato'
+              'bg-primary text-white! rounded-full py-1 px-3 no-underline!': link[0] === 'Contato'
             })}
             key={link[0]}
           >
@@ -48,10 +48,10 @@ export function MobileNav() {
   }
 
   return (
-    <div className="!z-[unset]">
+    <div className="z-[unset]!">
       <div
         onClick={() => setShowMobileNav(!showMobileNav)}
-        className='md:hidden !fixed z-50 top-2 right-3.5 px-3 py-5 cursor-pointer'
+        className='md:hidden fixed! z-50 top-2 right-3.5 px-3 py-5 cursor-pointer'
       >
         <div className={cn('hamburger-icon', { 'close-icon': showMobileNav })} />
       </div>
@@ -75,8 +75,8 @@ export function MobileNav() {
           className="invisible fixed z-40 inset-0 flex flex-col items-start gap-12 justify-center p-8 overscroll-contain bg-[linear-gradient(to_right,_var(--nav-bg,white)_20%,_transparent_300%)] dark:[--nav-bg:black]"
           onClick={close}
         >
-          <div className={cn('flex flex-col gap-5 text-2xl w-fit *:!text-inherit *:duration-300 *:ease-in-out', {
-            '*:!-translate-x-[110%]': !showMobileNav,
+          <div className={cn('flex flex-col gap-5 text-2xl w-fit *:text-inherit! *:duration-300 *:ease-in-out', {
+            '*:-translate-x-[110%]!': !showMobileNav,
             '*:translate-x-0': showMobileNav,
           })}>
             <Link href="/#">Início</Link>

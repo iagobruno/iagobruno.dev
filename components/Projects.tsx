@@ -76,8 +76,8 @@ export default function Projects() {
       id="projects"
       className="bg-white w-full px-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
     >
-      <div className="max-w-[--max-content-width] mx-auto">
-        <div className="text-sky-600 dark:text-sky-500 text-base font-medium uppercase text-center tracking-wider mb-1">
+      <div className="max-w-(--max-content-width) mx-auto">
+        <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
           Projetos
         </div>
         <h3 className="text-3xl font-semibold text-center mb-8 md:mb-12">
@@ -106,11 +106,11 @@ interface CardProps {
 function Card({ project }: CardProps) {
   return (
     <div
-      className="project group/card text-neutral-950 dark:!text-neutral-200 flex gap-y-2 gap-x-8 md:items-center flex-col odd:md:flex-row even:md:flex-row-reverse scroll-reveal [--reveal-range:15%]"
+      className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse scroll-reveal [--reveal-range:15%]"
     >
       <img
         src={project.image}
-        className="object-cover object-top relative z-[1] bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-[16/10] rounded-xl border border-stone-400/40 dark:border-white/5"
+        className="object-cover object-top relative z-1 bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-16/10 rounded-xl border border-stone-400/40 dark:border-white/5"
         loading="lazy"
       />
       <div className="grow md:group-even/card:text-right">

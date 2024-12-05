@@ -1,8 +1,5 @@
-import { Caveat } from 'next/font/google'
 import { HeroNav } from '@/components/Nav'
 import { cn } from '@/lib/utils'
-
-const caveatFont = Caveat({ subsets: ['latin'] })
 
 interface HeroProps {
   compact?: boolean,
@@ -15,7 +12,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
       <header className={cn('w-full px-6 py-7 flex flex-col justify-between text-center md:text-left relative z-10', {
         'min-h-svh blurred-background': !compact
       }, className)}>
-        <div className="grow w-full max-w-[--max-content-width] mx-auto flex flex-col justify-between gap-5">
+        <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">
 
           <HeroNav />
 
@@ -24,13 +21,16 @@ export default function Hero({ compact = true, className }: HeroProps) {
               <Photo />
 
               <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                <div className={caveatFont.className + " text-2xl font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK]"}>👋 Oi, me chamo Iago</div>
+                <div className="font-caveat text-[1.6rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center gap-2">
+                  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" className="size-[1em]" />
+                  Oi, me chamo Iago
+                </div>
                 <h2 className="font-bold text-[2.2rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[5.6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
                 {/* <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p> */}
               </div>
             </div>
 
-            <div className="w-full max-w-[--max-width] mx-auto">
+            <div className="w-full max-w-(--max-width) mx-auto">
               <a href="#about">Sobre mim <span className="inline-block animate-bounce relative top-[3px]">👇</span></a>
             </div>
           </>}

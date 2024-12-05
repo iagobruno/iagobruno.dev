@@ -20,15 +20,15 @@ export default function Footer () {
 
   return (
     <>
-      <footer className="fixed z-[0] left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
-        <div className="max-w-[--max-content-width] mx-auto">
+      <footer className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
+        <div className="max-w-(--max-content-width) mx-auto">
           <div className="font-semibold mb-8 text-4xl md:text-5xl">Contato</div>
-          <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 [&>a]:opacity-90 [&>a]:text-inherit hover:[&>a]:text-sky-500 [&>a]:transition-[color]">
-            <a href="mailto:iagobruno.dev@gmail.com"><EmailIcon className="size-8 md:size-9" /></a>
-            <a href="https://wa.me/558897174708"><WhatsappIcon className="size-7 md:size-8" /></a>
-            <a href="https://github.com/iagobruno"><GithubIcon className="size-7 md:size-8" /></a>
-            <a href="https://linkedin.com/in/iagobruno-dev"><LinkedinIcon className="size-7 md:size-8" /></a>
-            <a href="https://instagram.com/iagobruno.dev"><InstaIcon className="size-7 md:size-8"/></a>
+          <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-[color]">
+            <a href="mailto:iagobruno.dev@gmail.com"><EmailIcon className="size-8 md:size-10" /></a>
+            <a href="https://wa.me/558897174708"><WhatsappIcon className="size-7 md:size-9" /></a>
+            <a href="https://github.com/iagobruno"><GithubIcon className="size-7 md:size-9" /></a>
+            <a href="https://linkedin.com/in/iagobruno-dev"><LinkedinIcon className="size-7 md:size-9" /></a>
+            <a href="https://instagram.com/iagobruno.dev"><InstaIcon className="size-7 md:size-9"/></a>
           </div>
 
           <ThemeToggle />
@@ -42,9 +42,9 @@ export default function Footer () {
         </div>
       </footer>
 
-      <div id="contact" className="relative !z-[0] block w-full pointer-events-none" style={{ height }}>
-        <div className="blur-3xl bg-cyan-600 dark:bg-cyan-500/70 w-[60%] min-w-[200px] aspect-[4/3] rounded-full absolute bottom-[100%] left-[35%] -translate-x-2/4" />
-        <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-[4/3] rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
+      <div id="contact" className="relative z-0! block w-full pointer-events-none" style={{ height }}>
+        <div className="blur-3xl bg-cyan-600 dark:bg-cyan-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[35%] -translate-x-2/4" />
+        <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
       </div>
     </>
   )

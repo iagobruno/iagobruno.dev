@@ -15,7 +15,7 @@ export default function Uses() {
     <div className="[--max-content-width:800px] px-8">
       <Hero className="px-0" />
 
-      <div className="w-full max-w-[--max-content-width] mx-auto">
+      <div className="w-full max-w-(--max-content-width) mx-auto">
         <header className="pt-6 pb-14">
           <div className="dark:text-white text-base font-medium uppercase tracking-wider opacity-70 dark:opacity-80 mb-2">
             Uses

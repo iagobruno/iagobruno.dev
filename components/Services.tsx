@@ -8,8 +8,8 @@ export default function Services() {
       id="services"
       className="bg-white w-full px-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
     >
-      <div className="max-w-[--max-content-width] mx-auto">
-        <div className="text-sky-600 dark:text-sky-500 text-base font-medium uppercase text-center tracking-wider mb-1">
+      <div className="max-w-(--max-content-width) mx-auto">
+        <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
           Serviços
         </div>
         <h3 className="text-3xl font-semibold text-center mb-9 md:mb-12">
@@ -20,7 +20,7 @@ export default function Services() {
           <Card
             heading="Desenvolvimento de sites e webapps"
             icon="/icons/development.png"
-            className="md:![--reveal-start:20%]"
+            className="md:[--reveal-start:20%]!"
           >
             Criação servidores, landing pages, aplicativos web altamente
             interativos (Progressive Web Apps), manutenção de sistemas, entre
@@ -29,7 +29,7 @@ export default function Services() {
           <Card
             heading="Design de interfaces e prototipação"
             icon="/icons/design.png"
-            className="md:![--reveal-start:26%]"
+            className="md:[--reveal-start:26%]!"
           >
             Posso criar uma interface visual para seu site ou aplicativo que
             melhor atenda as necessidades do seu negócio e público-alvo.
@@ -37,7 +37,7 @@ export default function Services() {
           <Card
             heading="Manutenção e melhoria de sistemas"
             icon="/icons/worker.png"
-            className="md:![--reveal-start:32%]"
+            className="md:[--reveal-start:32%]!"
           >
             Identificar e corrigir problemas, otimização de desempenho, adição
             de novas funções e alterações casuais como freelancer.
