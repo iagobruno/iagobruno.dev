@@ -8,6 +8,7 @@ const skills: Skills = [
   { name: 'NodeJS', icon: 'nodejs.svg' },
   { name: 'TypeScript', icon: 'typescript.svg' },
   { name: 'Laravel', icon: 'laravel.svg' },
+  { name: 'PHP', icon: 'php.svg' },
   { name: 'Docker', icon: 'docker.svg' },
   { name: 'NextJS', icon: 'nextjs-dark.svg' },
   { name: 'NextJS', icon: 'nextjs-light.svg' },
