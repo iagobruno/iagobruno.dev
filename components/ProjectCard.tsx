@@ -11,7 +11,9 @@ export default function ProjectCard({ project }: CardProps) {
   const imgWrapperRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  function handleTransformation (evt: React.MouseEvent<HTMLImageElement>) {
+  function handleTransformation (evt: React.PointerEvent<HTMLImageElement>) {
+    if (evt.pointerType !== "mouse") return;
+
     const {
       left,
       top,
@@ -33,7 +35,9 @@ export default function ProjectCard({ project }: CardProps) {
     );
   }
 
-  function handleMouseEnter() {
+  function handleMouseEnter(evt) {
+    if (evt.pointerType !== "mouse") return;
+
     setTimeout(() => {
       imgWrapperRef.current!.style.setProperty(
         'transition-duration',
@@ -46,7 +50,9 @@ export default function ProjectCard({ project }: CardProps) {
     }, 400);
   }
 
-  function handleMouseLeave() {
+  function handleMouseLeave(evt) {
+    if (evt.pointerType !== "mouse") return;
+
     imgWrapperRef.current!.style.removeProperty('transform');
     imgWrapperRef.current!.style.removeProperty('transition-duration');
     imgRef.current!.style.removeProperty('transition-duration');
@@ -57,15 +63,18 @@ export default function ProjectCard({ project }: CardProps) {
     <div
       className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse scroll-reveal [--reveal-range:20%]"
     >
-      <div ref={imgWrapperRef} className="project-img-wrapper w-full md:w-[46%] md:min-w-[46%] transition-transform duration-[400ms]">
+      <div
+        ref={imgWrapperRef}
+        className="project-img-wrapper w-full md:w-[46%] md:min-w-[46%] transition-transform duration-[400ms]"
+        onPointerMove={handleTransformation}
+        onPointerEnter={handleMouseEnter}
+        onPointerLeave={handleMouseLeave}
+      >
         <img
           ref={imgRef}
           src={project.image}
           className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-xl border border-stone-400/40 dark:border-white/5"
           loading="lazy"
-          onMouseMove={handleTransformation}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         />
       </div>
 
