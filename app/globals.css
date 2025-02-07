@@ -57,25 +57,28 @@ body > *:not(.blurred-background, footer) {
 }
 
 
+.project img,
+.project .project-img-wrapper {
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 .project img {
-  transition: all .4s ease;
   @apply [--shadow-color:0_0_0] dark:[--shadow-color:255_255_255];
 }
 
-.project:nth-child(odd) img {
+.project:nth-child(odd) .project-img-wrapper img {
   transform: perspective(1000px) rotateY(13deg) rotateX(5deg) rotate(-1deg) scaleY(.9) scaleX(.95) translate(3%) translateY(-3%);
   box-shadow: -14px 26px 10px rgb(var(--shadow-color) / 12%);
 }
-.project:nth-child(odd) img:hover {
-  transform: perspective(1000px) rotateY(0) rotateX(0) rotate(0) scale(1) translate(0) translateY(0)!important;
+.project:nth-child(odd) .project-img-wrapper:hover img {
+  transform: perspective(1000px) rotateY(0) rotateX(0) rotate(0) scale(1) translate(0) translateY(0) !important;
   box-shadow: 0px 4px 10px rgb(var(--shadow-color) / 12%);
 }
-.project:nth-child(even) img {
+.project:nth-child(even) .project-img-wrapper img {
   transform: perspective(1000px) rotateY(-13deg) rotateX(5deg) rotate(1deg) scaleY(.9) scaleX(.95) translate(-3%) translateY(-3%);
   box-shadow: 14px 26px 10px rgb(var(--shadow-color) / 12%);
 }
-.project:nth-child(even) img:hover {
-  transform: perspective(1000px) rotateY(0) rotateX(0) rotate(0) scale(1) translate(0) translateY(0)!important;
+.project:nth-child(even) .project-img-wrapper:hover img {
+  transform: perspective(1000px) rotateY(0) rotateX(0) rotate(0) scale(1) translate(0) translateY(0) !important;
   box-shadow: 0px 4px 10px rgb(var(--shadow-color) / 12%);
 }
 

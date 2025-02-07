@@ -29,7 +29,7 @@ export default function Services() {
           <Card
             heading="Design de interfaces e prototipação"
             icon="/icons/design.png"
-            className="md:[--reveal-start:26%]!"
+            className="md:[--reveal-start:30%]!"
           >
             Posso criar uma interface visual para seu site ou aplicativo que
             melhor atenda as necessidades do seu negócio e público-alvo.
@@ -37,7 +37,7 @@ export default function Services() {
           <Card
             heading="Manutenção e melhoria de sistemas"
             icon="/icons/worker.png"
-            className="md:[--reveal-start:32%]!"
+            className="md:[--reveal-start:40%]!"
           >
             Identificar e corrigir problemas, otimização de desempenho, adição
             de novas funções e alterações casuais como freelancer.

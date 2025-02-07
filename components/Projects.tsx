@@ -1,11 +1,12 @@
 import Button from './Button'
+import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
     image: '/images/bs-pay-print.png',
     title: 'BS PAY',
     year: '2024',
-    description: 'Atualmente, trabalho como desenvolvedor front-end na BS PAY, uma empresa de pagamentos online. Minha função envolve a criação e manutenção de interfaces de usuário eficientes e intuitivas, utilizando tecnologias como React, TypeScript e Tailwind CSS.',
+    description: 'Atualmente, trabalho como desenvolvedor front-end na BS PAY, uma empresa de pagamentos online. Minha função envolve a criação e manutenção de interfaces de usuário eficientes e intuitivas, utilizando Vue, TypeScript e Tailwind.',
     url: 'https://bspay.co/'
   },
   {
@@ -70,6 +71,8 @@ const projects = [
   },
 ]
 
+export type Project = typeof projects[number];
+
 export default function Projects() {
   return (
     <section
@@ -86,7 +89,10 @@ export default function Projects() {
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map(project => (
-            <Card project={project} key={project.title} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+            />
           ))}
         </div>
 
@@ -96,36 +102,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
-}
-
-interface CardProps {
-  project: typeof projects[number]
-}
-
-function Card({ project }: CardProps) {
-  return (
-    <div
-      className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse scroll-reveal [--reveal-range:15%]"
-    >
-      <img
-        src={project.image}
-        className="object-cover object-top relative z-1 bg-white/20 w-full md:w-[46%] md:min-w-[46%] aspect-16/10 rounded-xl border border-stone-400/40 dark:border-white/5"
-        loading="lazy"
-      />
-      <div className="grow md:group-even/card:text-right">
-        <div className="font-medium text-[1.52rem]/[2rem]">{project.title}</div>
-        <div className="opacity-90">{project.year}</div>
-        <p
-          className="text-base xl:text-[1.1em] opacity-90 my-2 md:mb-4 md:w-[80%] md:group-even/card:ml-auto"
-          dangerouslySetInnerHTML={{__html: project.description.replaceAll('\n','<br/>')}}
-        />
-        {project.url && (
-          <Button href={project.url} target="_blank" growOnHover={false} className="dark:bg-white/25 px-4">
-            Ver projeto {project.url.includes('github.com') && 'no Github'} ↗
-          </Button>
-        )}
-      </div>
-    </div>
   )
 }
