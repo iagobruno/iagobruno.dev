@@ -137,6 +137,25 @@ body > *:not(.blurred-background, footer) {
 	}
 }
 
+@keyframes floating {
+  0% {
+    transform: perspective(1000px) rotateX(-12deg) rotateY(12deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(6deg) rotateY(12deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(11deg) rotateY(-11deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(-12deg) rotateY(-12deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(-12deg) rotateY(12deg);
+  }
+}
+/** animation: floating 20s linear infinite; */
+
 .hamburger-icon {
   @apply relative drop-shadow-lg;
   @apply before:block before:rounded-full before:h-[4px] before:w-[32px] before:duration-300 before:bg-black dark:before:bg-white before:content-[''];

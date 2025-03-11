@@ -4,10 +4,10 @@ import Hero from '@/components/Hero'
 type Tools = Array<[category: string, list: Array<string>]>
 
 const tools: Tools = [
-  ['Hardware', ['Notebook Acer Aspire 315 i3, 8GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'iPhone 11']],
+  ['Hardware', ['Notebook Acer Aspire 315 i3, 8GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'Mouse pro-gaming Hrebos', 'iPhone 11']],
   ['Programas e ferramentas', ['Visual Studio Code', 'Chrome', 'Windows Terminal', 'Insomnia / Postman', 'Figma', 'WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot',]],
   ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
-  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'Yarn', 'PNPM', 'Jest / Mocha / Pest',]]
+  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'NPM / Yarn / PNPM', 'Jest / Mocha / Pest',]]
 ]
 
 export default function Uses() {
@@ -31,9 +31,9 @@ export default function Uses() {
           />
         </header>
 
-        <main className="text-lg space-y-7 divide-y divide-white/20 pb-20">
+        <main className="text-lg divide-y divide-white/20 pb-20">
           {tools.map(row => (
-            <div className="first:pt-0 pt-7" key={row[0]}>
+            <div className="py-8 first:pt-0" key={row[0]}>
               <strong className="font-semibold text-[1.18rem] mb-1.5 block">{row[0]}</strong>
               <ul className="list-disc list-inside">
                 {row[1].map(tool => (
