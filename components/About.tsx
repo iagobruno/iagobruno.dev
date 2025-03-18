@@ -1,6 +1,7 @@
 import SlideShow from './SlideShow'
 import Age from '@/components/Age'
 import { cn } from '@/lib/utils'
+import CommitsHistory from "./CommitsHistory";
 
 type Skills = Array<{ name: string, icon: string }>
 
@@ -65,6 +66,8 @@ export default function About() {
           ))}
         </div>
       </div>
+
+      <CommitsHistory />
     </section>
   )
 }
