@@ -79,8 +79,13 @@ export default function ProjectCard({ project }: CardProps) {
       </div>
 
       <div className="grow md:group-even/card:text-right">
-        <div className="font-medium text-[1.52rem]/[2rem]">{project.title}</div>
-        <div className="opacity-90">{project.year}</div>
+        <div className="font-medium text-[1.65rem]/[2rem]">{project.title}</div>
+        <div className="mt-0.5">
+          <span className="opacity-90">{project.year}</span>
+          {project.current && (
+            <>{' '}- <span className="text-primary font-semibold">ATUAL</span></>
+          )}
+        </div>
         <p
           className="text-base xl:text-[1.1em] opacity-90 my-2 md:mb-4 md:w-[80%] md:group-even/card:ml-auto"
           dangerouslySetInnerHTML={{__html: project.description.replaceAll('\n','<br/>')}}

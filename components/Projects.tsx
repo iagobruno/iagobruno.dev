@@ -6,6 +6,7 @@ const projects = [
     image: '/images/bs-pay-print.png',
     title: 'BS PAY',
     year: '2024',
+    current: true,
     description: 'Atualmente, trabalho como desenvolvedor front-end na BS PAY, uma empresa de pagamentos online. Minha função envolve a criação e manutenção de interfaces de usuário eficientes e intuitivas, utilizando Vue, TypeScript e Tailwind.',
     url: 'https://bspay.co/'
   },
