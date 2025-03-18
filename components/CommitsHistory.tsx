@@ -6,7 +6,7 @@ import { FaGithub as GithubIcon } from "react-icons/fa6"
 
 export default function CommitsHistory() {
   const [totalCount, setTotalCount] = useState(0)
-  const { theme } = useTheme()
+  const { theme, systemTheme } = useTheme()
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function CommitsHistory() {
         <GitHubCalendar
           username="iagobruno"
           year="last"
-          colorScheme={theme === 'dark' ? 'dark' : 'light'}
+          colorScheme={(theme === 'system' ? systemTheme : theme) === 'dark' ? 'dark' : 'light'}
           theme={{
             light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
             dark: ["#0A0A0A", "#0e4429", "#006d32", "#26a641", "#39d353"],
