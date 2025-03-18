@@ -31,7 +31,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                   <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
                   <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-000000?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
                   <a href="https://www.instagram.com/iagobruno.dev"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram"/></a>
-                  <a href="https://www.linkedin.com/in/iagobruno-dev"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn"/></a>
+                  <a href="https://www.linkedin.com/in/iagobruno-dev"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&amp;logo=logmein&amp;logoColor=white" alt="LinkedIn"/></a>
                   <a href="mailto:iagobruno.dev@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat&amp;logo=gmail&amp;logoColor=white" alt="Gmail"/></a>
                 </div>
               </div>
