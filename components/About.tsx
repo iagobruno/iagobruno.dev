@@ -35,7 +35,7 @@ export default function About() {
         <div className="flex flex-col md:flex-row md:items-center gap-8">
           <SlideShow />
 
-          <div className="grow md:text-lg space-y-5">
+          <div className="grow md:text-[1.3rem]/[2.24rem] space-y-5">
             <h3 id="about" className="text-primary text-center md:text-left text-base font-medium uppercase tracking-wider [scroll-margin-top:1.5rem]">Sobre</h3>
 
             <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
