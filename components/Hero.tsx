@@ -21,12 +21,19 @@ export default function Hero({ compact = true, className }: HeroProps) {
               <Photo />
 
               <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                <div className="font-caveat text-[1.6rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-center md:justify-start gap-2">
+                <div className="font-caveat text-[1.75rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-center md:justify-start gap-2">
                   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" className="size-[1em]" />
                   Oi, me chamo Iago
                 </div>
                 <h2 className="font-bold text-[2.2rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[5.6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">Sou programador<br/>Javascript<br/>Full-Stack</h2>
                 {/* <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p> */}
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mt-5 px-10 md:px-0">
+                  <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
+                  <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-000000?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
+                  <a href="https://www.instagram.com/iagobruno.dev"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram"/></a>
+                  <a href="https://www.linkedin.com/in/iagobruno-dev"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn"/></a>
+                  <a href="mailto:iagobruno.dev@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat&amp;logo=gmail&amp;logoColor=white" alt="Gmail"/></a>
+                </div>
               </div>
             </div>
 
