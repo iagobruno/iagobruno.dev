@@ -1,8 +1,11 @@
 "use client";
 import GitHubCalendar from 'react-github-calendar'
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, cloneElement } from "react";
 import { FaGithub as GithubIcon } from "react-icons/fa6"
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+import format from 'date-fns/format';
 
 export default function CommitsHistory() {
   const [totalCount, setTotalCount] = useState(0)
@@ -50,11 +53,19 @@ export default function CommitsHistory() {
           }}
           fontSize={12}
           blockMargin={5}
+          renderBlock={(block, activity) =>
+            cloneElement(block, {
+              'data-tooltip-id': 'commit',
+              'data-tooltip-content': `${activity.count} commits em ${format(new Date(activity.date+' 00:00:00'), 'dd/MM/yyyy')}`,
+              'data-tooltip-place': 'top',
+            })
+          }
           transformData={contributions => {
             if (!totalCount) setTotalCount(contributions.reduce((acc, curr) => acc + curr.count, 0));
             return contributions;
           }}
         />
+        <ReactTooltip id="commit" />
       </div>
     </div>
   )
