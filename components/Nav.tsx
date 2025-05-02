@@ -22,7 +22,7 @@ export function HeroNav() {
         <img src="/IagoBruno.png" className="h-[44px] inline" alt="Iago Bruno" />
       </Link>
 
-      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4 pr-2 gap-3 items-center hidden md:inline-flex">
+      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4 pr-1.5 gap-3 items-center hidden md:inline-flex">
         {links.map(link => (
           <Link
             href={link[1]}
