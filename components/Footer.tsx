@@ -6,7 +6,8 @@ import {
   FaInstagram as InstaIcon,
   FaGithub as GithubIcon,
   FaWhatsapp as WhatsappIcon,
-  FaLinkedin as LinkedinIcon
+  FaLinkedin as LinkedinIcon,
+  FaDiscord as DiscordIcon,
 } from "react-icons/fa6"
 import { HiOutlineEnvelope as EmailIcon } from "react-icons/hi2"
 
@@ -23,9 +24,10 @@ export default function Footer () {
       <footer className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
         <div className="max-w-(--max-content-width) mx-auto">
           <div className="font-semibold mb-8 text-4xl md:text-5xl">Contato</div>
-          <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-[color]">
+          <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-115 *:hover:rotate-15 *:duration-200">
             <a href="mailto:iagobruno.dev@gmail.com"><EmailIcon className="size-8 md:size-10" /></a>
             <a href="https://wa.me/558897174708"><WhatsappIcon className="size-7 md:size-9" /></a>
+            <a href="https://discordapp.com/users/724201631348162592"><DiscordIcon className="size-7 md:size-9" /></a>
             <a href="https://github.com/iagobruno"><GithubIcon className="size-7 md:size-9" /></a>
             <a href="https://linkedin.com/in/iagobruno-dev"><LinkedinIcon className="size-7 md:size-9" /></a>
             <a href="https://instagram.com/iagobruno.dev"><InstaIcon className="size-7 md:size-9"/></a>
