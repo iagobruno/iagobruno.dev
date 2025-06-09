@@ -27,7 +27,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                 </div>
                 <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[5.6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
                   Sou programador<br/>
-                  Full-Stack<span className="text-neutral-300/70 scale-130 ml-3.5 md:ml-6 inline-block">&</span><br/>
+                  Full-Stack<span className="text-neutral-600/60 dark:text-neutral-300/66 scale-135 ml-3.5 md:ml-6 inline-block">&</span><br/>
                   especialista em Front
                 </h2>
                 {/* <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p> */}
@@ -59,10 +59,10 @@ function Photo() {
       <div className="hidden md:block pointer-events-none">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute blur-[0px] -top-3 -right-2 animate-spin [animation-duration:10s]" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="50px" height="50px" className="absolute blur-[0.45px] -bottom-13 right-10 opacity-70 animate-[whale_8s_linear_infinite]"/>
-        <div className="absolute top-[52px] -left-[34px] text-xs z-0 flex flex-col dark:text-gray-200">
-          <span className="ml-8">{'<body>'}</span>
-          <span className="-ml-2">{'<div class="block">'}</span>
-          <span className="ml-4">{'<header>'}</span>
+        <div className="absolute top-[52px] -left-[28px] text-xs z-0 flex flex-col dark:text-gray-200 not-dark:opacity-60">
+          <span className="ml-8.5">{'<body>'}</span>
+          <span className="-ml-2">{'<div class="card">'}</span>
+          <span className="ml-4.5">{'<header>'}</span>
           <span className="ml-1.5">{'<img src="">'}</span>
         </div>
       </div>
