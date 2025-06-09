@@ -3,6 +3,13 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
+    image: '/images/danc-print.png',
+    title: 'Danc Solutions',
+    year: '2025',
+    description: 'Desenvolvi uma landing page focada em apresentar de maneira clara e atrativa os serviços e soluções oferecidos pela software house.',
+    url: 'https://dancsolutions.com/'
+  },
+  {
     image: '/images/bs-pay-print.png',
     title: 'BS PAY',
     year: '2024 – 2025',
