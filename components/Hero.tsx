@@ -25,7 +25,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" className="size-[1em]" />
                   Oi, me chamo Iago
                 </div>
-                <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[5.6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
+                <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
                   Sou programador<br/>
                   Full-Stack<span className="text-neutral-600/60 dark:text-neutral-300/66 scale-135 ml-3.5 md:ml-6 inline-block">&</span><br/>
                   especialista em Front
