@@ -90,7 +90,7 @@ export default function Projects() {
         <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
           Projetos
         </div>
-        <h3 className="text-3xl font-semibold text-center mb-8 md:mb-12">
+        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 md:mb-14">
           Meus trabalhos e experimentos
         </h3>
 
