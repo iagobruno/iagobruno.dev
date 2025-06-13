@@ -15,7 +15,7 @@ const skills: Skills = [
   { name: 'NextJS', icon: 'nextjs-light.svg' },
   { name: 'React', icon: 'react.svg' },
   { name: 'Vue', icon: 'vuejs.svg' },
-  { name: 'Svelte', icon: 'svelte.png' },
+  { name: 'Nuxt', icon: 'nuxt.svg' },
   { name: 'GraphQL', icon: 'graphql.svg' },
   { name: 'TDD', icon: 'jest.svg' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
@@ -38,15 +38,14 @@ export default function About() {
           <div className="grow md:text-[1.3rem]/[2.24rem] space-y-5">
             <h3 id="about" className="text-primary text-center md:text-left text-base font-medium uppercase tracking-wider [scroll-margin-top:1.5rem]">Sobre</h3>
 
-            <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 8 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
-            <p>JavaScript é a linguagem com a qual tenho mais confiança para trabalhar (tanto no lado cliente quanto no lado servidor) e atualmente estou estudando PHP com Laravel para ampliar meus conhecimentos.
-            <br/>
-            Você pode conferir minhas outras habilidades abaixo.</p>
+            <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação há mais de 10 anos e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
+            <p>Tenho vasta experiência com JavaScript (tanto no lado do cliente quanto no servidor) e com PHP utilizando Laravel, mas estou sempre buscando ampliar meus conhecimentos.</p>
+            <p>Você pode conferir minhas outras habilidades abaixo.</p>
           </div>
         </div>
 
         <div className="font-semibold text-lg mt-8">Minhas habilidades e ferramentas:</div>
-        <div className="flex flex-row flex-wrap gap-x-2 gap-y-4 md:gap-x-3 mt-5 text-center max-w-[880px]">
+        <div className="flex flex-row flex-wrap gap-x-2 gap-y-4 md:gap-x-3 mt-5 text-center">
           {skills.map(skill => (
             <span
               key={skill.icon}

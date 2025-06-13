@@ -35,7 +35,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
                   <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
-                  <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-292929?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
+                  <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-242424?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
                   <a href="https://www.instagram.com/iagobruno.dev"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram"/></a>
                   <a href="https://discordapp.com/users/724201631348162592"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat&amp;logo=discord&amp;logoColor=white" alt="Discord"/></a>
                   <a href="https://www.linkedin.com/in/iagobruno-dev"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&amp;logo=logmein&amp;logoColor=white" alt="LinkedIn"/></a>
@@ -59,7 +59,7 @@ function Photo() {
       <img src="/me.JPEG" className="rounded-full aspect-1/1 w-[260px] md:w-[340px] xl:w-[420px] border-[5px] bg-white border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite] will-change-[border-radius]" />
 
       <div className="hidden md:block pointer-events-none">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute blur-[0px] -top-3 -right-2 animate-spin [animation-duration:10s]" />
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40px" height="40px" className="absolute blur-[0px] -top-2 -right-2 animate-spin [animation-duration:10s]" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="50px" height="50px" className="absolute blur-[0.45px] -bottom-13 right-10 opacity-70 animate-[whale_8s_linear_infinite]"/>
         <div className="absolute top-[52px] -left-[28px] text-xs z-0 flex flex-col dark:text-gray-200 not-dark:opacity-60">
           <span className="ml-8.5">{'<body>'}</span>
