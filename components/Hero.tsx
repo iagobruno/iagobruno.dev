@@ -27,10 +27,12 @@ export default function Hero({ compact = true, className }: HeroProps) {
                 </div>
                 <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
                   Sou programador<br/>
-                  Full-Stack<span className="text-neutral-600/60 dark:text-neutral-300/66 scale-135 ml-3.5 md:ml-6 font-[arial] leading-0 inline-block">&</span><br/>
+                  Full-Stack<span className="text-neutral-600/55 dark:text-neutral-300/65 scale-135 ml-3.5 md:ml-6 font-[arial] leading-0 inline-block">&</span><br/>
                   especialista em Front
                 </h2>
-                {/* <p className="font-medium text-lg/6 text-green-600 dark:text-green-500 mt-5">Estou disponível para novas oportunidades!</p> */}
+                <p className="font-medium text-[1.13rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
+                  Estou disponível para novas oportunidades!
+                </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
                   <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
                   <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-000000?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
