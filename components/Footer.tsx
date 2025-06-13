@@ -10,6 +10,7 @@ import {
   FaDiscord as DiscordIcon,
 } from "react-icons/fa6"
 import { HiOutlineEnvelope as EmailIcon } from "react-icons/hi2"
+import { cn } from "@/lib/utils";
 
 export default function Footer () {
   const [height, setHeight] = useState('0px')
@@ -19,18 +20,83 @@ export default function Footer () {
     setHeight(footerRef.current!.getBoundingClientRect().height+'px')
   })
 
+  useMount(() => {
+    const icons = document.querySelectorAll<HTMLElement>('[data-pointto]')
+    const contact = document.querySelector<HTMLElement>('footer .contact')!
+    const lines = [] as any[];
+
+    for (const icon of Array.from(icons)) {
+      const pointToElement = contact.querySelector('#'+icon.dataset.pointto)
+
+      // @ts-ignore
+      // const line = new LeaderLine(
+      //   icon,
+      //   pointToElement,
+      //   {
+      //     color: 'var(--color-primary)',
+      //     size: 4,
+      //     path: 'arc',
+      //     startSocket: 'top',
+      //     endPlug: 'arrow2',
+      //     hide: true,
+      //     showEffectName: 'none',
+      //     animOptions: {
+      //       duration: 0,
+      //     },
+      //   }
+      // )
+      // lines.push(line)
+
+      icon.addEventListener('mouseover', () => {
+        // line.show('draw', { duration: 400 })
+        pointToElement?.classList.add('!text-primary')
+        pointToElement?.querySelectorAll('.group').forEach(el => el.classList.remove('text-neutral-500'))
+      })
+      icon.addEventListener('mouseout', () => {
+        // line.hide('draw', { duration: 400 })
+        pointToElement?.classList.remove('!text-primary')
+        pointToElement?.querySelectorAll('.group').forEach(el => el.classList.add('text-neutral-500'))
+      })
+    }
+  })
+
   return (
     <>
       <footer className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-16 px-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden" ref={footerRef}>
         <div className="max-w-(--max-content-width) mx-auto">
-          <div className="font-semibold mb-8 text-4xl md:text-5xl">Contato</div>
-          <div className="text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-115 *:hover:rotate-15 *:duration-200">
-            <a href="mailto:iagobruno.dev@gmail.com"><EmailIcon className="size-8 md:size-10" /></a>
-            <a href="https://wa.me/558897174708"><WhatsappIcon className="size-7 md:size-9" /></a>
-            <a href="https://discordapp.com/users/724201631348162592"><DiscordIcon className="size-7 md:size-9" /></a>
-            <a href="https://github.com/iagobruno"><GithubIcon className="size-7 md:size-9" /></a>
-            <a href="https://linkedin.com/in/iagobruno-dev"><LinkedinIcon className="size-7 md:size-9" /></a>
-            <a href="https://instagram.com/iagobruno.dev"><InstaIcon className="size-7 md:size-9"/></a>
+          <div className="text-4xl md:text-5xl font-semibold mb-10">Contato</div>
+
+          <div className="contact text-[1.6rem] md:text-4xl text-neutral-400 tracking-wide my-16 [&_span]:transition-colors [&_span]:duration-300">
+            <WithBracket label="E-mail" side="bottom" id="mail">
+              <WithBracket label="Username" lineClassName="-translate-y-5" id="user">
+                <WithBracket label="Nome" id="name">
+                  iagobruno
+                </WithBracket>
+                .dev
+              </WithBracket>
+              @gmail.com
+            </WithBracket>
+          </div>
+
+          <div className="icons text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-115 *:hover:rotate-15 *:duration-200">
+            <a href="mailto:iagobruno.dev@gmail.com" data-pointto="mail">
+              <EmailIcon className="size-8 md:size-10" />
+            </a>
+            <a href="https://wa.me/558897174708">
+              <WhatsappIcon className="size-7 md:size-9" />
+            </a>
+            <a href="https://discordapp.com/users/724201631348162592" data-pointto="user">
+              <DiscordIcon className="size-7 md:size-9" />
+            </a>
+            <a href="https://github.com/iagobruno" data-pointto="name">
+              <GithubIcon className="size-7 md:size-9" />
+            </a>
+            <a href="https://linkedin.com/in/iagobruno-dev">
+              <LinkedinIcon className="size-7 md:size-9" />
+            </a>
+            <a href="https://instagram.com/iagobruno.dev" data-pointto="user">
+              <InstaIcon className="size-7 md:size-9"/>
+            </a>
           </div>
 
           <ThemeToggle />
@@ -49,5 +115,23 @@ export default function Footer () {
         <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
       </div>
     </>
+  )
+}
+
+function WithBracket({ label, children, side = 'top', lineClassName = '', id = '' }) {
+  return (
+    <span id={id} className={cn('relative group text-neutral-500')}>
+      <span className={cn('absolute border-t border-current left-0 right-0 opacity-70 pointer-events-none', {
+        '-top-3': side === 'top',
+        '-bottom-3': side === 'bottom',
+      }, lineClassName)}>
+        <span className={cn('text-[0.6rem] absolute left-2/4 -translate-x-2/4 bottom-0', side === 'top' ? 'bottom-full mb-0.5' : 'top-full mt-0.5')}>
+          {label}
+        </span>
+        <span className={cn('absolute border-l border-[inherit] h-[6px] left-0', side === 'top' ? 'top-0' : 'bottom-0')} />
+        <span className={cn('absolute border-l border-[inherit] h-[6px] right-0', side === 'top' ? 'top-0' : 'bottom-0')} />
+      </span>
+      {children}
+    </span>
   )
 }
