@@ -9,7 +9,7 @@ interface HeroProps {
 export default function Hero({ compact = true, className }: HeroProps) {
   return (
     <>
-      <header className={cn('w-full px-6 py-7 flex flex-col justify-between text-center md:text-left relative z-10', {
+      <header className={cn('w-full px-6 py-7 not-md:pb-14 flex flex-col justify-between text-center md:text-left relative z-10', {
         'min-h-svh blurred-background': !compact
       }, className)}>
         <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">
@@ -27,15 +27,15 @@ export default function Hero({ compact = true, className }: HeroProps) {
                 </div>
                 <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
                   Sou programador<br/>
-                  Full-Stack<span className="text-neutral-600/55 dark:text-neutral-300/65 scale-135 ml-3.5 md:ml-6 font-[arial] leading-0 inline-block">&</span><br/>
+                  Full-Stack<span className="text-neutral-600/50 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-7 font-[arial] leading-0 drop-shadow-none inline-block">&</span><br/>
                   especialista em Front
                 </h2>
-                <p className="font-medium text-[1.13rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
+                <p className="font-medium text-[1.12rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
                   Estou disponível para novas oportunidades!
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
                   <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
-                  <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-000000?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
+                  <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-292929?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
                   <a href="https://www.instagram.com/iagobruno.dev"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram"/></a>
                   <a href="https://discordapp.com/users/724201631348162592"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat&amp;logo=discord&amp;logoColor=white" alt="Discord"/></a>
                   <a href="https://www.linkedin.com/in/iagobruno-dev"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&amp;logo=logmein&amp;logoColor=white" alt="LinkedIn"/></a>

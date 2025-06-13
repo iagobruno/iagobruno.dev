@@ -32,7 +32,7 @@ export default function SlideShow() {
     <img
       ref={imgRef}
       src={images[index]}
-      className={"block shrink-0 object-cover object-top aspect-16/15 md:w-[40%] xl:w-[45%] rounded-lg shadow-lg transition-opacity opacity-100"}
+      className={"block shrink-0 object-cover object-top aspect-16/15 md:w-[40%] xl:w-[45%] rounded-lg shadow-lg transition-opacity opacity-100 not-md:-mt-[32px]"}
     />
   )
 }

@@ -19,7 +19,7 @@ export function HeroNav() {
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
       <Link href="/">
-        <img src="/IagoBruno.png" className="h-[44px] inline" alt="Iago Bruno" />
+        <img src="/IagoBruno.png" className="h-[44px] inline transition-transform active:scale-94" alt="Iago Bruno" />
       </Link>
 
       <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4 pr-1.5 gap-3 items-center hidden md:inline-flex">

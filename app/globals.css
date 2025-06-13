@@ -48,12 +48,16 @@
 }
 
 
-body > *:not(.blurred-background, footer) {
+body > *:not(
+  .blurred-background,
+  [class*="z-"],
+  footer
+) {
   @apply relative z-5;
 }
 
 .blurred-background {
-  @apply bg-[url(/blurred-background.webp)] bg-cover bg-center bg-no-repeat bg-white dark:bg-neutral-950;
+  @apply bg-[url(/blurred-background.webp)] bg-top [background-size:120%_90%] md:[background-size:100%_108%] bg-no-repeat bg-white dark:bg-neutral-950;
 }
 
 

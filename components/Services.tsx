@@ -22,7 +22,7 @@ export default function Services() {
             icon="/icons/building.png"
             className="md:[--reveal-start:20%]!"
           >
-            Criação de plataformas digitais, aplicativos web que se comportam como apps mobile, soluções de Software as a Service, entre outros.
+            Criação de plataformas digitais, aplicativos web que se comportam como apps nativos e soluções de Software as a Service.
           </Card>
           <Card
             heading="Design de interfaces e prototipação"
