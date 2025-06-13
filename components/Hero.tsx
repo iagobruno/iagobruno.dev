@@ -27,7 +27,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                 </div>
                 <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
                   Sou programador<br/>
-                  Full-Stack<span className="text-neutral-600/50 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-7 font-[arial] leading-0 drop-shadow-none inline-block">&</span><br/>
+                  Full-Stack<span className="text-neutral-600/40 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-6.5 font-[arial] leading-0 drop-shadow-none inline-block">&</span><br/>
                   especialista em Front
                 </h2>
                 <p className="font-medium text-[1.12rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">

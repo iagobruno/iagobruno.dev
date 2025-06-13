@@ -66,7 +66,7 @@ export default function Footer () {
         <div className="max-w-(--max-content-width) mx-auto">
           <div className="text-4xl md:text-5xl font-semibold mb-10">Contato</div>
 
-          <div className="contact text-[1.6rem] md:text-4xl text-neutral-400 tracking-wide my-16 [&_span]:transition-colors [&_span]:duration-300">
+          <div className="contact text-[1.6rem] md:text-4xl text-neutral-400 tracking-wide mt-17.5 mb-16 [&_span]:transition-colors [&_span]:duration-300">
             <WithBracket label="E-mail" side="bottom" id="mail">
               <WithBracket label="Username" lineClassName="-translate-y-5" id="user">
                 <WithBracket label="Nome" id="name">
@@ -121,7 +121,7 @@ export default function Footer () {
 function WithBracket({ label, children, side = 'top', lineClassName = '', id = '' }) {
   return (
     <span id={id} className={cn('relative group text-neutral-500')}>
-      <span className={cn('absolute border-t border-current left-0 right-0 opacity-70 pointer-events-none', {
+      <span className={cn('absolute text-current/80 border-t border-current left-0 right-0 opacity-70 pointer-events-none', {
         '-top-3': side === 'top',
         '-bottom-3': side === 'bottom',
       }, lineClassName)}>
