@@ -1,5 +1,9 @@
+'use client';
 import Button from './Button'
 import ProjectCard from "./ProjectCard";
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import useMount from 'react-use/esm/useMount'
 
 const projects = [
   {
@@ -81,6 +85,30 @@ const projects = [
 export type Project = typeof projects[number];
 
 export default function Projects() {
+
+  useMount(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const items = gsap.utils.toArray('.project')
+
+    items.forEach((element, i) => {
+      gsap.fromTo(
+        element,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: `top 85%`,
+            end: 'top 50%',
+            scrub: true,
+          },
+        }
+      )
+    });
+  })
+
   return (
     <section
       id="projects"

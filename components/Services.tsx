@@ -1,8 +1,41 @@
+'use client';
 import { cn } from '@/lib/utils'
 import Button from './Button'
 import type { PropsWithChildren } from 'react'
+import useMount from 'react-use/esm/useMount'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
 
 export default function Services() {
+
+  useMount(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = gsap.utils.toArray('.service-card')
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+
+    cards.forEach((element, i) => {
+      const startPercent = 85
+      const dynamicStartPercent = Math.max(0, startPercent - i * 10); // 85%, 75%, 65%, ...
+
+      element.style.opacity = 0;
+      gsap.fromTo(
+        element,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: `top ${isMobile ? startPercent : dynamicStartPercent}%`,
+            end: 'top 50%',
+            scrub: true,
+          },
+        }
+      )
+    })
+  })
+
   return (
     <section
       id="services"
@@ -20,14 +53,14 @@ export default function Services() {
           <Card
             heading="Desenvolvimento de plataformas e SaaS"
             icon="/icons/building.png"
-            className="md:[--reveal-start:20%]!"
+            className=""
           >
             Criação de plataformas digitais, aplicativos web que se comportam como apps nativos e soluções de Software as a Service.
           </Card>
           <Card
             heading="Design de interfaces e prototipação"
             icon="/icons/design.png"
-            className="md:[--reveal-start:26%]!"
+            className=""
           >
             Posso criar uma interface visual para seu site ou aplicativo que
             melhor atenda as necessidades do seu negócio e público-alvo.
@@ -35,7 +68,7 @@ export default function Services() {
           <Card
             heading="Criação de websites e landing pages"
             icon="/icons/website.png"
-            className="md:[--reveal-start:32%]!"
+            className=""
           >
             Desenvolvo sites institucionais e landing pages otimizadas para conversão, responsividade e SEO.
           </Card>
@@ -59,7 +92,7 @@ interface CardProps extends PropsWithChildren {
 
 function Card({ icon, heading, children, className }: CardProps) {
   return (
-    <div className={cn('rounded-lg w-full max-w-[400px] md:w-1/3 scroll-reveal [--reveal-start:10%] [--reveal-range:10%]', className)}>
+    <div className={cn('service-card rounded-lg w-full max-w-[400px] md:w-1/3', className)}>
       <img
         src={icon}
         className="block object-contain w-[40px] max-h-[40px] mb-3 md:mb-5"

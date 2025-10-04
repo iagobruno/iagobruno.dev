@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: CardProps) {
 
   return (
     <div
-      className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse scroll-reveal [--reveal-range:20%]"
+      className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse"
     >
       <div
         ref={imgWrapperRef}
