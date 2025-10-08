@@ -34,7 +34,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
                   Estou disponível para novas oportunidades!
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
-                  <a href="https://wa.me/558897174708"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
+                  <a href="https://wa.me/558897174708?text=Ol%C3%A1!%20Vim%20do%20seu%20site%20para%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20seus%20servi%C3%A7os."><img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat&amp;logo=whatsapp&amp;logoColor=white" alt="WhatsApp"/></a>
                   <a href="https://github.com/iagobruno"><img src="https://img.shields.io/badge/GitHub-242424?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"/></a>
                   <a href="https://www.instagram.com/iagobruno.dev"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram"/></a>
                   <a href="https://discordapp.com/users/724201631348162592"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat&amp;logo=discord&amp;logoColor=white" alt="Discord"/></a>

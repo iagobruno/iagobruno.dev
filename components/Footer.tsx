@@ -82,7 +82,7 @@ export default function Footer () {
             <a href="mailto:iagobruno.dev@gmail.com" data-pointto="mail">
               <EmailIcon className="size-8 md:size-10" />
             </a>
-            <a href="https://wa.me/558897174708">
+            <a href="https://wa.me/558897174708?text=Ol%C3%A1!%20Vim%20do%20seu%20site%20para%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20seus%20servi%C3%A7os.">
               <WhatsappIcon className="size-7 md:size-9" />
             </a>
             <a href="https://discordapp.com/users/724201631348162592" data-pointto="user">

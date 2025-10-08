@@ -3,6 +3,7 @@ import type { PropsWithChildren } from 'react'
 import { Inter, Caveat } from 'next/font/google'
 import { MobileNav } from '@/components/Nav'
 import TailwindBreakpoints from '@/components/TailwindBreakpoints '
+import WhatsappButton from '@/components/WhatsappButton'
 import { Providers } from './providers'
 import ProgressBar from 'nextjs-toploader'
 import './globals.css'
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <ProgressBar />
         </Providers>
 
+        <WhatsappButton />
         <TailwindBreakpoints />
       </body>
     </html>
