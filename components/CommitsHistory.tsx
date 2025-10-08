@@ -21,7 +21,7 @@ export default function CommitsHistory() {
   }, [totalCount]);
 
   return (
-    <div className="w-fit max-w-full mx-auto mt-18 mb-2">
+    <div className="w-fit max-w-full mx-auto mt-16 md:mt-22">
       <div className="flex items-center justify-between flex-wrap gap-y-1 gap-x-2 mb-4">
         <h3 className="text-xl font-medium tracking-wider">{totalCount || 'Histórico de'} Commits no GitHub</h3>
         <a href="https://github.com/iagobruno" target="_blank" className="text-sm flex items-center gap-1.5 ml-auto">

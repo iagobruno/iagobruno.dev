@@ -25,7 +25,7 @@ export default function Uses() {
           </h3>
 
           <img
-            src="/workstation.jpeg"
+            src="/images/workstation.jpeg"
             className="max-h-[420px] w-full rounded-lg mt-7 object-cover object-center"
             alt="Meu mesa de trabalho"
           />
