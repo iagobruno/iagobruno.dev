@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import "tailwindcss-safe-area";
 
 /* Use a selector-based strategy in your project for dark mode */
 @variant dark (&:is(.dark *));
@@ -51,6 +52,7 @@
 body > *:not(
   .blurred-background,
   [class*="z-"],
+  .adhs-container,
   footer
 ) {
   @apply relative z-5;

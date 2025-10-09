@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import type { PropsWithChildren } from 'react'
 import { Inter, Caveat } from 'next/font/google'
 import { MobileNav } from '@/components/Nav'
 import TailwindBreakpoints from '@/components/TailwindBreakpoints '
+import Scripts from '@/components/Scripts'
 import WhatsappButton from '@/components/WhatsappButton'
 import { Providers } from './providers'
 import ProgressBar from 'nextjs-toploader'
@@ -27,10 +28,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
       className={`${interFont.variable} ${caveatFont.variable}`}
       suppressHydrationWarning
     >
-      <head />
+      <head>
+        <Scripts />
+      </head>
       <body>
         <Providers>
-          <div className="blurred-background bg-bottom! absolute z-4 min-h-svh w-full top-0 left-0" />
+          <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0" />
 
           {children}
 
@@ -52,4 +55,21 @@ export const metadata: Metadata = {
   },
   description: "Iago's portfolio",
   metadataBase: new URL('https://iagobruno.is-a.dev'),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    startupImage: "/favicon.png"
+  },
+  icons: {
+    apple: "/me.JPEG",
+  },
+  manifest: '/manifest.json',
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
 }

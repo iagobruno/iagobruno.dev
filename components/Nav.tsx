@@ -1,9 +1,10 @@
 'use client';
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
 import { CSSTransition } from 'react-transition-group'
 import { cn } from '@/lib/utils'
+import { GrInstallOption as InstallIcon } from "react-icons/gr";
 
 type Links = Array<[title: string, url: string]>
 
@@ -43,15 +44,24 @@ export function MobileNav() {
   const [showMobileNav, setShowMobileNav] = useState(false)
   const navRef = useRef<HTMLDivElement|null>(null)
 
+  const showInstallButton = useMemo(() => {
+    if (typeof window === "undefined") return false; // server-side
+    return !window.AddToHomeScreenInstance?.isStandAlone(); // mostrar somente se não estiver instalado
+  }, []);
+
   function close() {
     setShowMobileNav(false)
+  }
+
+  function install() {
+    window.AddToHomeScreenInstance.show('pt');
   }
 
   return (
     <div className="z-[unset]!">
       <div
         onClick={() => setShowMobileNav(!showMobileNav)}
-        className='md:hidden fixed! z-50 top-2 right-3.5 px-3 py-5 cursor-pointer'
+        className='md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer'
       >
         <div className={cn('hamburger-icon', { 'close-icon': showMobileNav })} />
       </div>
@@ -91,7 +101,18 @@ export function MobileNav() {
             ))}
           </div>
 
-          <ThemeToggle onClick={(e => e.stopPropagation())} />
+          <div className={cn('transition-opacity', showMobileNav ? 'opacity-100 duration-400 delay-500' : 'opacity-0 duration-0')}>
+            <ThemeToggle onClick={(e => e.stopPropagation())} />
+          </div>
+
+          {/* {showInstallButton && (
+            <div onClick={install} className={cn('cursor-pointer flex items-center gap-2.5 uppercase text-lg font-medium transition-opacity',
+              showMobileNav ? 'opacity-100 duration-400 delay-600' : 'opacity-0'
+            )}>
+              <InstallIcon className="size-[1.1em]" />
+              Instalar
+            </div>
+          )} */}
         </nav>
       </CSSTransition>
     </div>

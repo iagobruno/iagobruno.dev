@@ -1,0 +1,17 @@
+{
+  "name": "Iago Bruno | Full-Stack Developer",
+  "short_name": "Iago Bruno",
+  "description": "Iago's portfolio",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/me.JPEG",
+      "sizes": "250x250",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

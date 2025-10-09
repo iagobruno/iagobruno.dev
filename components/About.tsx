@@ -12,9 +12,9 @@ const skills: Skills = [
   { name: 'PHP', icon: 'php.svg' },
   { name: 'Docker', icon: 'docker.svg' },
   { name: 'React', icon: 'react.svg' },
-  { name: 'Vue', icon: 'vuejs.svg' },
   { name: 'NextJS', icon: 'nextjs-dark.svg' },
   { name: 'NextJS', icon: 'nextjs-light.svg' },
+  { name: 'Vue', icon: 'vuejs.svg' },
   { name: 'Nuxt', icon: 'nuxt.svg' },
   { name: 'GraphQL', icon: 'graphql.svg' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
@@ -31,7 +31,7 @@ const skills: Skills = [
 
 export default function About() {
   return (
-    <section className="w-full px-6 pb-10 md:py-16 relative z-11 bg-neutral-100 dark:bg-neutral-900">
+    <section className="w-full px-safe-offset-6 pb-10 md:py-16 relative z-11 bg-neutral-100 dark:bg-neutral-900">
       <div className="max-w-(--max-content-width) mx-auto">
         <div className="flex flex-col md:flex-row gap-10">
 

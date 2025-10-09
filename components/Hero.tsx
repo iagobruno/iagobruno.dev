@@ -9,7 +9,7 @@ interface HeroProps {
 export default function Hero({ compact = true, className }: HeroProps) {
   return (
     <>
-      <header className={cn('w-full px-6 py-7 not-md:pb-14 flex flex-col justify-between text-center md:text-left relative z-10', {
+      <header className={cn('w-full px-safe-offset-6 pt-safe-offset-6 pb-7 not-md:pb-14 flex flex-col justify-between text-center md:text-left relative z-10', {
         'min-h-svh blurred-background': !compact
       }, className)}>
         <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">

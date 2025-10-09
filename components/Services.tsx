@@ -39,7 +39,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-white w-full px-10 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
+      className="bg-white w-full px-safe-offset-10 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
     >
       <div className="max-w-(--max-content-width) mx-auto">
         <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">

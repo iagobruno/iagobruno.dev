@@ -12,7 +12,7 @@ const tools: Tools = [
 
 export default function Uses() {
   return (
-    <div className="[--max-content-width:800px] px-8">
+    <div className="[--max-content-width:800px] px-safe-offset-8">
       <Hero className="px-0" />
 
       <div className="w-full max-w-(--max-content-width) mx-auto">
