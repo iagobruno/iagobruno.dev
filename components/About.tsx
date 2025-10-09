@@ -11,21 +11,22 @@ const skills: Skills = [
   { name: 'Laravel', icon: 'laravel.svg' },
   { name: 'PHP', icon: 'php.svg' },
   { name: 'Docker', icon: 'docker.svg' },
-  { name: 'NextJS', icon: 'nextjs-dark.svg' },
-  { name: 'NextJS', icon: 'nextjs-light.svg' },
   { name: 'React', icon: 'react.svg' },
   { name: 'Vue', icon: 'vuejs.svg' },
+  { name: 'NextJS', icon: 'nextjs-dark.svg' },
+  { name: 'NextJS', icon: 'nextjs-light.svg' },
   { name: 'Nuxt', icon: 'nuxt.svg' },
   { name: 'GraphQL', icon: 'graphql.svg' },
-  { name: 'TDD', icon: 'jest.svg' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
+  { name: 'Bun', icon: 'bun.svg' },
+  { name: 'MySQL', icon: 'mysql.svg' },
+  { name: 'PostgreSQL', icon: 'postgresql.svg' },
+  { name: 'MongoDB', icon: 'mongodb.svg' },
+  { name: 'Redis', icon: 'redis.svg' },
+  { name: 'Figma', icon: 'figma.svg' },
   { name: 'GitHub', icon: 'github-dark.png' },
   { name: 'GitHub', icon: 'github-light.png' },
   { name: 'Git', icon: 'git.svg' },
-  { name: 'NPM', icon: 'npm.svg' },
-  { name: 'SASS', icon: 'sass.svg' },
-  { name: 'HTML5', icon: 'html5.svg' },
-  { name: 'CSS3', icon: 'css3.svg' },
 ]
 
 export default function About() {
@@ -45,7 +46,7 @@ export default function About() {
             <h3 id="about" className="text-primary text-center md:text-left text-base font-medium uppercase tracking-wider [scroll-margin-top:1.5rem]">Sobre</h3>
 
             <p>Tenho <Age/> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação <strong>há mais de 10 anos</strong> e aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web, desde então, venho estudando novas linguagens programação, desenvolvendo websites e ajudando em projetos open source.</p>
-            <p>Tenho vasta experiência com JavaScript (tanto no lado do cliente quanto no servidor) e com PHP utilizando Laravel, mas estou sempre buscando ampliar meus conhecimentos.</p>
+            <p>Tenho vasta experiência com JavaScript e com PHP utilizando Laravel, mas estou sempre buscando ampliar meus conhecimentos. Cada projeto é uma oportunidade para aprender algo novo, sempre com foco na qualidade do produto final.</p>
             {/* <p>Você pode conferir minhas outras habilidades abaixo.</p> */}
 
             <div className="font-semibold md:text-[1.3rem] tracking-wide mt-10">Minhas habilidades e ferramentas:</div>
@@ -64,7 +65,7 @@ export default function About() {
                     className="size-11 md:size-12 object-contain"
                     alt={skill.name + ' Logo'}
                   />
-                  <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-50 mt-1">{skill.name}</span>
+                  <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-52 mt-1">{skill.name}</span>
                 </span>
               ))}
             </div>
