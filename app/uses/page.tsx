@@ -5,9 +5,9 @@ type Tools = Array<[category: string, list: Array<string>]>
 
 const tools: Tools = [
   ['Hardware', ['Notebook Acer Aspire 315 i3, 8GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'Mouse pro-gaming Hrebos']],
-  ['Programas e ferramentas', ['Visual Studio Code', 'Chrome', 'Windows Terminal', 'Insomnia / Postman', 'Figma', 'WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot',]],
+  ['Programas e ferramentas', ['Visual Studio Code', 'Chrome', 'Windows Terminal', 'Postman / Insomnia', 'Figma', 'WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot',]],
   ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
-  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'PHP', 'Laravel', 'NextJS', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'NPM / Yarn / PNPM', 'Jest / Mocha / Pest',]]
+  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'Bun', 'PHP', 'Laravel', 'NextJS', 'Nuxt', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'NPM / Yarn / PNPM', 'Jest / Mocha / Pest',]]
 ]
 
 export default function Uses() {
@@ -26,7 +26,7 @@ export default function Uses() {
 
           <img
             src="/images/workstation.jpeg"
-            className="max-h-[420px] w-full rounded-lg mt-7 object-cover object-center"
+            className="max-h-[400px] md:max-h-[480px] w-full rounded-lg mt-7 object-cover object-center"
             alt="Meu mesa de trabalho"
           />
         </header>
