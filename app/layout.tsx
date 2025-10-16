@@ -33,7 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body>
         <Providers>
-          <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0" />
+          <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0 pointer-events-none" />
 
           {children}
 

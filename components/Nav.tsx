@@ -12,6 +12,7 @@ const links: Links = [
   ['Sobre mim', '/#about'],
   ['Projetos', '/#projects'],
   ['Serviços', '/#services'],
+  ['Agora', '/now'],
   ['Uses', '/uses'],
   ['Contato', '/#contact'],
 ]
@@ -20,14 +21,14 @@ export function HeroNav() {
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
       <Link href="/">
-        <img src="/IagoBruno.png" className="h-[44px] inline transition-transform active:scale-94" alt="Iago Bruno" />
+        <img src="/IagoBruno.png" className="h-[44px] translate-y-1 inline transition-transform active:scale-94" alt="Iago Bruno" />
       </Link>
 
-      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4.5 pr-1.5 gap-3.5 items-center hidden md:inline-flex">
+      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4.5 pr-1.5 gap-3 items-center hidden md:inline-flex">
         {links.map(link => (
           <Link
             href={link[1]}
-            className={cn('active:scale-90 transition-transform', {
+            className={cn('text-[1.1rem] active:scale-90 transition-transform', {
               'bg-primary text-white! rounded-full py-1 px-3 no-underline!': link[0] === 'Contato'
             })}
             key={link[0]}
