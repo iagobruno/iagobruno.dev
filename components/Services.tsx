@@ -45,8 +45,8 @@ export default function Services() {
         <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
           Serviços
         </div>
-        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-10 md:mb-14">
-          O que eu posso fazer por você
+        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-10 md:mb-14 mx-4">
+          O que posso fazer por você
         </h3>
 
         <div className="flex items-center md:items-start justify-center gap-8 md:gap-10 xl:gap-16 flex-col md:flex-row">
