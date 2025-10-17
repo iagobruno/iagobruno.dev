@@ -14,6 +14,11 @@ export default function ThemeToggle(props: Props) {
 
   if (theme === undefined) return null
 
+  function changeTheme(mode) {
+    if (!document.startViewTransition) setTheme(mode);
+    document.startViewTransition(() => setTheme(mode));
+  }
+
   return (
     <label className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1" {...props}>
       {modes.map(mode => (
@@ -21,7 +26,7 @@ export default function ThemeToggle(props: Props) {
           className={cn('rounded-full text-base p-1.5', {
             'bg-black/15 dark:bg-white/20': mode === theme,
           })}
-          onClick={() => setTheme(mode)}
+          onClick={() => changeTheme(mode)}
           key={mode}
           suppressHydrationWarning
         >
