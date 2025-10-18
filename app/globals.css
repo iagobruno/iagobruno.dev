@@ -44,7 +44,7 @@
   }
 
   a {
-    @apply text-primary md:hover:underline hover:brightness-[0.92] dark:hover:brightness-110;
+    @apply text-primary md:hover:underline hover:brightness-106 dark:hover:brightness-110;
   }
 }
 

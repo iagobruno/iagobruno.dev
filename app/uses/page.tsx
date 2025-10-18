@@ -15,7 +15,7 @@ export default function Page() {
   const lastUpdate = getFileLastUpdateDate(import.meta.url)
 
   return (
-    <div className="[--max-content-width:800px] px-safe-offset-8">
+    <div className="[--max-content-width:800px] px-safe-offset-7">
       <Hero className="px-0" />
 
       <div className="w-full max-w-(--max-content-width) mx-auto pb-20">
@@ -50,7 +50,7 @@ export default function Page() {
 
           <footer className="mt-8 opacity-80">
             Atualizado em {lastUpdate}.
-            <div className="mt-2">Inspirado no projeto <a href="https://uses.tech/" target="_blank">uses.tech</a> de Wes Bos.</div>
+            <div className="mt-2 text-sm">Inspirado no projeto <a href="https://uses.tech/" target="_blank">uses.tech</a> de Wes Bos.</div>
           </footer>
         </main>
       </div>

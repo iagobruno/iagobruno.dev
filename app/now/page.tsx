@@ -9,7 +9,7 @@ export default async function Page() {
   const topArtists = await getMyTopArtists();
 
   return (
-    <div className="[--max-content-width:800px] px-safe-offset-8">
+    <div className="[--max-content-width:800px] px-safe-offset-7">
       <Hero className="px-0" />
 
       <div className="w-full max-w-(--max-content-width) mx-auto pb-20">
@@ -88,7 +88,7 @@ async function getMyTopArtists() {
     const result = await parseXML(xmlString);
 
     const list = result?.rss?.channel?.[0]?.item ?? [];
-    const top5 = list.slice(0, 6).map(item => item.title[0]);
+    const top5 = list.slice(0, 5).map(item => item.title[0]);
     // console.log('top5', top5)
 
     return top5;

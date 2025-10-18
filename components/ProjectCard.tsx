@@ -1,6 +1,8 @@
 "use client";
 import { useRef } from "react";
 import Button from "./Button";
+import { GoArrowUpRight as ArrowForward } from "react-icons/go";
+import { FaGithub as GithubIcon } from "react-icons/fa6"
 import type { Project } from "./Projects";
 
 interface CardProps {
@@ -87,12 +89,16 @@ export default function ProjectCard({ project }: CardProps) {
           )}
         </div>
         <p
-          className="text-base xl:text-[1.1em] opacity-90 my-2 md:mb-4 md:w-[80%] md:group-even/card:ml-auto"
+          className="text-base xl:text-[1.1em] opacity-90 my-2 mb-3 md:mb-6 md:w-[80%] md:group-even/card:ml-auto"
           dangerouslySetInnerHTML={{__html: project.description.replaceAll('\n','<br/>')}}
         />
         {project.url && (
-          <Button href={project.url} target="_blank" growOnHover={false} className="dark:bg-white/25 px-4">
-            Ver projeto {project.url.includes('github.com') && 'no Github'} ↗
+          <Button href={project.url} target="_blank" growOnHover className="dark:bg-white/26 !px-4 !rotate-0 md:group-odd/card:origin-left md:group-even/card:origin-right dark:hover:bg-white dark:hover:!text-black">
+            {project.url.includes('github.com') && (
+              <GithubIcon className="size-4.5 mr-0.5" />
+            )}
+            Ver {project.url.includes('github.com') ? 'no Github' : 'projeto'}
+            <ArrowForward className="size-4" />
           </Button>
         )}
       </div>

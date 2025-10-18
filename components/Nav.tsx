@@ -9,9 +9,10 @@ import { GrInstallOption as InstallIcon } from "react-icons/gr";
 type Links = Array<[title: string, url: string]>
 
 const links: Links = [
-  ['Sobre mim', '/#about'],
+  ['Sobre', '/#about'],
   ['Projetos', '/#projects'],
   ['Serviços', '/#services'],
+  ['Experimentos', '/labs'],
   ['Agora', '/now'],
   ['Uses', '/uses'],
   ['Contato', '/#contact'],
@@ -20,7 +21,7 @@ const links: Links = [
 export function HeroNav() {
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
-      <Link href="/">
+      <Link href="/" className="shrink-0">
         <img src="/IagoBruno.png" className="h-[44px] translate-y-1 inline transition-transform active:scale-94" alt="Iago Bruno" />
       </Link>
 
@@ -28,7 +29,7 @@ export function HeroNav() {
         {links.map(link => (
           <Link
             href={link[1]}
-            className={cn('text-[1.1rem] active:scale-90 transition-transform', {
+            className={cn('text-[1.1rem] active:scale-94 transition-transform', {
               'bg-primary text-white! rounded-full py-1 px-3 no-underline!': link[0] === 'Contato'
             })}
             key={link[0]}
