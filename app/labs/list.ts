@@ -66,8 +66,8 @@ export const list: Item[] = [
     title: 'life-in-weeks',
     description: 'Em média um ser humano vive 90 anos. Veja quanto tempo você já viveu.',
     image: 'https://github.com/iagobruno/life-in-weeks/raw/main/print.png',
-    link: 'https://iagobruno.github.io/mapbox-demos/',
-    repo: 'https://github.com/iagobruno/mapbox-demos'
+    link: 'https://iagobruno.github.io/life-in-weeks/',
+    repo: 'https://github.com/iagobruno/life-in-weeks'
   },
   {
     title: '10-javascript-frameworks',
