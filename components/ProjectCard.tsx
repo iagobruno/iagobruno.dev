@@ -12,6 +12,7 @@ interface CardProps {
 export default function ProjectCard({ project }: CardProps) {
   const imgWrapperRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+  const glowRef = useRef<HTMLAnchorElement>(null);
 
   function handleTransformation (evt: React.PointerEvent<HTMLImageElement>) {
     if (evt.pointerType !== "mouse") return;
@@ -35,6 +36,10 @@ export default function ProjectCard({ project }: CardProps) {
       'box-shadow',
       `${(x / w - 0.5) * 28}px 10px 20px rgb(var(--shadow-color) / 16%)`
     );
+    glowRef.current!.style.setProperty(
+      'background-image',
+      `radial-gradient(circle at ${x}px ${y}px, #ffffff, transparent 70%)
+    `);
   }
 
   function handleMouseEnter(evt) {
@@ -67,7 +72,7 @@ export default function ProjectCard({ project }: CardProps) {
     >
       <div
         ref={imgWrapperRef}
-        className="project-img-wrapper w-full md:w-[46%] md:min-w-[46%] transition-transform duration-[400ms]"
+        className="project-img-wrapper group relative w-full md:w-[46%] md:min-w-[46%] transition-transform duration-[400ms] rounded-xl"
         onPointerMove={handleTransformation}
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
@@ -75,9 +80,11 @@ export default function ProjectCard({ project }: CardProps) {
         <img
           ref={imgRef}
           src={project.image}
-          className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-xl border border-stone-400/40 dark:border-white/5"
+          className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-[inherit] border border-stone-400/40 dark:border-white/5"
           loading="lazy"
         />
+
+        <a href={project.url} ref={glowRef} className="absolute inset-0 z-3 cursor-pointer rounded-[inherit] opacity-0 transition-opacity group-hover:opacity-5 not-sm:!opacity-0" target="_blank" rel="noopener noreferrer" />
       </div>
 
       <div className="grow md:group-even/card:text-right">
