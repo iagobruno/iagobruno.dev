@@ -5,7 +5,7 @@ import getFileLastUpdateDate from '@/lib/getFileLastUpdate'
 type Tools = Array<[category: string, list: Array<string>]>
 
 const tools: Tools = [
-  ['Hardware', ['Notebook Acer Aspire 315 i3, 8GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'Mouse pro-gaming Hrebos']],
+  ['Hardware', ['Notebook Acer Aspire 315 i3, 16GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'Mouse pro-gaming Hrebos', 'Microfone Fifine Ampligame A6t', 'Headset QCY H3 Lite Anc']],
   ['Programas e ferramentas', ['Visual Studio Code', 'Chrome', 'Windows Terminal', 'Postman / Insomnia', 'Figma', 'WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot',]],
   ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
   ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'Bun', 'PHP', 'Laravel', 'NextJS', 'Nuxt', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'NPM / Yarn / PNPM', 'Jest / Mocha / Pest',]]
@@ -38,7 +38,7 @@ export default function Page() {
           <div className="divide-y divide-black/25 dark:divide-white/20">
             {tools.map(row => (
               <div className="py-8 first:pt-0" key={row[0]}>
-                <strong className="font-semibold text-[1.18rem] mb-1.5 block">{row[0]}</strong>
+                <strong className="font-semibold text-[1.22rem] mb-1.5 block">{row[0]}</strong>
                 <ul className="list-disc list-inside">
                   {row[1].map(tool => (
                     <li key={tool}>{tool}</li>
