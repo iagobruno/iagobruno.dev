@@ -3,7 +3,7 @@ import { fileURLToPath } from "url"
 
 export default function getFileLastUpdateDate(filePath: string) {
   const __filename = fileURLToPath(filePath);
-  const isoDate = execSync(`git log -1 --format="%cs" -- ${__filename}`)
+  const isoDate = execSync(`git log -1 --format="%cs" -- "${__filename}"`)
     .toString()
     .trim();
 
