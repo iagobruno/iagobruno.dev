@@ -1,15 +1,7 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
 import getFileLastUpdateDate from '@/lib/getFileLastUpdate'
-
-type Tools = Array<[category: string, list: Array<string>]>
-
-const tools: Tools = [
-  ['Hardware', ['Notebook Acer Aspire 315 i3, 16GB RAM', 'Monitor SuperFrame de 24”', 'Monitor LG de 24”', 'Teclado Redragon switch brown', 'Mouse pro-gaming Hrebos', 'Microfone Fifine Ampligame A6t', 'Headset QCY H3 Lite Anc']],
-  ['Programas e ferramentas', ['Visual Studio Code', 'Chrome', 'Windows Terminal', 'Postman / Insomnia', 'Figma', 'WSL (Windows Subsystem for Linux)', 'Docker', 'GitHub', 'GitHub Copilot',]],
-  ['Banco de dados', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase Cloud Storage',]],
-  ['Tecnologias', ['JavaScript', 'TypeScript', 'NodeJS', 'Bun', 'PHP', 'Laravel', 'NextJS', 'Nuxt', 'Vite', 'React', 'Vue', 'Svelte', 'Tailwind CSS', 'SASS', 'NPM / Yarn / PNPM', 'Jest / Mocha / Pest',]]
-]
+import { tools } from './list'
 
 export default function Page() {
   const lastUpdate = getFileLastUpdateDate(import.meta.url)
@@ -37,13 +29,25 @@ export default function Page() {
         <main className="text-lg">
           <div className="divide-y divide-black/25 dark:divide-white/20">
             {tools.map(row => (
-              <div className="py-8 first:pt-0" key={row[0]}>
-                <strong className="font-semibold text-[1.22rem] mb-1.5 block">{row[0]}</strong>
-                <ul className="list-disc list-inside">
-                  {row[1].map(tool => (
-                    <li key={tool}>{tool}</li>
+              <div className="pt-8 first:pt-0" key={row.section}>
+                {row.section && (
+                  <strong className="font-semibold text-[1.66rem] mb-3 block">{row.section}</strong>
+                )}
+
+                <div className="divide-y divide-black/25 dark:divide-white/20">
+                  {row.list.map(section => (
+                    <div className="py-8 first:pt-0" key={section}>
+                      <strong className="font-semibold text-[1.22rem] mb-1.5 block">{section.category}</strong>
+
+                      <ul className="list-disc list-inside ">
+                        {section.list.map(tool => (
+                          <li key={tool}>{tool}</li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
               </div>
             ))}
           </div>
