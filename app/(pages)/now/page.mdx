@@ -1,0 +1,66 @@
+import PageHeader from '@/components/PageHeader';
+import getFileLastUpdateDate from '@/lib/getFileLastUpdate';
+import getMyTopArtists from '@/lib/getTopArtists';
+
+export const metadata = {
+  title: 'Agora',
+};
+
+export const lastUpdate = getFileLastUpdateDate(import.meta.url);
+export const topArtists = await getMyTopArtists();
+
+<PageHeader
+  overline="Now"
+  heading="O que estou fazendo agora?"
+  subHeading={`Atualizado em ${lastUpdate}`}
+/>
+
+## 💼 Profissional
+
+No momento estou me realocando no mercado enquanto trabalho em um projeto
+pessoal para lançar nos próximos meses.
+
+Além disso, venho testando usar mais IA para ser mais produtivo para não ficar para trás em relação a outros devs.
+
+## 🏠 Pessoal
+
+Estou voltando a fazer atividades físicas para melhorar meu humor e clareza
+dos meus pensamentos. Uso o app Fitness da Apple para registrar meus treinos e
+me manter motivado.
+
+Frequentemente faço trilhas e gosto de acampar com amigos. Sou um amante da
+natureza.
+
+## 📚 Estudando
+
+No momento estou estudando outras áreas além de programação, como psicologia,
+marketing e gestão de negócios.
+
+Tenho revisado meu inglês constantemente para não perder a fluência.
+
+Também estou tentando melhorar minhas soft skills.
+
+## 📺 Assistindo
+
+Estou reassistindo alguns filmes que vi quando era mais novo, mas não tinha
+maturidade para entender todas as nuances do roteiro.
+
+## 🎶 Ouvindo
+
+Artistas que estou ouvindo ultimamente de acordo com meu [perfil no last.fm](https://www.last.fm/user/httpiago):
+
+<ul>
+  {topArtists.map((artist) => (
+    <li key={artist}>{artist}</li>
+  ))}
+</ul>
+
+## 💭 Frase do momento
+
+> "Nenhum vento favorece quem não sabe onde ir." <br /> ― Sêneca
+
+<footer className="mt-15 [&>p]:text-[0.92rem] opacity-60 dark:opacity-70">
+  A ideia aqui é manter uma página atualizada contando o que estou fazendo
+  ultimamente. <br />
+  Baseado na ideia da [página now](https://nownownow.com/about) do Derek Sivers.
+</footer>

@@ -1,7 +1,7 @@
 interface Item {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   link?: string;
   repo?: string;
 }

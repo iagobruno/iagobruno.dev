@@ -1,5 +1,5 @@
-import { execSync } from "child_process"
-import { fileURLToPath } from "url"
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
 
 export default function getFileLastUpdateDate(filePath: string) {
   const __filename = fileURLToPath(filePath);
@@ -8,9 +8,9 @@ export default function getFileLastUpdateDate(filePath: string) {
     .trim();
 
   const date = new Date(isoDate);
-  const formatted = date.toLocaleDateString("pt-BR", {
-    month: "long",
-    year: "numeric"
+  const formatted = date.toLocaleDateString('pt-BR', {
+    month: 'long',
+    year: 'numeric',
   });
 
   return formatted;

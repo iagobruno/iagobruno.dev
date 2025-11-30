@@ -1,0 +1,97 @@
+import PageHeader from '@/components/PageHeader';
+import getFileLastUpdateDate from '@/lib/getFileLastUpdate';
+
+export const metadata = {
+  title: 'Uses',
+};
+
+export const lastUpdate = getFileLastUpdateDate(import.meta.url);
+
+<PageHeader
+  overline="Uses"
+  heading="Ferramentas que uso para trabalhar no dia a dia"
+  subHeading={
+    <img
+      src="/images/workstation.jpeg"
+      className="max-h-[400px] md:max-h-[480px] w-full rounded-lg object-cover object-center mt-7"
+      alt="Meu mesa de trabalho"
+    />
+  }
+/>
+
+# Hardware
+
+- Notebook: Acer Aspire 315 i3, 16GB RAM
+- Monitor 1: SuperFrame de 24”
+- Monitor 2: LG de 24”
+- Teclado: Redragon switch brown
+- Mouse: Hrebos pro-gaming
+- Microfone: Fifine Ampligame A6t
+- Áudio: Headset QCY H3 Lite Anc
+- Webcam: iPhone 11 conectado via Camo Studio
+
+---
+
+# Software
+
+### Ambiente de desenvolvimento
+
+- OS: Ubuntu 22.04
+- Editor: Visual Studio Code
+- Navegador: Chrome
+- API testing: Postman e Insomnia
+- Terminal: Konsole
+- Docker
+- Tema do Editor: Onix
+- Fonte: Fira Code e JetBrains Mono
+
+---
+
+### Ferramentas de AI
+
+- GitHub Copilot
+- ChatGPT
+- Claude AI
+
+---
+
+### Design
+
+- Figma
+- Affinity Designer
+
+---
+
+### Banco de dados
+
+- PostgreSQL
+- MySQL
+- MongoDB
+- Redis
+- Firebase Cloud Storage
+
+---
+
+### Tecnologias
+
+- NodeJS
+- Bun
+- NVM
+- PHP
+- Laravel
+- NextJS
+- Nuxt
+- Vite
+- React
+- Vue
+- Svelte
+- Tailwind CSS
+- NPM / Yarn / PNPM
+- Pest / Jest / Mocha
+
+<footer className="mt-16 opacity-80">
+  Atualizado em {lastUpdate}. <br />
+  <div className="[&>p]:text-sm">
+    Inspirado no projeto [uses.tech](https://uses.tech/) de Wes Bos.
+  </div>
+</footer>
