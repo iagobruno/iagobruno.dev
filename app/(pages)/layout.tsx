@@ -23,7 +23,7 @@ export default function PagesLayout({ children }: PropsWithChildren) {
           'prose-hr:my-8 prose-hr:border-t-black/25 dark:prose-hr:border-t-white/20',
           'prose-a:no-underline',
           'prose-ul:pl-5 prose-ul:mt-3.5 prose-ul:text-lg  prose-li:my-0.5 prose-li:pl-1',
-          'prose-blockquote:border-black/25 prose-blockquote:dark:border-white/20 prose-blockquote:opacity-85'
+          'prose-blockquote:border-black/25 prose-blockquote:dark:border-white/20 prose-blockquote:opacity-85 prose-blockquote:[&_p::after,&_p::before]:content-[unset]'
         )}
       >
         {children}
