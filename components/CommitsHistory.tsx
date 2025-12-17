@@ -6,6 +6,7 @@ import { FaGithub as GithubIcon } from "react-icons/fa6"
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import format from 'date-fns/format';
+import posthog from 'posthog-js';
 
 export default function CommitsHistory() {
   const [totalCount, setTotalCount] = useState(0)
@@ -19,12 +20,16 @@ export default function CommitsHistory() {
       scrollElement.scrollTo({ left: scrollLeft })
     }
   }, [totalCount]);
+  
+  function handleLinkClick() {
+    posthog.capture('github_link_click')
+  }
 
   return (
     <div className="w-fit max-w-full mx-auto mt-16 md:mt-22">
       <div className="flex items-center justify-between flex-wrap gap-y-1 gap-x-2 mb-4">
         <h3 className="text-xl font-medium tracking-wider">{totalCount || 'Histórico de'} Commits no GitHub</h3>
-        <a href="https://github.com/iagobruno" target="_blank" className="text-sm flex items-center gap-1.5 ml-auto">
+        <a href="https://github.com/iagobruno" target="_blank" onClick={handleLinkClick} className="text-sm flex items-center gap-1.5 ml-auto">
           <GithubIcon className="size-4.5" />
           <span>Ver tudo</span>
         </a>

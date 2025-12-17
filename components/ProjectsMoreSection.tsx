@@ -1,5 +1,7 @@
+"use client";
 import Button from '@/components/Button';
 import { cn } from '@/lib/utils';
+import posthog from 'posthog-js';
 
 export default function ProjectsMoreSection({ className = '' }) {
   return (
@@ -11,6 +13,7 @@ export default function ProjectsMoreSection({ className = '' }) {
       <Button
         href="https://github.com/iagobruno"
         className="mt-4"
+        onClick={() => posthog.capture('github_link_click')}
       >
         Seguir no GitHub
       </Button>
