@@ -43,7 +43,9 @@ const socialLinks = [
 
 export default function Hero({ compact = true, className }: HeroProps) {
   function handleLinkClick(name: string) {
-    posthog.capture(`${name}_link_click`, {});
+    posthog.capture(`${name}_link_click`, {
+      location: 'header',
+    });
   }
 
   return (

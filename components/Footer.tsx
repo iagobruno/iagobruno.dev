@@ -109,7 +109,9 @@ export default function Footer() {
   });
 
   function handleLinkClick(name: string) {
-    posthog.capture(`${name}_link_click`, {});
+    posthog.capture(`${name}_link_click`, {
+      location: 'footer',
+    });
   }
 
   return (

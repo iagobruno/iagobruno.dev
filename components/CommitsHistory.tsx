@@ -22,7 +22,7 @@ export default function CommitsHistory() {
   }, [totalCount]);
   
   function handleLinkClick() {
-    posthog.capture('github_link_click')
+    posthog.capture('github_link_click', { location: 'commits_graph' });
   }
 
   return (

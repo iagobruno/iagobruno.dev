@@ -13,7 +13,7 @@ export default function ProjectsMoreSection({ className = '' }) {
       <Button
         href="https://github.com/iagobruno"
         className="mt-4"
-        onClick={() => posthog.capture('github_link_click')}
+        onClick={() => posthog.capture('github_link_click', { location: 'projects_section' })}
       >
         Seguir no GitHub
       </Button>
