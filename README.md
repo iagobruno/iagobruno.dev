@@ -17,14 +17,9 @@ My portfolio to present my work, skills and projects carried out.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn run dev
-# or
-pnpm dev
+bun install
+bun run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "next lint",
+    "dev": "bun run --bun next dev --turbopack",
+    "build": "bun run --bun next build --turbopack",
+    "start": "bun run --bun next start",
+    "lint": "bun run --bun next lint",
     "type-check": "tsc --noEmit",
     "deploy": "npm run build && gh-pages -d out --nojekyll --cname iagobruno.dev -m Deploy"
   },
