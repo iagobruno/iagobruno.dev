@@ -49,75 +49,71 @@ export default function Hero({ compact = true, className }: HeroProps) {
   }
 
   return (
-    <>
-      <header
-        className={cn(
-          'w-full px-safe-offset-6 pt-safe-offset-6 pb-7 not-md:pb-14 flex flex-col justify-between text-center md:text-left relative z-10',
-          {
-            'min-h-svh blurred-background': !compact,
-          },
-          className
-        )}
-      >
-        <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">
-          <HeroNav />
+    <header
+      className={cn(
+        'w-full px-safe-offset-6 pt-safe-offset-6 pb-7 not-md:pb-14 flex flex-col justify-between text-center md:text-left relative z-10',
+        {
+          'min-h-svh blurred-background': !compact,
+        },
+        className
+      )}
+    >
+      <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">
+        <HeroNav />
 
-          {compact === false && (
-            <>
-              <div className="flex flex-col justify-center items-center gap-5 h-full w-full md:flex-row">
-                <Photo />
+        {compact === false && (
+          <>
+            <div className="flex flex-col justify-center items-center gap-5 h-full w-full md:flex-row">
+              <Photo />
 
-                <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                  <div className="font-caveat text-[1.8rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-center md:justify-start gap-2 mb-1">
-                    <img
-                      src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
-                      className="size-[1em]"
-                    />
-                    Oi, me chamo Iago
-                  </div>
-                  <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
-                    Sou programador
-                    <br />
-                    Full-Stack
-                    <span className="text-neutral-600/40 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-6.5 font-[arial] leading-0 drop-shadow-none inline-block">
-                      &
-                    </span>
-                    <br />
-                    especialista em Front
-                  </h2>
-                  <p className="font-medium text-[1.12rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
-                    Estou disponível para novas oportunidades!
-                  </p>
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
-                    {socialLinks.map((link) => (
-                      <a
-                        key={link.name}
-                        href={link.href}
-                        onClick={() => handleLinkClick(link.name.toLowerCase())}
-                      >
-                        <img
-                          src={link.badge}
-                          alt={link.name}
-                        />
-                      </a>
-                    ))}
-                  </div>
+              <div className="md:grow order-2 md:order-1 md:-mt-2.5">
+                <div className="font-caveat text-[1.8rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-center md:justify-start gap-2 mb-1">
+                  <img
+                    src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
+                    className="size-[1em]"
+                  />
+                  Oi, me chamo Iago
+                </div>
+                <h2 className="font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md">
+                  Sou programador
+                  <br />
+                  Full-Stack
+                  <span className="text-neutral-600/40 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-6.5 font-[arial] leading-0 drop-shadow-none inline-block">
+                    &
+                  </span>
+                  <br />
+                  especialista em Front
+                </h2>
+                <p className="font-medium text-[1.12rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
+                  Estou disponível para novas oportunidades!
+                </p>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      onClick={() => handleLinkClick(link.name.toLowerCase())}
+                    >
+                      <img src={link.badge} alt={link.name} />
+                    </a>
+                  ))}
                 </div>
               </div>
+            </div>
 
-              <div className="w-full max-w-(--max-width) mx-auto">
-                <a href="#about">
-                  Sobre mim{' '}
-                  <span className="inline-block animate-bounce relative top-[3px]">
-                    👇
-                  </span>
-                </a>
-              </div>
-            </>
-          )}
-        </div>
-      </header>
-    </>
+            <div className="w-full max-w-(--max-width) mx-auto">
+              <a href="#about">
+                Sobre mim{' '}
+                <span className="inline-block animate-bounce relative top-[3px]">
+                  👇
+                </span>
+              </a>
+            </div>
+          </>
+        )}
+      </div>
+    </header>
   );
 }
 

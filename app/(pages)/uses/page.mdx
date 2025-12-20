@@ -1,5 +1,8 @@
 import PageHeader from '@/components/PageHeader';
+import SetupImgMap from '@/components/SetupImgMap';
 import getFileLastUpdateDate from '@/lib/getFileLastUpdate';
+import { LuArrowUpRight as LinkArrow } from "react-icons/lu";
+import { list as devices } from '@/app/(pages)/uses/devices';
 
 export const metadata = {
   title: 'Uses',
@@ -10,25 +13,25 @@ export const lastUpdate = getFileLastUpdateDate(import.meta.url);
 <PageHeader
   overline="Uses"
   heading="Ferramentas que uso para trabalhar no dia a dia"
-  subHeading={
-    <img
-      src="/images/workstation.jpeg"
-      className="max-h-[400px] md:max-h-[480px] w-full rounded-lg object-cover object-center mt-7"
-      alt="Meu mesa de trabalho"
-    />
-  }
+  subHeading={<SetupImgMap />}
 />
 
 # Hardware
 
-- Notebook: Acer Aspire 315 i3, 16GB RAM
-- Monitor 1: SuperFrame de 24”
-- Monitor 2: LG de 24”
-- Teclado: Redragon switch brown
-- Mouse: Hrebos pro-gaming
-- Microfone: Fifine Ampligame A6t
-- Áudio: Headset QCY H3 Lite Anc
-- Webcam: iPhone 11 conectado via Camo Studio
+<ul>
+  {devices.map((item) => (
+    <li key={item.name}>
+      {item.link ? (
+        <a href={item.link} target="_blank" rel="noopener noreferrer">
+          {item.name}
+          <LinkArrow className="ml-1 inline" />
+        </a>
+      ) : (
+        item.name
+      )}
+    </li>
+  ))}
+</ul>
 
 # Software
 

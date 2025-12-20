@@ -93,14 +93,15 @@ export function MobileNav() {
 
   return (
     <div className="z-[unset]!">
-      <div
+      <button
         onClick={() => setShowMobileNav(!showMobileNav)}
-        className="md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer"
+        className="md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer outline-0"
+        type="button"
       >
         <div
           className={cn('hamburger-icon', { 'close-icon': showMobileNav })}
         />
-      </div>
+      </button>
 
       <CSSTransition
         nodeRef={navRef}
