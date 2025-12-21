@@ -1,10 +1,20 @@
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 export default function getFileLastUpdateDate(filePath: string) {
-  const __filename = fileURLToPath(filePath);
-  const isoDate = execSync(`git log -1 --format="%cs" -- "${__filename}"`)
-    .toString()
+  let __filename = fileURLToPath(filePath);
+  if (__filename.endsWith('page.mdx.tsx')) {
+    __filename = __filename.replace('.mdx.tsx', '.mdx');
+  }
+
+  const isoDate = Bun.spawnSync([
+    'git',
+    'log',
+    '-1',
+    '--format=%cs',
+    '--',
+    __filename,
+  ])
+    .stdout.toString()
     .trim();
 
   const date = new Date(isoDate);

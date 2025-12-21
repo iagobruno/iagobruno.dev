@@ -1,7 +1,6 @@
 'use client';
 import { useRef, type MouseEvent } from 'react';
 import { list as devices } from '@/app/(pages)/uses/devices';
-import useIsMobile from '@/hooks/useIsMobile';
 
 export default function SetupImgMap() {
   const setupDevices = devices.filter(
@@ -10,7 +9,6 @@ export default function SetupImgMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const currentCaption = useRef<HTMLElement>(null);
   const currentPathLine = useRef<any>(null);
-  const isMobile = useIsMobile();
 
   function handleItemMouseEnter(
     evt: MouseEvent,
@@ -62,25 +60,24 @@ export default function SetupImgMap() {
         alt="Meu mesa de trabalho"
       />
 
-      {!isMobile &&
-        setupDevices.map((item) => (
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute -translate-2/4 p-2 opacity-70 hover:opacity-100 hover:scale-135 transition-all"
-            style={{
-              top: `${item.position![0]}%`,
-              left: `${item.position![1]}%`,
-            }}
-            onMouseEnter={(evt) => handleItemMouseEnter(evt, item)}
-            onMouseLeave={handleItemMouseLeave}
-          >
-            <div className="relative rounded-full size-1.5 md:size-[0.6rem] bg-white">
-              <span className="animate-[point-expand_2.6s_linear_infinite] bg-white/100 rounded-full absolute size-full inset-0 block pointer-events-none" />
-            </div>
-          </a>
-        ))}
+      {setupDevices.map((item) => (
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="not-md:hidden absolute -translate-2/4 p-2 opacity-70 hover:opacity-100 hover:scale-135 transition-all"
+          style={{
+            top: `${item.position![0]}%`,
+            left: `${item.position![1]}%`,
+          }}
+          onMouseEnter={(evt) => handleItemMouseEnter(evt, item)}
+          onMouseLeave={handleItemMouseLeave}
+        >
+          <div className="relative rounded-full size-1.5 md:size-[0.6rem] bg-white">
+            <span className="animate-[point-expand_2.6s_linear_infinite] bg-white/100 rounded-full absolute size-full inset-0 block pointer-events-none" />
+          </div>
+        </a>
+      ))}
     </div>
   );
 }
