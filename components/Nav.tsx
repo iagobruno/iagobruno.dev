@@ -29,7 +29,7 @@ const links: Links = [
 ];
 
 const socialLinks: SocialLinks = [
-  ['email', EmailIcon, 'mailto:iagobruno.dev@gmail.com'],
+  ['email', EmailIcon, 'mailto:contato@iagobruno.dev'],
   ['linkedin', LinkedinIcon, 'https://linkedin.com/in/iagobruno-dev'],
   ['discord', DiscordIcon, 'https://discordapp.com/users/724201631348162592'],
   ['github', GithubIcon, 'https://github.com/iagobruno'],
@@ -125,7 +125,7 @@ export function MobileNav() {
             className={cn(
               'flex flex-col gap-4.5 text-[1.38rem] w-fit *:text-inherit! *:duration-300 *:ease-in-out',
               {
-                '*:-translate-x-[120%]!': !showMobileNav,
+                '*:-translate-x-[125%]!': !showMobileNav,
                 '*:translate-x-0': showMobileNav,
               }
             )}
@@ -134,7 +134,7 @@ export function MobileNav() {
             {links.map((link, index) => (
               <Link
                 href={link[1]}
-                style={{ transitionDelay: 60 * index + 'ms' }}
+                style={{ transitionDelay: 50 * index + 'ms' }}
                 key={link[0]}
               >
                 {link[0]}

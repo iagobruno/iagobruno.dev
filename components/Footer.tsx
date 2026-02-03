@@ -10,13 +10,14 @@ import {
   FaDiscord as DiscordIcon,
 } from 'react-icons/fa6';
 import { HiOutlineEnvelope as EmailIcon } from 'react-icons/hi2';
-import { cn } from '@/lib/utils';
+import copy from 'copy-to-clipboard';
+import { cn, selectElementText, showFloatTooltip } from '@/lib/utils';
 import posthog from 'posthog-js';
 
 const socialLinks = [
   {
     name: 'Email',
-    href: 'mailto:iagobruno.dev@gmail.com',
+    href: 'mailto:contato@iagobruno.dev',
     Icon: EmailIcon,
     dataPointto: 'mail',
     className: 'size-8 md:size-10',
@@ -114,6 +115,13 @@ export default function Footer() {
     });
   }
 
+  function handleCopyMail() {
+    const mailTextElem = document.querySelector('footer .contact.mail')!;
+    copy('contato@iagobruno.dev');
+    showFloatTooltip(mailTextElem, 'Copiado ✓');
+    selectElementText(mailTextElem);
+  }
+
   return (
     <>
       <footer
@@ -125,8 +133,12 @@ export default function Footer() {
             Contato
           </div>
 
-          <div className="contact text-[1.6rem] md:text-4xl text-neutral-400 tracking-wide mt-17.5 mb-16 [&_span]:transition-colors [&_span]:duration-300">
+          <div
+            className="contact mail text-[1.6rem] md:text-[2.64rem] text-neutral-400 mt-17.5 mb-16 [&_span]:transition-colors [&_span]:duration-300 cursor-pointer tracking-wide"
+            onClick={handleCopyMail}
+          >
             <WithBracket label="E-mail" side="bottom" id="mail">
+              contato@
               <WithBracket
                 label="Username"
                 lineClassName="-translate-y-5"
@@ -137,11 +149,10 @@ export default function Footer() {
                 </WithBracket>
                 .dev
               </WithBracket>
-              @gmail.com
             </WithBracket>
           </div>
 
-          <div className="icons text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-115 *:hover:rotate-15 *:duration-200">
+          <div className="icons text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-118 *:hover:rotate-15 *:duration-200">
             {socialLinks.map((link, idx) => {
               const Icon = link.Icon;
               return (
@@ -194,6 +205,8 @@ export default function Footer() {
         </div>
       </footer>
 
+      <div className="after:block after:h-[1px] after:w-[94%] after:mx-auto after:blur-[1px] after:[background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,rgba(14,165,233,1)_32.29%,rgba(236,72,153,1)_67.19%,rgba(236,72,153,0)_100%)]  brightness-90 dark:brightness-175 saturate-150" />
+
       <div
         id="contact"
         className="relative z-0! block w-full pointer-events-none"
@@ -217,7 +230,7 @@ function WithBracket({
     <span id={id} className={cn('relative group text-neutral-500')}>
       <span
         className={cn(
-          'absolute text-current/80 border-t border-current left-0 right-0 opacity-70 pointer-events-none',
+          'absolute text-current/80 border-t border-current left-0 right-0 opacity-70 pointer-events-none tracking-wide select-none',
           {
             '-top-3': side === 'top',
             '-bottom-3': side === 'bottom',

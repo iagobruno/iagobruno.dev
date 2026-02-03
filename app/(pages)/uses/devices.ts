@@ -8,7 +8,7 @@ interface Device {
 
 export const list: Device[] = [
   {
-    name: 'Notebook: Acer Aspire 315 i3, 8GB RAM',
+    name: 'Notebook: Acer Aspire A315 i3',
     link: 'https://mercadolivre.com/sec/2NmHwSk',
     position: [75, 19],
     displayOnImgMap: true,

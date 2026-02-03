@@ -37,6 +37,7 @@
 @layer base {
   body {
     @apply font-inter relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
+    @apply selection:bg-primary selection:text-white;
   }
 
   * {
@@ -202,6 +203,23 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
 @keyframes mask-scale {
   to {
     mask-size: 200vmax;
+  }
+}
+
+@keyframes tooltip-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 }
 
