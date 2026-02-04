@@ -60,7 +60,7 @@ const projects = [
     year: '2021',
     description:
       'Um app de delivery onde os clientes podem navegar pelo cardápio e adicionar pratos e complementos à sacola. \nFeito com React.',
-    url: 'https://iagobruno.is-a.dev/delivery-webapp-demo',
+    url: 'https://iagobruno.github.io/delivery-webapp-demo/',
   },
   {
     image: '/images/descontai-print.png',
@@ -134,10 +134,7 @@ export default function Projects() {
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-            />
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
 

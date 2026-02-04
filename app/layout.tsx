@@ -1,25 +1,25 @@
-import type { Metadata, Viewport } from 'next'
-import type { PropsWithChildren } from 'react'
-import { Inter, Caveat } from 'next/font/google'
-import { MobileNav } from '@/components/Nav'
-import TailwindBreakpoints from '@/components/TailwindBreakpoints '
-import Scripts from '@/components/Scripts'
-import WhatsappButton from '@/components/WhatsappButton'
-import { Providers } from './providers'
-import ProgressBar from 'nextjs-toploader'
-import './globals.css'
+import type { Metadata, Viewport } from 'next';
+import type { PropsWithChildren } from 'react';
+import { Inter, Caveat } from 'next/font/google';
+import { MobileNav } from '@/components/Nav';
+import TailwindBreakpoints from '@/components/TailwindBreakpoints ';
+import Scripts from '@/components/Scripts';
+import WhatsappButton from '@/components/WhatsappButton';
+import { Providers } from './providers';
+import ProgressBar from 'nextjs-toploader';
+import './globals.css';
 
 const interFont = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-inter',
-})
+});
 
 const caveatFont = Caveat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-caveat',
-})
+});
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <TailwindBreakpoints />
       </body>
     </html>
-  )
+  );
 }
 
 export const metadata: Metadata = {
@@ -54,22 +54,22 @@ export const metadata: Metadata = {
     default: 'Iago Bruno | Full-Stack Developer',
   },
   description: "Iago's portfolio",
-  metadataBase: new URL('https://iagobruno.is-a.dev'),
+  metadataBase: new URL('https://iagobruno.dev'),
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
-    startupImage: "/favicon.png"
+    statusBarStyle: 'black-translucent',
+    startupImage: '/favicon.png',
   },
   icons: {
-    apple: "/me.JPEG",
+    apple: '/me.JPEG',
   },
   manifest: '/manifest.json',
-}
+};
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: "cover",
-}
+  viewportFit: 'cover',
+};
