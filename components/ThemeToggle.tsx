@@ -1,27 +1,49 @@
-"use client";
-import { useTheme } from 'next-themes'
-import { FiSun as SunIcon, FiMoon as MoonIcon } from "react-icons/fi"
-import { RiComputerLine as ComputerIcon } from "react-icons/ri"
-import { MdPhoneAndroid as PhoneIcon } from "react-icons/md"
-import { cn } from '@/lib/utils'
+'use client';
+import { useTheme } from 'next-themes';
+import { useRef } from 'react';
+import { FiSun as SunIcon, FiMoon as MoonIcon } from 'react-icons/fi';
+import { RiComputerLine as ComputerIcon } from 'react-icons/ri';
+import { MdPhoneAndroid as PhoneIcon } from 'react-icons/md';
+import { cn } from '@/lib/utils';
 
-type Props = JSX.IntrinsicElements['label']
+type Props = JSX.IntrinsicElements['label'];
 
-const modes = ['light', 'system', 'dark'] as const
+const modes = ['light', 'system', 'dark'] as const;
 
 export default function ThemeToggle(props: Props) {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
+  const elementRef = useRef<HTMLElement>(null);
 
-  if (theme === undefined) return null
+  if (theme === undefined) return null;
 
   function changeTheme(mode) {
     if (!document.startViewTransition) setTheme(mode);
-    document.startViewTransition(() => setTheme(mode));
+
+    const rect = elementRef.current?.getBoundingClientRect();
+    if (rect) {
+      const x = (rect.left + rect.right) / 2;
+      const y = (rect.top + rect.bottom) / 2;
+
+      document.documentElement.style.setProperty(
+        '--x',
+        `${(x / window.innerWidth) * 100}%`,
+      );
+      document.documentElement.style.setProperty(
+        '--y',
+        `${(y / window.innerHeight) * 100}%`,
+      );
+    }
+
+    const transition = document.startViewTransition(() => setTheme(mode));
   }
 
   return (
-    <label className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1" {...props}>
-      {modes.map(mode => (
+    <label
+      className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1"
+      {...props}
+      ref={elementRef}
+    >
+      {modes.map((mode) => (
         <span
           className={cn('rounded-full text-base p-1.5', {
             'bg-black/15 dark:bg-white/20': mode === theme,
@@ -30,15 +52,18 @@ export default function ThemeToggle(props: Props) {
           key={mode}
           suppressHydrationWarning
         >
-          {mode === 'light' ? <SunIcon className="size-4" />
-          : mode === 'dark' ? <MoonIcon className="size-4" />
-          : <>
-            <PhoneIcon className="size-4 md:hidden" />
-            <ComputerIcon className="size-4 hidden md:block" />
-          </>
-          }
+          {mode === 'light' ? (
+            <SunIcon className="size-4" />
+          ) : mode === 'dark' ? (
+            <MoonIcon className="size-4" />
+          ) : (
+            <>
+              <PhoneIcon className="size-4 md:hidden" />
+              <ComputerIcon className="size-4 hidden md:block" />
+            </>
+          )}
         </span>
       ))}
     </label>
-  )
+  );
 }
