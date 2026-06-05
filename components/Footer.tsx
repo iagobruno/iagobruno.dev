@@ -44,7 +44,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/iagobruno-dev',
+    href: 'https://linkedin.com/in/iagobruno',
     Icon: LinkedinIcon,
     dataPointto: 'name',
     className: 'size-7 md:size-9',

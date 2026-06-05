@@ -32,7 +32,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/iagobruno-dev',
+    href: 'https://www.linkedin.com/in/iagobruno',
     badge: 'https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=logmein&logoColor=white',
   },
 ];

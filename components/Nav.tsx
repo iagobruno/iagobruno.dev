@@ -30,7 +30,7 @@ const links: Links = [
 
 const socialLinks: SocialLinks = [
   ['email', EmailIcon, 'mailto:contato@iagobruno.dev'],
-  ['linkedin', LinkedinIcon, 'https://linkedin.com/in/iagobruno-dev'],
+  ['linkedin', LinkedinIcon, 'https://linkedin.com/in/iagobruno'],
   ['discord', DiscordIcon, 'https://discordapp.com/users/724201631348162592'],
   ['github', GithubIcon, 'https://github.com/iagobruno'],
   ['instagram', InstaIcon, 'https://instagram.com/iagobruno.dev'],
@@ -39,7 +39,10 @@ const socialLinks: SocialLinks = [
 export function HeroNav() {
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
-      <Link href="/" className="shrink-0">
+      <Link
+        href="/"
+        className="shrink-0"
+      >
         <img
           src="/IagoBruno.png"
           className="h-[44px] translate-y-1 inline transition-transform active:scale-94"
@@ -51,13 +54,9 @@ export function HeroNav() {
         {links.map((link) => (
           <Link
             href={link[1]}
-            className={cn(
-              'text-[1.1rem] active:scale-94 transition-transform',
-              {
-                'bg-primary text-white! rounded-full py-1 px-3 no-underline!':
-                  link[0] === 'Contato',
-              }
-            )}
+            className={cn('text-[1.1rem] active:scale-94 transition-transform', {
+              'bg-primary text-white! rounded-full py-1 px-3 no-underline!': link[0] === 'Contato',
+            })}
             key={link[0]}
           >
             {link[0]}
@@ -98,9 +97,7 @@ export function MobileNav() {
         className="md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer outline-0"
         type="button"
       >
-        <div
-          className={cn('hamburger-icon', { 'close-icon': showMobileNav })}
-        />
+        <div className={cn('hamburger-icon', { 'close-icon': showMobileNav })} />
       </button>
 
       <CSSTransition
@@ -127,7 +124,7 @@ export function MobileNav() {
               {
                 '*:-translate-x-[125%]!': !showMobileNav,
                 '*:translate-x-0': showMobileNav,
-              }
+              },
             )}
           >
             <Link href="/#">Início</Link>
@@ -145,9 +142,7 @@ export function MobileNav() {
           <div
             className={cn(
               'flex items-center gap-5 *:transition-opacity',
-              showMobileNav
-                ? '*:opacity-100 *:duration-400'
-                : '*:opacity-0 *:duration-0'
+              showMobileNav ? '*:opacity-100 *:duration-400' : '*:opacity-0 *:duration-0',
             )}
           >
             {socialLinks.map(([name, Icon, url], index) => (
@@ -157,9 +152,7 @@ export function MobileNav() {
                 target="_blank"
                 className="text-inherit cursor-pointer"
                 style={{
-                  transitionDelay: showMobileNav
-                    ? 400 + 60 * index + 'ms'
-                    : '0ms',
+                  transitionDelay: showMobileNav ? 400 + 60 * index + 'ms' : '0ms',
                 }}
                 onClick={() => handleIconClick(name)}
               >
@@ -171,9 +164,7 @@ export function MobileNav() {
           <div
             className={cn(
               'transition-opacity',
-              showMobileNav
-                ? 'opacity-100 duration-400 delay-650'
-                : 'opacity-0 duration-0'
+              showMobileNav ? 'opacity-100 duration-400 delay-650' : 'opacity-0 duration-0',
             )}
           >
             <ThemeToggle onClick={(e) => e.stopPropagation()} />
