@@ -11,7 +11,7 @@ const projects = [
     title: 'Danc Solutions',
     year: '2025',
     description:
-      'Desenvolvi uma landing page focada em apresentar de maneira clara e atrativa os serviços e soluções oferecidos pela software house.',
+      'Desenvolvi uma landing page focada em apresentar de maneira clara e atrativa os serviços e soluções oferecidos pela software house. \nFeito com Vue, Nuxt e Tailwind',
     url: 'https://dancsolutions.com/',
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     title: 'BS PAY',
     year: '2024 – 2025',
     description:
-      'Minha função envolveu a criação e manutenção de interfaces de usuário eficientes e intuitivas, utilizando Vue, TypeScript e Tailwind.',
+      'Atuei como desenvolvedor front-end, criando e mantendo interfaces de usuário eficientes e intuitivas utilizando Vue, TypeScript e Tailwind.',
     url: 'https://bspay.co/',
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     title: 'Bolos da Fabi',
     year: '2023',
     description:
-      'Um app de delivery feito sob medida para uma confeitaria, atendendo a uma necessidade não suprida pela plataforma que utilizavam anteriormente. \nFeito com React, Typescript, Tailwind e Firebase.',
+      'Um app de delivery desenvolvido sob medida para uma confeitaria, atendendo a uma necessidade que não era suprida pela plataforma utilizada anteriormente. \nFeito com React, Typescript, Tailwind e Firebase.',
     url: 'https://tulipa-cake.web.app/',
   },
   {
@@ -39,43 +39,26 @@ const projects = [
     url: 'https://pointburguer.web.app/',
   },
   {
-    image: '/images/saas-demo-print.png',
-    title: 'SAAS Demo',
-    year: '2022',
-    description:
-      'Uma simples plataforma onde o cliente assina um plano para ter acesso as funções avançadas do sistema. \nFeito com Laravel, Stripe, Tailwind e Docker.',
-    url: 'https://github.com/iagobruno/laravel-saas-demo',
-  },
-  {
-    image: '/images/marketplace-print.png',
-    title: 'Marketplace Demo',
-    year: '2022',
-    description:
-      'Um marketplace onde os usuários podem vender e comprar produtos através da plataforma. \nFeito com Laravel, Stripe, Tailwind e Docker.',
-    url: 'https://github.com/iagobruno/laravel-marketplace-demo',
-  },
-  {
-    image: '/images/delivery-app-print.png',
-    title: 'Delivery app',
-    year: '2021',
-    description:
-      'Um app de delivery onde os clientes podem navegar pelo cardápio e adicionar pratos e complementos à sacola. \nFeito com React.',
-    url: 'https://iagobruno.github.io/delivery-webapp-demo/',
-  },
-  {
-    image: '/images/descontai-print.png',
+    image: '/images/descontaiv2-print.jpg',
     title: 'Descontaí',
     year: '2019',
     description:
-      'O Descontaí é um site que reúne cupons de desconto e ofertas. \nFeito com React, Next.JS e Typescript.',
+      'Uma plataforma online que reúne cupons de desconto, promoções e ofertas de diversas lojas e serviços. \nFeito com React, Next.JS, Node e Typescript.',
     url: 'https://www.descontai.com/',
+  },
+  {
+    image: '/images/voltsolar-print.jpg',
+    title: 'VoltSolar',
+    year: '2018',
+    description:
+      'Um site institucional para uma empresa de energia solar, com foco em apresentar os serviços oferecidos, benefícios da energia solar e diferenciais da empresa de forma clara e moderna.\nFeito com React, Next.JS e Typescript.',
+    //url: 'https://iagobruno.github.io/delivery-webapp-demo/',
   },
   {
     image: '/images/tecbolt-print.jpg',
     title: 'TecBolt',
     year: '2017',
-    description:
-      'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
+    description: 'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
   },
   {
     image: '/images/lembretes-print.jpg',
@@ -114,7 +97,7 @@ export default function Projects() {
             end: 'top 50%',
             scrub: true,
           },
-        }
+        },
       );
     });
   });
@@ -126,15 +109,18 @@ export default function Projects() {
     >
       <div className="max-w-(--max-content-width) mx-auto">
         <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
-          Projetos
+          Portfólio
         </div>
         <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 md:mb-14">
-          Meus trabalhos e experimentos
+          Meus trabalhos e projetos selecionados
         </h3>
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+            />
           ))}
         </div>
 

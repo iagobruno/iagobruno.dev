@@ -88,8 +88,8 @@ export default function ProjectCard({ project }: CardProps) {
       </div>
 
       <div className="grow md:group-even/card:text-right">
-        <div className="font-medium text-[1.65rem]/[2rem]">{project.title}</div>
-        <div className="mt-0.5">
+        <div className="font-medium text-[1.6rem] md:text-[1.8rem] leading-[2rem]">{project.title}</div>
+        <div className="mt-0.5 hidden">
           <span className="opacity-90">{project.year}</span>
           {project.current && (
             <>{' '}- <span className="text-primary font-semibold">ATUAL</span></>
