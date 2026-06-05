@@ -12,14 +12,12 @@ const socialLinks = [
   {
     name: 'WhatsApp',
     href: 'https://wa.me/558897174708?text=Ol%C3%A1!%20Vim%20do%20seu%20site%20para%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20seus%20servi%C3%A7os.',
-    badge:
-      'https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white',
+    badge: 'https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white',
   },
   {
     name: 'GitHub',
     href: 'https://github.com/iagobruno',
-    badge:
-      'https://img.shields.io/badge/GitHub-242424?style=flat&logo=github&logoColor=white',
+    badge: 'https://img.shields.io/badge/GitHub-242424?style=flat&logo=github&logoColor=white',
   },
   {
     name: 'Instagram',
@@ -30,14 +28,12 @@ const socialLinks = [
   {
     name: 'Discord',
     href: 'https://discordapp.com/users/724201631348162592',
-    badge:
-      'https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white',
+    badge: 'https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white',
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/iagobruno-dev',
-    badge:
-      'https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=logmein&logoColor=white',
+    badge: 'https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=logmein&logoColor=white',
   },
 ];
 
@@ -55,7 +51,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
         {
           'min-h-svh blurred-background': !compact,
         },
-        className
+        className,
       )}
     >
       <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5">
@@ -95,7 +91,10 @@ export default function Hero({ compact = true, className }: HeroProps) {
                       target="_blank"
                       onClick={() => handleLinkClick(link.name.toLowerCase())}
                     >
-                      <img src={link.badge} alt={link.name} />
+                      <img
+                        src={link.badge}
+                        alt={link.name}
+                      />
                     </a>
                   ))}
                 </div>
@@ -104,10 +103,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
 
             <div className="w-full max-w-(--max-width) mx-auto">
               <a href="#about">
-                Sobre mim{' '}
-                <span className="inline-block animate-bounce relative top-[3px]">
-                  👇
-                </span>
+                Sobre mim <span className="inline-block animate-bounce relative top-[3px]">👇</span>
               </a>
             </div>
           </>
@@ -121,7 +117,7 @@ function Photo() {
   return (
     <div className="relative order-1 md:order-2">
       <img
-        src="/me.JPEG"
+        src="/me.JPEG?v"
         className="rounded-full aspect-1/1 w-[260px] md:w-[340px] xl:w-[420px] border-[5px] md:border-[6px] bg-white border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite] will-change-[border-radius]"
       />
 
