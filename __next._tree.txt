@@ -1,10 +1,7 @@
-:HL["/_next/static/chunks/12b5dcad214d77a8.css","style"]
-:HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/media/a85fe84266768609-s.p.e658778d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/chunks/df8456b5e976ccbb.css","style"]
-:HL["/images/IMG_5529.JPEG","image"]
-:HL["/images/workstation.jpeg","image"]
-:HL["/images/react-snippet.png","image"]
+:HL["/_next/static/chunks/115.mrgq_vey0.css","style"]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/a85fe84266768609-s.p.05b418i5bs~lg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/0yh-norw7r9.c.css","style"]
 :HL["/icons/nodejs.svg","image"]
 :HL["/icons/typescript.svg","image"]
 :HL["/icons/laravel.svg","image"]
@@ -26,4 +23,4 @@
 :HL["/icons/github-dark.png","image"]
 :HL["/icons/github-light.png","image"]
 :HL["/icons/git.svg","image"]
-0:{"buildId":"LLeXzXBQ6rDro1Iu1UGju","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"XrJ5RTuY60L_WL5alJEDa"}
