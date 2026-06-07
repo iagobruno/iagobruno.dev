@@ -2,7 +2,6 @@
 import ProjectCard from './ProjectCard';
 import ProjectsMoreSection from './ProjectsMoreSection';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useMount from 'react-use/esm/useMount';
 
 const projects = [
@@ -15,13 +14,21 @@ const projects = [
     url: 'https://dancsolutions.com/',
   },
   {
-    image: '/images/bs-pay-print.png',
-    title: 'BS PAY',
-    year: '2024 – 2025',
+    image: '/images/aurenpay-print.png',
+    title: 'AurenPay',
+    year: '2025',
     description:
-      'Atuei como desenvolvedor front-end, criando e mantendo interfaces de usuário eficientes e intuitivas utilizando Vue, TypeScript e Tailwind.',
-    url: 'https://bspay.co/',
+      'Participei do desenvolvimento da AurenPay, uma plataforma de pagamentos via Pix, sendo responsável pela criação do dashboard para gestão dos pagamentos e da landing page. \nFeito com Laravel, PHP, Vue e Nuxt.',
+    // url: 'https://bspay.co/',
   },
+  // {
+  //   image: '/images/bspay-print.png',
+  //   title: 'BS PAY',
+  //   year: '2024 – 2025',
+  //   description:
+  //     'Atuei como desenvolvedor front-end, criando e mantendo interfaces de usuário eficientes e intuitivas utilizando Vue, TypeScript e Tailwind.',
+  //   url: 'https://bspay.co/',
+  // },
   {
     image: '/images/fabi-bolos-print.png',
     title: 'Bolos da Fabi',
@@ -29,14 +36,6 @@ const projects = [
     description:
       'Um app de delivery desenvolvido sob medida para uma confeitaria, atendendo a uma necessidade que não era suprida pela plataforma utilizada anteriormente. \nFeito com React, Typescript, Tailwind e Firebase.',
     url: 'https://tulipa-cake.web.app/',
-  },
-  {
-    image: '/images/point-burguer-print.png',
-    title: 'Point Burguer',
-    year: '2022',
-    description:
-      'Um app de delivery para uma hamburgueria que buscava se desvincular das grandes plataformas. \nFeito com React, Typescript e Firebase.',
-    url: 'https://pointburguer.web.app/',
   },
   {
     image: '/images/descontaiv2-print.jpg',
@@ -55,10 +54,19 @@ const projects = [
     //url: 'https://iagobruno.github.io/delivery-webapp-demo/',
   },
   {
+    image: '/images/point-burguer-print.png',
+    title: 'Point Burguer',
+    year: '2022',
+    description:
+      'Um app de delivery para uma hamburgueria que buscava se desvincular das grandes plataformas. \nFeito com React, Typescript e Firebase.',
+    url: 'https://pointburguer.web.app/',
+  },
+  {
     image: '/images/tecbolt-print.jpg',
     title: 'TecBolt',
     year: '2017',
-    description: 'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
+    description:
+      'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
   },
   {
     image: '/images/lembretes-print.jpg',
@@ -80,8 +88,6 @@ export type Project = (typeof projects)[number];
 
 export default function Projects() {
   useMount(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const items = gsap.utils.toArray('.project');
 
     items.forEach((element, i) => {
@@ -97,7 +103,7 @@ export default function Projects() {
             end: 'top 50%',
             scrub: true,
           },
-        },
+        }
       );
     });
   });
@@ -117,10 +123,7 @@ export default function Projects() {
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-            />
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
 

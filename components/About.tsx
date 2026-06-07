@@ -17,8 +17,10 @@ const skills: Skills = [
   { name: 'NextJS', icon: 'nextjs-light.svg' },
   { name: 'Vue', icon: 'vuejs.svg' },
   { name: 'Nuxt', icon: 'nuxt.svg' },
-  { name: 'GraphQL', icon: 'graphql.svg' },
+  { name: 'GSAP', icon: 'gsap-light.png' },
+  { name: 'GSAP', icon: 'gsap-dark.png' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
+  { name: 'GraphQL', icon: 'graphql.svg' },
   { name: 'Bun', icon: 'bun.svg' },
   { name: 'MySQL', icon: 'mysql.svg' },
   { name: 'PostgreSQL', icon: 'postgresql.svg' },
@@ -38,14 +40,14 @@ const numbers = [
 
 export default function About() {
   return (
-    <section className="w-full px-safe-offset-6 pb-10 md:py-16 relative z-11 bg-neutral-100 dark:bg-neutral-900">
+    <section className="w-full px-safe-offset-6 py-6 md:py-16 relative z-11 bg-neutral-100 dark:bg-neutral-900">
       <div className="max-w-(--max-content-width) mx-auto">
         <div className="flex flex-col md:flex-row gap-y-10 gap-x-12">
           <Photos />
 
           <div
             id="about"
-            className="flex-1 md:text-[1.25rem]/[2.2rem] space-y-5 scroll-mt-13"
+            className="flex-1 text-[1.13rem]/[1.82rem] md:text-[1.28rem]/[2.35rem] space-y-5 scroll-mt-13"
           >
             <h3 className="text-primary text-center md:text-left text-base font-medium uppercase tracking-wider scroll-mt-6">
               Sobre
@@ -64,31 +66,33 @@ export default function About() {
             </div> */}
 
             <p>
-              Tenho <Age /> anos e atualmente moro no Ceará, Brasil. Sou apaixonado por programação{' '}
-              <strong>há mais de 10 anos</strong> e aprendi tudo o que sei sozinho, movido pela
-              curiosidade de saber como funciona a web, desde então, venho estudando novas
-              linguagens programação, desenvolvendo websites e ajudando em projetos open source.
+              Tenho <Age /> anos e atualmente moro no Ceará, Brasil. Sou
+              apaixonado por programação <strong>há mais de 10 anos</strong> e
+              aprendi tudo o que sei sozinho, movido pela curiosidade de saber
+              como funciona a web, desde então, venho estudando novas linguagens
+              programação e desenvolvendo websites.
             </p>
             <p>
-              Tenho vasta experiência com JavaScript e PHP utilizando Laravel, mas estou sempre
-              buscando ampliar meus conhecimentos. Cada projeto é uma oportunidade para aprender
-              algo novo, sempre com foco na qualidade do produto final.
+              Tenho vasta experiência com JavaScript e PHP com Laravel para, mas
+              estou sempre buscando ampliar meus conhecimentos. Cada projeto é
+              uma oportunidade para aprender algo novo, sempre com foco na
+              qualidade do produto final.
             </p>
             {/* <p>Você pode conferir minhas outras habilidades abaixo.</p> */}
 
             <a
               href="https://drive.google.com/file/d/1J1RBxhNYlWX5MmC5Q-2wUZxIxyFyYRZf/view"
               target="_blank"
-              className="inline-flex items-center gap-2 p-1 text-[0.84em]/5 text-inherit hover:underline transition-colors duration-300 group -ml-1"
+              className="inline-flex items-center gap-2 p-1 text-[0.825em]/5 text-inherit hover:underline hover:text-primary transition-colors group -ml-1"
             >
-              <DownloadIcon className="size-[1.2em] transition-transform group-hover:scale-115 group-hover:-rotate-12" />
-              Baixar currículo
+              <DownloadIcon className="size-[1.16em] transition-transform group-hover:scale-115 group-hover:-rotate-12" />
+              Ver currículo
             </a>
 
             <div className="font-semibold md:text-[1.3rem] tracking-wide mt-6">
               Minhas habilidades e ferramentas:
             </div>
-            <div className="flex flex-row flex-wrap gap-x-2 gap-y-3 md:gap-x-3 mt-5 text-center">
+            <div className="flex flex-row flex-wrap gap-2 md:gap-x-3 mt-5 text-center">
               {skills.map((skill) => (
                 <span
                   key={skill.icon}
@@ -103,7 +107,7 @@ export default function About() {
                     className="size-11 md:size-12 object-contain"
                     alt={skill.name + ' Logo'}
                   />
-                  <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-52 mt-1">
+                  <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-52 mt-0">
                     {skill.name}
                   </span>
                 </span>
@@ -113,7 +117,8 @@ export default function About() {
         </div>
       </div>
 
-      <CommitsHistory />
+      {/*<CommitsHistory />*/}
+      <div className="block h-3" />
     </section>
   );
 }
