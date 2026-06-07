@@ -8,47 +8,63 @@ import { cn } from '@/lib/utils';
 
 type Props = JSX.IntrinsicElements['label'];
 
-const modes = ['light', 'system', 'dark'] as const;
+const modes = ['light', 'dark'] as const;
 
 export default function ThemeToggle(props: Props) {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme: theme } = useTheme();
   const elementRef = useRef<HTMLElement>(null);
 
   if (theme === undefined) return null;
 
-  function changeTheme(mode) {
+  function toggleTheme(evt: React.MouseEvent<HTMLSpanElement>) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    const mode = theme == 'dark' ? 'light' : 'dark';
+
     if (!document.startViewTransition) setTheme(mode);
 
-    const rect = elementRef.current?.getBoundingClientRect();
+    // const rect = elementRef.current?.getBoundingClientRect();
+    const rect = evt.currentTarget?.getBoundingClientRect();
     if (rect) {
       const x = (rect.left + rect.right) / 2;
       const y = (rect.top + rect.bottom) / 2;
 
       document.documentElement.style.setProperty(
         '--x',
-        `${(x / window.innerWidth) * 100}%`,
+        `${(x / window.innerWidth) * 100}%`
       );
       document.documentElement.style.setProperty(
         '--y',
-        `${(y / window.innerHeight) * 100}%`,
+        `${(y / window.innerHeight) * 100}%`
       );
     }
 
-    const transition = document.startViewTransition(() => setTheme(mode));
+    const animationClass = 'theme-animation';
+    document.documentElement.classList.add(animationClass);
+
+    const transition = document.startViewTransition(() => {
+      setTheme(mode);
+    });
+    transition.finished.then(() => {
+      document.documentElement.classList.remove(animationClass);
+    });
   }
 
   return (
     <label
-      className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1 cursor-pointer p-1"
+      className="border border-black/30 dark:border-white/30 rounded-full inline-flex items-center gap-x-1.5 cursor-pointer p-1"
       {...props}
       ref={elementRef}
+      onClick={toggleTheme}
     >
       {modes.map((mode) => (
         <span
-          className={cn('rounded-full text-base p-1.5', {
-            'bg-black/15 dark:bg-white/20': mode === theme,
-          })}
-          onClick={() => changeTheme(mode)}
+          className={cn(
+            'rounded-full text-base p-1.5 [&_svg]:pointer-events-none',
+            {
+              'bg-black/15 dark:bg-white/20': mode === theme,
+            }
+          )}
           key={mode}
           suppressHydrationWarning
         >

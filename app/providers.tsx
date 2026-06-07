@@ -1,25 +1,30 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
-import { useEffect, type PropsWithChildren } from 'react';
+import { useEffect, useLayoutEffect, type PropsWithChildren } from 'react';
 import useMount from 'react-use/esm/useMount';
 import Lenis from 'lenis';
+import gsap from 'gsap';
+import { SplitText } from 'gsap/SplitText';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import posthog from 'posthog-js';
 import { PostHogProvider as PHProvider } from 'posthog-js/react';
 
 export function Providers({ children }: PropsWithChildren) {
-  useMount(() => {
+  useLayoutEffect(() => {
+    // Setup GSAP pluigns
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    // Setup Lenis
     const lenis = new Lenis({
       autoRaf: true,
     });
-    return () => {
-      lenis.destroy();
-    };
-  });
 
-  useMount(() => {
+    // Setup PostHog
     if (
       process.env.NODE_ENV != 'development' &&
       !location.href.includes('no-posthog') &&
+      !location.href.includes('ngrok') &&
+      !location.href.includes('localhost') &&
       process.env.NEXT_PUBLIC_POSTHOG_KEY
     ) {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
@@ -29,10 +34,14 @@ export function Providers({ children }: PropsWithChildren) {
         defaults: '2025-11-30',
       });
     }
-  });
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PHProvider client={posthog}>{children}</PHProvider>
     </ThemeProvider>
   );

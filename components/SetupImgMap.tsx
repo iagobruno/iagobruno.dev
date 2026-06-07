@@ -1,5 +1,6 @@
 'use client';
 import { useRef, type MouseEvent } from 'react';
+import ClickToExpandImg from '@/components/ClickToExpandImg';
 import { list as devices } from '@/app/(pages)/uses/devices';
 
 export default function SetupImgMap() {
@@ -54,11 +55,13 @@ export default function SetupImgMap() {
 
   return (
     <div className="relative w-full" ref={containerRef}>
-      <img
-        src="/images/workstation.jpeg"
-        className="aspect-800/480 w-full rounded-lg object-cover object-center mt-7"
-        alt="Meu mesa de trabalho"
-      />
+      <ClickToExpandImg>
+        <img
+          src="/images/workstation.jpeg"
+          className="aspect-800/480 w-full rounded-lg object-cover object-center mt-7"
+          alt="Meu mesa de trabalho"
+        />
+      </ClickToExpandImg>
 
       {setupDevices.map((item) => (
         <a

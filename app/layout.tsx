@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 import type { PropsWithChildren } from 'react';
 import { Inter, Caveat } from 'next/font/google';
-import { MobileNav } from '@/components/Nav';
+import MobileNav from '@/components/MobileNav';
 import TailwindBreakpoints from '@/components/TailwindBreakpoints ';
 import Scripts from '@/components/Scripts';
 import WhatsappButton from '@/components/WhatsappButton';
 import { Providers } from './providers';
 import ProgressBar from 'nextjs-toploader';
+import { ViewTransition } from 'react';
 import './globals.css';
 
 const interFont = Inter({
@@ -30,13 +31,18 @@ export default function RootLayout({ children }: PropsWithChildren) {
     >
       <head>
         <Scripts />
+        <meta name="darkreader-lock" />
+        <link rel="preload" as="image" href="/images/blurred-background.webp" />
+        <link rel="preload" as="image" href="/me.JPEG?v" />
       </head>
       <body>
         <Providers>
           <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0 pointer-events-none" />
 
-          {children}
-
+          <ViewTransition name="page-transition">
+            {children}
+          </ViewTransition>
+          
           <MobileNav />
           <ProgressBar />
         </Providers>

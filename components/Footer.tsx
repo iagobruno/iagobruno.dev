@@ -12,6 +12,7 @@ import {
 import { HiOutlineEnvelope as EmailIcon } from 'react-icons/hi2';
 import copy from 'copy-to-clipboard';
 import { cn, selectElementText, showFloatTooltip } from '@/lib/utils';
+import gsap from 'gsap';
 import posthog from 'posthog-js';
 
 const socialLinks = [
@@ -59,14 +60,32 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const [height, setHeight] = useState('0px');
   const footerRef = useRef<HTMLElement>(null);
 
   useMount(() => {
-    setHeight(footerRef.current!.getBoundingClientRect().height + 'px');
+    // Define a altura do footer
+    const height = footerRef.current!.getBoundingClientRect().height + 'px';
+    document.querySelector<HTMLElement>('#contact')!.style.height = height;
+
+    // Efeito scale com scroll
+    gsap.fromTo(
+      '.footer-content',
+      { scale: 0.65 },
+      {
+        scale: 1,
+        // ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '#contact',
+          start: `top bottom`,
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      }
+    );
   });
 
   useMount(() => {
+    // Efeito de highlight entre icones e username
     const icons = document.querySelectorAll<HTMLElement>('[data-pointto]');
     const contact = document.querySelector<HTMLElement>('footer .contact')!;
     const lines = [] as any[];
@@ -126,31 +145,26 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-18 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden"
+        className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-18 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden in-[:active-view-transition]:not-in-[.theme-animation]:relative"
         ref={footerRef}
       >
-        <div className="max-w-(--max-content-width) mx-auto">
-          <div className="text-4xl md:text-5xl font-semibold mb-10">Contato</div>
+        <div className="footer-content max-w-(--max-content-width) mx-auto origin-bottom">
+          <div className="text-4xl md:text-5xl font-semibold mb-10">
+            Contato
+          </div>
 
           <div
             className="contact mail text-[1.6rem] md:text-[2.64rem] text-neutral-400 mt-17.5 mb-16 [&_span]:transition-colors [&_span]:duration-300 cursor-pointer tracking-wide"
             onClick={handleCopyMail}
           >
-            <WithBracket
-              label="E-mail"
-              side="bottom"
-              id="mail"
-            >
+            <WithBracket label="E-mail" side="bottom" id="mail">
               contato@
               <WithBracket
                 label="Username"
                 lineClassName="-translate-y-5"
                 id="user"
               >
-                <WithBracket
-                  label="Nome"
-                  id="name"
-                >
+                <WithBracket label="Nome" id="name">
                   iagobruno
                 </WithBracket>
                 .dev
@@ -183,11 +197,7 @@ export default function Footer() {
               className="inline-flex items-center gap-1 relative z-10"
               onClick={() => handleLinkClick('repo')}
             >
-              <svg
-                viewBox="0 0 20 15"
-                width="18"
-                height="13"
-              >
+              <svg viewBox="0 0 20 15" width="18" height="13">
                 <path
                   d="M13.197.39l-2.084 2.083 4.862 4.862-4.862 4.862 2.084 2.084 6.251-6.946-6.25-6.946zm-6.946 0L0 7.334l6.251 6.946 2.084-2.084-4.862-4.862 4.862-4.862L6.251.389z"
                   fillRule="nonzero"
@@ -199,6 +209,7 @@ export default function Footer() {
                 viewBox="0 0 18 16"
                 width="14"
                 height="13"
+                className="translate-y-[0.5px]"
               >
                 <path
                   d="M15.948 1.39C15.226.513 14.21.07 12.892 0c-1.348 0-2.348.583-3.056 1.39-.709.805-1.084 1.277-1.112 1.388-.028-.11-.389-.583-1.111-1.389C6.89.583 5.988 0 4.557 0 3.237.07 2.209.528 1.5 1.39.778 2.236.417 3.166.389 4.167c0 .722.125 2.111.93 3.709.807 1.597 3.252 4.084 7.405 7.404 4.14-3.32 6.627-5.793 7.418-7.404.792-1.612.917-3.015.917-3.71-.028-1-.389-1.93-1.111-2.806v.028z"
@@ -224,7 +235,6 @@ export default function Footer() {
       <div
         id="contact"
         className="relative z-0! block w-full pointer-events-none"
-        style={{ height }}
       >
         <div className="blur-3xl bg-cyan-600 dark:bg-cyan-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[35%] -translate-x-2/4" />
         <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
@@ -233,12 +243,15 @@ export default function Footer() {
   );
 }
 
-function WithBracket({ label, children, side = 'top', lineClassName = '', id = '' }) {
+function WithBracket({
+  label,
+  children,
+  side = 'top',
+  lineClassName = '',
+  id = '',
+}) {
   return (
-    <span
-      id={id}
-      className={cn('relative group text-neutral-500')}
-    >
+    <span id={id} className={cn('relative group text-neutral-500')}>
       <span
         className={cn(
           'absolute text-current/80 border-t border-current left-0 right-0 opacity-70 pointer-events-none tracking-wide select-none',
@@ -246,13 +259,13 @@ function WithBracket({ label, children, side = 'top', lineClassName = '', id = '
             '-top-3': side === 'top',
             '-bottom-3': side === 'bottom',
           },
-          lineClassName,
+          lineClassName
         )}
       >
         <span
           className={cn(
             'text-[0.6rem] absolute left-2/4 -translate-x-2/4 bottom-0',
-            side === 'top' ? 'bottom-full mb-0.5' : 'top-full mt-0.5',
+            side === 'top' ? 'bottom-full mb-0.5' : 'top-full mt-0.5'
           )}
         >
           {label}
@@ -260,13 +273,13 @@ function WithBracket({ label, children, side = 'top', lineClassName = '', id = '
         <span
           className={cn(
             'absolute border-l border-[inherit] h-[6px] left-0',
-            side === 'top' ? 'top-0' : 'bottom-0',
+            side === 'top' ? 'top-0' : 'bottom-0'
           )}
         />
         <span
           className={cn(
             'absolute border-l border-[inherit] h-[6px] right-0',
-            side === 'top' ? 'top-0' : 'bottom-0',
+            side === 'top' ? 'top-0' : 'bottom-0'
           )}
         />
       </span>

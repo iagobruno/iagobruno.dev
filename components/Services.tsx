@@ -1,24 +1,20 @@
 'use client';
-import { cn } from '@/lib/utils'
-import Button from './Button'
-import type { PropsWithChildren } from 'react'
-import useMount from 'react-use/esm/useMount'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { cn } from '@/lib/utils';
+import Button from './Button';
+import type { PropsWithChildren } from 'react';
+import useMount from 'react-use/esm/useMount';
+import gsap from 'gsap';
 
 export default function Services() {
-
   useMount(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const cards = gsap.utils.toArray('.service-card')
-    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    const cards = document.querySelectorAll<HTMLElement>('.service-card');
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
     cards.forEach((element, i) => {
-      const startPercent = 85
+      const startPercent = 85;
       const dynamicStartPercent = Math.max(0, startPercent - i * 10); // 85%, 75%, 65%, ...
 
-      element.style.opacity = 0;
+      element.style.opacity = '0';
       gsap.fromTo(
         element,
         { opacity: 0 },
@@ -32,9 +28,9 @@ export default function Services() {
             scrub: true,
           },
         }
-      )
-    })
-  })
+      );
+    });
+  });
 
   return (
     <section
@@ -55,7 +51,8 @@ export default function Services() {
             icon="/icons/building.png"
             className=""
           >
-            Criação de plataformas digitais, aplicativos web que se comportam como apps nativos e soluções de Software as a Service.
+            Criação de plataformas digitais, aplicativos web que se comportam
+            como apps nativos e soluções de Software as a Service.
           </Card>
           <Card
             heading="Design de interfaces e prototipação"
@@ -70,7 +67,8 @@ export default function Services() {
             icon="/icons/website.png"
             className=""
           >
-            Desenvolvo sites institucionais e landing pages otimizadas para conversão, responsividade e SEO.
+            Desenvolvo sites institucionais e landing pages otimizadas para
+            conversão, responsividade e SEO.
           </Card>
         </div>
 
@@ -81,18 +79,23 @@ export default function Services() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 interface CardProps extends PropsWithChildren {
-  icon: string,
-  heading: string,
-  className?: string,
+  icon: string;
+  heading: string;
+  className?: string;
 }
 
 function Card({ icon, heading, children, className }: CardProps) {
   return (
-    <div className={cn('service-card rounded-lg w-full max-w-[400px] md:w-1/3', className)}>
+    <div
+      className={cn(
+        'service-card rounded-lg w-full max-w-[400px] md:w-1/3',
+        className
+      )}
+    >
       <img
         src={icon}
         className="block object-contain w-[40px] max-h-[40px] mb-3 md:mb-5"
@@ -100,5 +103,5 @@ function Card({ icon, heading, children, className }: CardProps) {
       <div className="font-medium text-xl mb-2.5">{heading}</div>
       <p className="text-md opacity-80">{children}</p>
     </div>
-  )
+  );
 }

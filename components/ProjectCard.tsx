@@ -1,9 +1,10 @@
-"use client";
-import { useRef } from "react";
-import Button from "./Button";
-import { GoArrowUpRight as ArrowForward } from "react-icons/go";
-import { FaGithub as GithubIcon } from "react-icons/fa6"
-import type { Project } from "./Projects";
+'use client';
+import { useRef } from 'react';
+import Button from './Button';
+import ClickToExpandImg from '@/components/ClickToExpandImg';
+import { GoArrowUpRight as ArrowForward } from 'react-icons/go';
+import { FaGithub as GithubIcon } from 'react-icons/fa6';
+import type { Project } from './Projects';
 
 interface CardProps {
   project: Project;
@@ -14,8 +15,8 @@ export default function ProjectCard({ project }: CardProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const glowRef = useRef<HTMLAnchorElement>(null);
 
-  function handleTransformation (evt: React.PointerEvent<HTMLImageElement>) {
-    if (evt.pointerType !== "mouse") return;
+  function handleTransformation(evt: React.PointerEvent<HTMLImageElement>) {
+    if (evt.pointerType !== 'mouse') return;
 
     const {
       left,
@@ -25,41 +26,42 @@ export default function ProjectCard({ project }: CardProps) {
     } = evt.currentTarget.getBoundingClientRect();
     const x = evt.clientX - left;
     const y = evt.clientY - top;
+    const MAGNETIC_INTENSITY = 9;
+    const ROTATION_INTENSITY = 25;
 
     imgWrapperRef.current!.style.setProperty(
       'transform',
-      `perspective(1000px) rotateX(${
-          (y / h - 0.5) * 25
-      }deg) rotateY(${(x / w - 0.5) * -25}deg)`,
+      `
+        perspective(1000px)
+        rotateX(${(y / h - 0.5) * ROTATION_INTENSITY}deg)
+        rotateY(${(x / w - 0.5) * -ROTATION_INTENSITY}deg)
+        translate(
+          ${(x / w - 0.5) * MAGNETIC_INTENSITY}px,
+          ${(y / h - 0.5) * MAGNETIC_INTENSITY}px
+        )
+      `
     );
     imgRef.current!.style.setProperty(
       'box-shadow',
-      `${(x / w - 0.5) * 28}px 10px 20px rgb(var(--shadow-color) / 16%)`
+      `${(x / w - 0.5) * 32}px 10px 20px rgb(var(--shadow-color) / 16%)`
     );
-    glowRef.current!.style.setProperty(
-      'background-image',
-      `radial-gradient(circle at ${x}px ${y}px, #ffffff, transparent 70%)
-    `);
+    // glowRef.current!.style.setProperty(
+    //   'background-image',
+    //   `radial-gradient(circle at ${x}px ${y}px, #ffffff, transparent 70%)
+    // `
+    // );
   }
 
   function handleMouseEnter(evt) {
-    if (evt.pointerType !== "mouse") return;
+    if (evt.pointerType !== 'mouse') return;
 
     setTimeout(() => {
-      imgWrapperRef.current!.style.setProperty(
-        'transition-duration',
-        '0s'
-      );
-      imgRef.current!.style.setProperty(
-        'transition-duration',
-        '0s'
-      );
+      imgWrapperRef.current!.style.setProperty('transition-duration', '0s');
+      imgRef.current!.style.setProperty('transition-duration', '0s');
     }, 400);
   }
 
   function handleMouseLeave(evt) {
-    if (evt.pointerType !== "mouse") return;
-
     imgWrapperRef.current!.style.removeProperty('transform');
     imgWrapperRef.current!.style.removeProperty('transition-duration');
     imgRef.current!.style.removeProperty('transition-duration');
@@ -67,9 +69,7 @@ export default function ProjectCard({ project }: CardProps) {
   }
 
   return (
-    <div
-      className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse"
-    >
+    <div className="project group/card text-neutral-950 dark:text-neutral-200! flex gap-y-2 gap-x-8 md:items-center flex-col md:odd:flex-row md:even:flex-row-reverse">
       <div
         ref={imgWrapperRef}
         className="project-img-wrapper group relative w-full md:w-[46%] md:min-w-[46%] transition-transform duration-[400ms] rounded-xl"
@@ -77,30 +77,45 @@ export default function ProjectCard({ project }: CardProps) {
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
       >
-        <img
-          ref={imgRef}
-          src={project.image}
-          className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-[inherit] border border-stone-400/40 dark:border-white/5"
-          loading="lazy"
-        />
+        <ClickToExpandImg>
+          <img
+            ref={imgRef}
+            src={project.image}
+            className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-[inherit] border border-stone-400/40 dark:border-white/5"
+            loading="lazy"
+            onClick={handleMouseLeave}
+          />
+        </ClickToExpandImg>
 
-        <a href={project.url} ref={glowRef} className="absolute inset-0 z-3 cursor-pointer rounded-[inherit] opacity-0 transition-opacity group-hover:opacity-5 not-sm:!opacity-0" target="_blank" rel="noopener noreferrer" />
+        {/*<a href={project.url} ref={glowRef} className="absolute inset-0 z-3 cursor-pointer rounded-[inherit] opacity-0 transition-opacity group-hover:opacity-5 not-sm:!opacity-0" target="_blank" rel="noopener noreferrer" />*/}
       </div>
 
       <div className="grow md:group-even/card:text-right">
-        <div className="font-medium text-[1.6rem] md:text-[1.8rem] leading-[2rem]">{project.title}</div>
+        <div className="font-medium text-[1.6rem] md:text-[1.8rem] leading-[2rem]">
+          {project.title}
+        </div>
         <div className="mt-0.5 hidden">
           <span className="opacity-90">{project.year}</span>
           {project.current && (
-            <>{' '}- <span className="text-primary font-semibold">ATUAL</span></>
+            <>
+              {' '}
+              - <span className="text-primary font-semibold">ATUAL</span>
+            </>
           )}
         </div>
         <p
           className="text-base xl:text-[1.1em] opacity-90 my-2 mb-3 md:mb-6 md:w-[80%] md:group-even/card:ml-auto"
-          dangerouslySetInnerHTML={{__html: project.description.replaceAll('\n','<br/>')}}
+          dangerouslySetInnerHTML={{
+            __html: project.description.replaceAll('\n', '<br/>'),
+          }}
         />
         {project.url && (
-          <Button href={project.url} target="_blank" growOnHover className="dark:bg-white/26 !px-4 !rotate-0 md:group-odd/card:origin-left md:group-even/card:origin-right dark:hover:bg-white dark:hover:!text-black">
+          <Button
+            href={project.url}
+            target="_blank"
+            growOnHover
+            className="dark:bg-white/26 !px-4 !rotate-0 md:group-odd/card:origin-left md:group-even/card:origin-right dark:hover:bg-white dark:hover:!text-black"
+          >
             {project.url.includes('github.com') && (
               <GithubIcon className="size-4.5 mr-0.5" />
             )}
@@ -110,5 +125,5 @@ export default function ProjectCard({ project }: CardProps) {
         )}
       </div>
     </div>
-  )
+  );
 }

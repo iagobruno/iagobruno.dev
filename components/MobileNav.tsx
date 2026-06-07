@@ -2,6 +2,7 @@
 import { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
+import Portal from './Portal';
 import { CSSTransition } from 'react-transition-group';
 import { cn } from '@/lib/utils';
 import {
@@ -18,7 +19,7 @@ import posthog from 'posthog-js';
 type Links = Array<[title: string, url: string]>;
 type SocialLinks = Array<[title: string, icon: IconType, url: string]>;
 
-const links: Links = [
+export const links: Links = [
   ['Sobre', '/#about'],
   ['Projetos', '/#projects'],
   ['Serviços', '/#services'],
@@ -36,38 +37,7 @@ const socialLinks: SocialLinks = [
   ['instagram', InstaIcon, 'https://instagram.com/iagobruno.dev'],
 ];
 
-export function HeroNav() {
-  return (
-    <div className="w-full flex items-center justify-center md:justify-between">
-      <Link
-        href="/"
-        className="shrink-0"
-      >
-        <img
-          src="/IagoBruno.png"
-          className="h-[44px] translate-y-1 inline transition-transform active:scale-94"
-          alt="Iago Bruno"
-        />
-      </Link>
-
-      <nav className="bg-white/75 dark:bg-neutral-950/75 backdrop-blur-xl rounded-full py-1.5 pl-4.5 pr-1.5 gap-3 items-center hidden md:inline-flex">
-        {links.map((link) => (
-          <Link
-            href={link[1]}
-            className={cn('text-[1.1rem] active:scale-94 transition-transform', {
-              'bg-primary text-white! rounded-full py-1 px-3 no-underline!': link[0] === 'Contato',
-            })}
-            key={link[0]}
-          >
-            {link[0]}
-          </Link>
-        ))}
-      </nav>
-    </div>
-  );
-}
-
-export function MobileNav() {
+export default function MobileNav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
 
@@ -97,7 +67,9 @@ export function MobileNav() {
         className="md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer outline-0"
         type="button"
       >
-        <div className={cn('hamburger-icon', { 'close-icon': showMobileNav })} />
+        <div
+          className={cn('hamburger-icon', { 'close-icon': showMobileNav })}
+        />
       </button>
 
       <CSSTransition
@@ -124,7 +96,7 @@ export function MobileNav() {
               {
                 '*:-translate-x-[125%]!': !showMobileNav,
                 '*:translate-x-0': showMobileNav,
-              },
+              }
             )}
           >
             <Link href="/#">Início</Link>
@@ -142,7 +114,9 @@ export function MobileNav() {
           <div
             className={cn(
               'flex items-center gap-5 *:transition-opacity',
-              showMobileNav ? '*:opacity-100 *:duration-400' : '*:opacity-0 *:duration-0',
+              showMobileNav
+                ? '*:opacity-100 *:duration-400'
+                : '*:opacity-0 *:duration-0'
             )}
           >
             {socialLinks.map(([name, Icon, url], index) => (
@@ -152,7 +126,9 @@ export function MobileNav() {
                 target="_blank"
                 className="text-inherit cursor-pointer"
                 style={{
-                  transitionDelay: showMobileNav ? 400 + 60 * index + 'ms' : '0ms',
+                  transitionDelay: showMobileNav
+                    ? 400 + 60 * index + 'ms'
+                    : '0ms',
                 }}
                 onClick={() => handleIconClick(name)}
               >
@@ -164,7 +140,9 @@ export function MobileNav() {
           <div
             className={cn(
               'transition-opacity',
-              showMobileNav ? 'opacity-100 duration-400 delay-650' : 'opacity-0 duration-0',
+              showMobileNav
+                ? 'opacity-100 duration-400 delay-650'
+                : 'opacity-0 duration-0'
             )}
           >
             <ThemeToggle onClick={(e) => e.stopPropagation()} />

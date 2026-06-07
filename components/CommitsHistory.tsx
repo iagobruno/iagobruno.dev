@@ -13,13 +13,13 @@ export default function CommitsHistory() {
   const { theme, systemTheme } = useTheme()
   const wrapperRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (wrapperRef.current) {
-      const scrollElement = wrapperRef.current.querySelector('.react-activity-calendar__scroll-container') as HTMLDivElement
-      const scrollLeft = scrollElement.scrollWidth
-      scrollElement.scrollTo({ left: scrollLeft })
-    }
-  }, [totalCount]);
+  // useEffect(() => {
+  //   if (wrapperRef.current) {
+  //     const scrollElement = wrapperRef.current.querySelector('.react-activity-calendar__scroll-container') as HTMLDivElement
+  //     const scrollLeft = scrollElement.scrollWidth
+  //     scrollElement.scrollTo({ left: scrollLeft })
+  //   }
+  // }, [totalCount]);
   
   function handleLinkClick() {
     posthog.capture('github_link_click', { location: 'commits_graph' });
