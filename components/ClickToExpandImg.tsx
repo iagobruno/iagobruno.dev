@@ -87,20 +87,33 @@ export default function ClickToExpandImg({ children }) {
     });
   }
 
+  // Lógica para fehcar o modal
   useEffect(() => {
     if (!expanded) return;
+    const initialScrollY = window.scrollY;
+
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') handleClose();
     }
+    function onScroll() {
+      const distanceToClose = 60;
+      if (Math.abs(window.scrollY - initialScrollY) > distanceToClose) {
+        handleClose();
+      }
+    }
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [expanded]);
 
   return (
     <>
       {cloneElement(children, {
         onClick: handleClick,
-        className: cn(children.props.className, 'cursor-pointer'),
+        className: cn(children.props.className, 'cursor-zoom-in'),
       })}
 
       {expanded &&

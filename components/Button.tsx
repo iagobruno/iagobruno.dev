@@ -72,21 +72,21 @@ export default function Button({
     zoneElement.addEventListener('mouseleave', function () {
       gsap.to(btnElement, {
         transform: `translate(-50%, -50%)`,
-        duration: 0.6,
-        ease: 'power2.out',
+        duration: 1.5,
+        ease: 'elastic.out(1,0.3)',
         overwrite: true,
       });
     });
   });
 
   return (
-    <div ref={containerRef} className="relative inline-block">
-      <div className="zone inline-block">
-        <div className="group/button inline-block">
+    <div ref={containerRef} className="relative inline-flex">
+      <div className="zone inline-flex">
+        <div className="group/button inline-flex">
           <a
             {...props}
             className={cn(
-              'inline-block bg-primary text-white! text-sm md:text-base uppercase tracking-wide rounded-full px-6 cursor-pointer no-underline! overflow-hidden transition-all duration-300 [-webkit-tap-highlight-color:transparent] hover:shadow-lg active:scale-95',
+              'inline-flex bg-primary text-white! text-sm md:text-base uppercase tracking-wide rounded-full px-6 cursor-pointer no-underline! overflow-hidden transition-all duration-300 [-webkit-tap-highlight-color:transparent] hover:shadow-lg active:scale-95',
               {
                 'hover:-rotate-3 hover:scale-110 dark:hover:bg-white dark:hover:!text-black':
                   growOnHover,
