@@ -73,7 +73,7 @@ export default function About() {
               programação e desenvolvendo websites.
             </p>
             <p>
-              Tenho vasta experiência com JavaScript e PHP com Laravel para, mas
+              Tenho vasta experiência com JavaScript e PHP com Laravel, mas
               estou sempre buscando ampliar meus conhecimentos. Cada projeto é
               uma oportunidade para aprender algo novo, sempre com foco na
               qualidade do produto final.
