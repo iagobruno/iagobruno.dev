@@ -12,7 +12,7 @@ export default function Services() {
 
     cards.forEach((element, i) => {
       const startPercent = 85;
-      const dynamicStartPercent = Math.max(0, startPercent - i * 10); // 85%, 75%, 65%, ...
+      const dynamicStartPercent = Math.max(0, startPercent - i * 11); // 85%, 75%, 65%, ...
 
       element.style.opacity = '0';
       gsap.fromTo(
@@ -35,13 +35,13 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-white w-full px-safe-offset-10 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
+      className="w-full px-safe-offset-9 py-10 md:py-16 relative z-10 bg-white dark:bg-neutral-950"
     >
       <div className="max-w-(--max-content-width) mx-auto">
         <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
           Serviços
         </div>
-        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-10 md:mb-14 mx-4">
+        <h3 className="text-3xl md:text-[2.5rem] font-semibold text-center mb-10 md:mb-18 mx-4">
           O que posso fazer por você
         </h3>
 
@@ -52,7 +52,7 @@ export default function Services() {
             className=""
           >
             Criação de plataformas digitais, aplicativos web que se comportam
-            como apps nativos e soluções de Software as a Service.
+            como apps nativos e soluções de Software as a Service sob medida.
           </Card>
           <Card
             heading="Design de interfaces e prototipação"
@@ -67,8 +67,8 @@ export default function Services() {
             icon="/icons/website.png"
             className=""
           >
-            Desenvolvo sites institucionais e landing pages otimizadas para
-            conversão, responsividade e SEO.
+            Desenvolvo sites institucionais e landing pages memoráveis
+            otimizadas para conversão, responsividade e SEO.
           </Card>
         </div>
 
@@ -98,7 +98,7 @@ function Card({ icon, heading, children, className }: CardProps) {
     >
       <img
         src={icon}
-        className="block object-contain w-[40px] max-h-[40px] mb-3 md:mb-5"
+        className="block object-contain size-[45px] mb-3 md:mb-5"
       />
       <div className="font-medium text-xl mb-2.5">{heading}</div>
       <p className="text-md opacity-80">{children}</p>

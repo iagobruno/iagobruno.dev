@@ -4,7 +4,7 @@ import ProjectsMoreSection from './ProjectsMoreSection';
 import gsap from 'gsap';
 import useMount from 'react-use/esm/useMount';
 
-const projects = [
+export const projects = [
   {
     image: '/images/danc-print.png',
     title: 'Danc Solutions',
@@ -111,15 +111,21 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-white w-full px-safe-offset-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
+      className="w-full px-safe-offset-8 py-10 md:pt-8 md:pb-16 relative z-10 bg-white dark:bg-neutral-950"
     >
       <div className="max-w-(--max-content-width) mx-auto">
-        <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
-          Portfólio
-        </div>
-        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 md:mb-14">
-          Meus trabalhos e projetos selecionados
-        </h3>
+        <header className="text-center mb-10 md:mb-14">
+          <div className="text-primary text-base font-medium uppercase tracking-wider mb-1">
+            Portfólio
+          </div>
+          <h3 className="text-3xl md:text-[2.5rem] font-semibold mb-4">
+            Meus trabalhos e projetos selecionados
+          </h3>
+          <p className="sm:text-lg opacity-85 lg:max-w-[600px] mx-auto">
+            Cada projeto é pensado do zero, unindo estratégia, design e
+            desenvolvimento.
+          </p>
+        </header>
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map((project) => (
