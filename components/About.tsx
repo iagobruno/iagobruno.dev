@@ -105,6 +105,8 @@ export default function About() {
                   <img
                     src={'/icons/' + skill.icon}
                     className="size-11 md:size-12 object-contain"
+                    fetchPriority="low"
+                    decoding="async"
                     alt={skill.name + ' Logo'}
                   />
                   <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-52 mt-0">

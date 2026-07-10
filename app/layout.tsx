@@ -32,8 +32,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <Scripts />
         <meta name="darkreader-lock" />
-        <link rel="preload" as="image" href="/images/blurred-background.webp" />
-        <link rel="preload" as="image" href="/me.JPEG?v" />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/blurred-background.avif"
+        />
       </head>
       <body>
         <Providers>
