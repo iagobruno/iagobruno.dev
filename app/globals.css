@@ -31,7 +31,7 @@
 :root {
   --max-content-width: 1024px;
 
-  @apply scroll-smooth overflow-x-hidden xl:[--max-content-width:1280px];
+  @apply scroll-smooth overflow-x-hidden xl:[--max-content-width:1320px];
 }
 
 @layer base {
@@ -51,6 +51,11 @@
 
 body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
   @apply relative z-5;
+}
+
+#devtools-indicator,
+[data-nextjs-dialog-overlay="true"] {
+  @apply z-999!;
 }
 
 .prose {

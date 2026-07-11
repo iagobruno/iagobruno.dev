@@ -16,9 +16,7 @@ export default function CurvedMarquee({
 }: CurvedLoopProps) {
   const text = useMemo(() => {
     const hasTrailing = /\s|\u00A0$/.test(marqueeText);
-    return (
-      (hasTrailing ? marqueeText.replace(/\s+$/, '') : marqueeText) + '\u00A0'
-    );
+    return (hasTrailing ? marqueeText.replace(/\s+$/, '') : marqueeText) + '\u00A0';
   }, [marqueeText]);
 
   const measureRef = useRef<SVGTextElement | null>(null);
@@ -41,8 +39,7 @@ export default function CurvedMarquee({
   const ready = spacing > 0;
 
   useEffect(() => {
-    if (measureRef.current)
-      setSpacing(measureRef.current.getComputedTextLength());
+    if (measureRef.current) setSpacing(measureRef.current.getComputedTextLength());
   }, [text, className]);
 
   useEffect(() => {
@@ -64,7 +61,7 @@ export default function CurvedMarquee({
             end: 'bottom top',
             scrub: 3,
           },
-        }
+        },
       );
       const st = tween.scrollTrigger;
       if (st) stRef.current = st;
@@ -74,12 +71,12 @@ export default function CurvedMarquee({
   }, [spacing, ready]);
 
   return (
-    <div
+    <section
       ref={containerRef}
       className="w-full overflow-clip pt-5 bg-white dark:bg-neutral-950 select-none"
     >
       <svg
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[4.2rem] md:text-[3rem] font-bold uppercase tracking-wide md:tracking-wider leading-none translate-y-[56%]"
+        className="select-none w-full overflow-visible block aspect-[100/12] text-[6rem] md:text-[3rem] font-inter font-bold uppercase tracking-wide md:tracking-wider leading-none translate-y-[56%]"
         style={{
           visibility: ready ? 'visible' : 'hidden',
         }}
@@ -107,7 +104,7 @@ export default function CurvedMarquee({
               d={pathD}
               fill="none"
               strokeLinecap="round"
-              className="-translate-y-6 md:-translate-y-5 stroke-black/92 dark:stroke-white stroke-[130px] md:stroke-[80px]"
+              className="-translate-y-9 md:-translate-y-5 stroke-black/92 dark:stroke-white stroke-[160px] md:stroke-[80px]"
             />
             <text
               xmlSpace="preserve"
@@ -125,6 +122,6 @@ export default function CurvedMarquee({
           </>
         )}
       </svg>
-    </div>
+    </section>
   );
 }

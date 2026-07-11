@@ -27,7 +27,7 @@ export default function Services() {
             end: 'top 50%',
             scrub: true,
           },
-        }
+        },
       );
     });
   });
@@ -38,12 +38,17 @@ export default function Services() {
       className="w-full px-safe-offset-9 py-10 md:py-16 relative z-10 bg-white dark:bg-neutral-950"
     >
       <div className="max-w-(--max-content-width) mx-auto">
-        <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
-          Serviços
-        </div>
-        <h3 className="text-3xl md:text-[2.5rem] font-semibold text-center mb-10 md:mb-18 mx-4">
-          O que posso fazer por você
-        </h3>
+        <header className="mb-10 md:mb-18 text-center mx-4">
+          <div className="text-primary text-base font-medium uppercase tracking-widest mb-1">
+            Serviços
+          </div>
+          <h3 className="text-3xl md:text-[2.5rem] font-semibold mb-3">
+            O que posso fazer por você
+          </h3>
+          <p className="text-base opacity-85">
+            Desenvolvo soluções digitais completas, do conceito ao deploy.
+          </p>
+        </header>
 
         <div className="flex items-center md:items-start justify-center gap-8 md:gap-10 xl:gap-16 flex-col md:flex-row">
           <Card
@@ -51,29 +56,32 @@ export default function Services() {
             icon="/icons/building.png"
             className=""
           >
-            Criação de plataformas digitais, aplicativos web que se comportam
-            como apps nativos e soluções de Software as a Service sob medida.
+            Criação de plataformas digitais, aplicativos web que se comportam como apps nativos e
+            soluções de Software as a Service sob medida.
           </Card>
           <Card
             heading="Design de interfaces e prototipação"
             icon="/icons/design.png"
             className=""
           >
-            Posso criar uma interface visual para seu site ou aplicativo que
-            melhor atenda as necessidades do seu negócio e público-alvo.
+            Posso criar uma interface visual para seu site ou aplicativo que melhor atenda as
+            necessidades do seu negócio e público-alvo.
           </Card>
           <Card
             heading="Criação de websites e landing pages"
             icon="/icons/website.png"
             className=""
           >
-            Desenvolvo sites institucionais e landing pages memoráveis
-            otimizadas para conversão, responsividade e SEO.
+            Desenvolvo sites institucionais e landing pages memoráveis otimizadas para conversão,
+            responsividade e SEO.
           </Card>
         </div>
 
         <div className="text-center mt-10">
-          <Button href="#contact" className="mt-4">
+          <Button
+            href="#contact"
+            className="mt-4"
+          >
             Entrar em contato
           </Button>
         </div>
@@ -90,15 +98,12 @@ interface CardProps extends PropsWithChildren {
 
 function Card({ icon, heading, children, className }: CardProps) {
   return (
-    <div
-      className={cn(
-        'service-card rounded-lg w-full max-w-[400px] md:w-1/3',
-        className
-      )}
-    >
+    <div className={cn('service-card rounded-lg w-full max-w-[400px] md:w-1/3', className)}>
       <img
         src={icon}
         className="block object-contain size-[45px] mb-3 md:mb-5"
+        fetchPriority="low"
+        decoding="async"
       />
       <div className="font-medium text-xl mb-2.5">{heading}</div>
       <p className="text-md opacity-80">{children}</p>

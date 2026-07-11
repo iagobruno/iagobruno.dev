@@ -28,11 +28,13 @@ export function Providers({ children }: PropsWithChildren) {
       process.env.NEXT_PUBLIC_POSTHOG_KEY
     ) {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
-        api_host:
-          process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
         person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        capture_pageview: 'history_change',
+        autocapture: false,
         defaults: '2025-11-30',
       });
+      // posthog.debug(); // Debug captured events
     }
 
     return () => {
@@ -41,7 +43,11 @@ export function Providers({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+    >
       <PHProvider client={posthog}>{children}</PHProvider>
     </ThemeProvider>
   );

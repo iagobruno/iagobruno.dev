@@ -11,14 +11,14 @@ iagobruno.dev é um site pessoal/portfólio. O projeto utiliza Next.js, TypeScri
 ```
 iagobruno.dev/
 ├── app/                 # Páginas e layouts do Next.js App Router
-│   ├── (pages)/         # Páginas com roteamento agrupado
+│   ├── (pages)/         # Sub páginas com roteamento agrupado
 │   ├── layout.tsx       # Layout raiz da aplicação
 │   ├── page.tsx         # Página inicial
 │   ├── providers.tsx    # Providers (Theme, PostHog, etc)
 │   └── globals.css      # Estilos globais e tema Tailwind
 ├── components/          # Componentes React reutilizáveis
 ├── hooks/               # Custom React hooks
-├── lib/                 # Bibliotecas e utilitários
+├── lib/                 # Utilitários
 ├── public/              # Arquivos estáticos (imagens, favicons, etc.)
 └── mdx-components.tsx   # Componentes customizados para MDX
 ```
