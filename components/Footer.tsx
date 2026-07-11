@@ -14,6 +14,9 @@ import copy from 'copy-to-clipboard';
 import { cn, selectElementText, showFloatTooltip } from '@/lib/utils';
 import gsap from 'gsap';
 import posthog from 'posthog-js';
+import Button from './Button';
+import { whatsappLink } from './WhatsappButton';
+import GridPattern from './GridPattern';
 
 const socialLinks = [
   {
@@ -21,41 +24,41 @@ const socialLinks = [
     href: 'mailto:contato@iagobruno.dev',
     Icon: EmailIcon,
     dataPointto: 'mail',
-    className: 'size-8 md:size-10',
+    className: 'size-[1.08em]',
   },
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/558897174708?text=Ol%C3%A1!%20Vim%20do%20seu%20site%20para%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20seus%20servi%C3%A7os.',
+    href: whatsappLink,
     Icon: WhatsappIcon,
-    className: 'size-7 md:size-9',
+    className: 'size-[1em]',
   },
-  {
-    name: 'Discord',
-    href: 'https://discordapp.com/users/724201631348162592',
-    Icon: DiscordIcon,
-    dataPointto: 'user',
-    className: 'size-7 md:size-9',
-  },
+  // {
+  //   name: 'Discord',
+  //   href: 'https://discordapp.com/users/724201631348162592',
+  //   Icon: DiscordIcon,
+  //   dataPointto: 'user',
+  //   className: 'size-[1em]',
+  // },
   {
     name: 'GitHub',
     href: 'https://github.com/iagobruno',
     Icon: GithubIcon,
     dataPointto: 'name',
-    className: 'size-7 md:size-9',
+    className: 'size-[1em]',
   },
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/iagobruno',
     Icon: LinkedinIcon,
     dataPointto: 'name',
-    className: 'size-7 md:size-9',
+    className: 'size-[1em]',
   },
   {
     name: 'Instagram',
     href: 'https://instagram.com/iagobruno.dev',
     Icon: InstaIcon,
     dataPointto: 'user',
-    className: 'size-7 md:size-9',
+    className: 'size-[1em]',
   },
 ];
 
@@ -63,16 +66,16 @@ export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
   useMount(() => {
-    // Define a altura do footer
-    const height = footerRef.current!.getBoundingClientRect().height + 'px';
-    document.querySelector<HTMLElement>('#contact')!.style.height = height;
+    const footerHeight = footerRef.current!.getBoundingClientRect().height + 'px';
+    document.querySelector<HTMLElement>('#contact')!.style.height = footerHeight;
 
     // Efeito scale com scroll
     gsap.fromTo(
       '.footer-content',
-      { scale: 0.65 },
+      { scale: 0.65, y: 50 },
       {
         scale: 1,
+        y: 0,
         // ease: 'power2.inOut',
         scrollTrigger: {
           trigger: '#contact',
@@ -80,59 +83,18 @@ export default function Footer() {
           end: 'bottom bottom',
           scrub: true,
         },
-      }
+      },
     );
   });
 
-  useMount(() => {
-    // Efeito de highlight entre icones e username
-    const icons = document.querySelectorAll<HTMLElement>('[data-pointto]');
-    const contact = document.querySelector<HTMLElement>('footer .contact')!;
-    const lines = [] as any[];
-
-    for (const icon of Array.from(icons)) {
-      const pointToElement = contact.querySelector('#' + icon.dataset.pointto);
-
-      // @ts-ignore
-      // const line = new LeaderLine(
-      //   icon,
-      //   pointToElement,
-      //   {
-      //     color: 'var(--color-primary)',
-      //     size: 4,
-      //     path: 'arc',
-      //     startSocket: 'top',
-      //     endPlug: 'arrow2',
-      //     hide: true,
-      //     showEffectName: 'none',
-      //     animOptions: {
-      //       duration: 0,
-      //     },
-      //   }
-      // )
-      // lines.push(line)
-
-      icon.addEventListener('mouseover', () => {
-        // line.show('draw', { duration: 400 })
-        pointToElement?.classList.add('!text-primary');
-        pointToElement
-          ?.querySelectorAll('.group')
-          .forEach((el) => el.classList.remove('text-neutral-500'));
-      });
-      icon.addEventListener('mouseout', () => {
-        // line.hide('draw', { duration: 400 })
-        pointToElement?.classList.remove('!text-primary');
-        pointToElement
-          ?.querySelectorAll('.group')
-          .forEach((el) => el.classList.add('text-neutral-500'));
-      });
-    }
-  });
-
   function handleLinkClick(name: string) {
-    posthog.capture(`${name}_link_click`, {
+    posthog.capture(`${name}_link_clicked`, {
       location: 'footer',
     });
+  }
+
+  function handleCTAClick() {
+    posthog.capture('whatsapp_button_clicked', { location: 'footer_cta' });
   }
 
   function handleCopyMail() {
@@ -145,34 +107,46 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="fixed z-0 left-0 bottom-0 w-full pt-28 pb-18 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden in-[:active-view-transition]:not-in-[.theme-animation]:relative"
+        className="fixed z-0 left-0 bottom-0 w-full pt-20 pb-12 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden in-[:active-view-transition]:not-in-[.theme-animation]:relative"
         ref={footerRef}
       >
-        <div className="footer-content max-w-(--max-content-width) mx-auto origin-bottom">
-          <div className="text-4xl md:text-5xl font-semibold mb-10">
-            Contato
+        <div className="footer-content max-w-(--max-content-width) mx-auto origin-bottom relative z-1">
+          <header className="mb-8 lg:max-w-[700px] mx-auto">
+            <div className="text-primary text-base font-medium uppercase text-center tracking-widest mb-2">
+              Contato
+            </div>
+            <h3 className="text-4xl md:text-5xl/14 font-semibold mb-4">
+              Vamos conversar sobre o seu projeto
+            </h3>
+            <p className="sm:text-lg opacity-85">
+              Solicite um orçamento sem compromisso ou tire suas dúvidas.
+            </p>
+          </header>
+
+          <div className="mb-10 w-full">
+            <Button
+              href={whatsappLink}
+              target="_blank"
+              className="text-nowrap"
+              onClick={handleCTAClick}
+            >
+              <WhatsappIcon className="size-[1.4em] mb-0.5" />
+              Fazer orçamento
+            </Button>
           </div>
+
+          <img
+            src="/logo.png"
+            className="h-[0.96rem] mt-4 mb-6 inline transition-transform active:scale-94 dark:invert"
+            alt="Iago Bruno"
+          />
 
           <div
-            className="contact mail text-[1.6rem] md:text-[2.64rem] text-neutral-400 mt-17.5 mb-16 [&_span]:transition-colors [&_span]:duration-300 cursor-pointer tracking-wide"
-            onClick={handleCopyMail}
+            className={cn(
+              'icons text-[1.52rem] flex gap-y-1 gap-x-[0.9em] justify-center items-center flex-wrap mx-auto mb-6',
+              '*:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-118 *:hover:rotate-15 *:duration-200',
+            )}
           >
-            <WithBracket label="E-mail" side="bottom" id="mail">
-              contato@
-              <WithBracket
-                label="Username"
-                lineClassName="-translate-y-5"
-                id="user"
-              >
-                <WithBracket label="Nome" id="name">
-                  iagobruno
-                </WithBracket>
-                .dev
-              </WithBracket>
-            </WithBracket>
-          </div>
-
-          <div className="icons text-lg flex gap-y-1 gap-x-6 md:gap-x-11 justify-center items-center flex-wrap mx-auto mb-14 *:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-118 *:hover:rotate-15 *:duration-200">
             {socialLinks.map((link, idx) => {
               const Icon = link.Icon;
               return (
@@ -189,15 +163,17 @@ export default function Footer() {
             })}
           </div>
 
-          <ThemeToggle />
-
-          <div className="mt-7 mx-auto w-fit flex items-center gap-2 not-sm:flex-col text-stone-600 dark:text-stone-400 text-[0.7rem] opacity-80">
+          <div className="mx-auto w-fit flex items-center gap-2 not-sm:flex-col text-stone-600 dark:text-stone-400 text-[0.68rem] opacity-80">
             <a
               href="https://github.com/iagobruno/iagobruno.dev"
               className="inline-flex items-center gap-1 relative z-10"
               onClick={() => handleLinkClick('repo')}
             >
-              <svg viewBox="0 0 20 15" width="18" height="13">
+              <svg
+                viewBox="0 0 20 15"
+                width="18"
+                height="13"
+              >
                 <path
                   d="M13.197.39l-2.084 2.083 4.862 4.862-4.862 4.862 2.084 2.084 6.251-6.946-6.25-6.946zm-6.946 0L0 7.334l6.251 6.946 2.084-2.084-4.862-4.862 4.862-4.862L6.251.389z"
                   fillRule="nonzero"
@@ -227,7 +203,17 @@ export default function Footer() {
               Changelog
             </a>
           </div>
+
+          <div className="mt-6 scale-90">
+            <ThemeToggle />
+          </div>
         </div>
+
+        <GridPattern
+          strokeDasharray="4 5"
+          className="mask-radial-at-top mask-radial-from-0% mask-radial-to-75%"
+        />
+        <div className="aspect-20/10 w-[25%] z-0 absolute top-full left-2/4 rounded-full blur-3xl bg-white/7 -translate-2/4 pointer-events-none"></div>
       </footer>
 
       <div className="after:block after:h-[1px] after:w-[94%] after:mx-auto after:blur-[1px] after:[background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,rgba(14,165,233,1)_32.29%,rgba(236,72,153,1)_67.19%,rgba(236,72,153,0)_100%)]  brightness-90 dark:brightness-175 saturate-150" />
@@ -240,50 +226,5 @@ export default function Footer() {
         <div className="blur-3xl bg-fuchsia-500 dark:bg-fuchsia-500/70 w-[60%] min-w-[200px] aspect-4/3 rounded-full absolute bottom-[100%] left-[63%] -translate-x-2/4" />
       </div>
     </>
-  );
-}
-
-function WithBracket({
-  label,
-  children,
-  side = 'top',
-  lineClassName = '',
-  id = '',
-}) {
-  return (
-    <span id={id} className={cn('relative group text-neutral-500')}>
-      <span
-        className={cn(
-          'absolute text-current/80 border-t border-current left-0 right-0 opacity-70 pointer-events-none tracking-wide select-none',
-          {
-            '-top-3': side === 'top',
-            '-bottom-3': side === 'bottom',
-          },
-          lineClassName
-        )}
-      >
-        <span
-          className={cn(
-            'text-[0.6rem] absolute left-2/4 -translate-x-2/4 bottom-0',
-            side === 'top' ? 'bottom-full mb-0.5' : 'top-full mt-0.5'
-          )}
-        >
-          {label}
-        </span>
-        <span
-          className={cn(
-            'absolute border-l border-[inherit] h-[6px] left-0',
-            side === 'top' ? 'top-0' : 'bottom-0'
-          )}
-        />
-        <span
-          className={cn(
-            'absolute border-l border-[inherit] h-[6px] right-0',
-            side === 'top' ? 'top-0' : 'bottom-0'
-          )}
-        />
-      </span>
-      {children}
-    </span>
   );
 }
