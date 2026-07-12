@@ -1,15 +1,17 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import sharp, { type AvifOptions, type ResizeOptions } from 'sharp';
+import sharp, { type AvifOptions, type WebpOptions, type ResizeOptions } from 'sharp';
 
 const imagesDir = './public';
-
+const excludeDirectories = ['icons'];
 const allowedImageExtensions = ['.jpg', '.jpeg', '.png', '.webp'] as const;
 
 const defaultOptions: ImageOptions = {
   maxWidth: 1200,
   maxHeight: 1200,
   quality: 70,
+  avifQuality: 55,
+  webpQuality: 75,
   fit: 'inside',
   withoutEnlargement: true,
 };
@@ -28,76 +30,30 @@ const specificImageOptions: Record<string, Partial<ImageOptions> | false> = {
   },
 };
 
-let optimizedCount = 0;
+console.time('✔ Optimized all images');
+walkImagesDir(imagesDir).then(() => {
+  console.timeEnd(`✔ Optimized all images`);
+});
 
-async function resizeImage(filePath: string, options: ImageOptions) {
-  const image = sharp(filePath);
-  const metadata = await image.metadata();
+async function walkImagesDir(directory: string) {
+  if (excludeDirectories.includes(path.basename(directory))) return;
 
-  const tempPath = filePath.replace(/(\.[^.]+)$/, '.tmp$1');
-
-  let pipeline = image.resize({
-    width: options.maxWidth,
-    height: options.maxHeight,
-    fit: options.fit,
-    withoutEnlargement: options.withoutEnlargement,
-  });
-
-  if (metadata.format === 'jpeg') {
-    pipeline = pipeline.jpeg({
-      quality: options.quality,
-    });
-  } else if (metadata.format === 'png') {
-    pipeline = pipeline.png({
-      quality: Math.min(100, options.quality + 10),
-      compressionLevel: 6,
-    });
-  } else if (metadata.format === 'webp') {
-    pipeline = pipeline.webp({
-      quality: options.quality,
-      effort: 6,
-    });
-  }
-
-  await pipeline.toFile(tempPath);
-  await fs.rename(tempPath, filePath);
-}
-
-async function convertToAvif(filePath: string, options: ImageOptions) {
-  const outputPath = filePath.replace(/\.[^.]+$/, '.avif');
-
-  await sharp(filePath)
-    .avif({
-      quality: options.quality,
-      effort: 6,
-    })
-    .toFile(outputPath);
-}
-
-async function walk(directory: string) {
-  if (directory === 'public/icons') return;
-
-  const entries = await fs.readdir(directory, {
-    withFileTypes: true,
-  });
+  const entries = await fs.readdir(directory, { withFileTypes: true });
 
   for (const entry of entries) {
     const filePath = path.join(directory, entry.name);
 
     if (entry.isDirectory()) {
-      await walk(filePath);
-      continue;
-    }
-
-    const extension = path.extname(entry.name).toLowerCase();
-
-    if (!allowedImageExtensions.includes(extension as (typeof allowedImageExtensions)[number])) {
+      await walkImagesDir(filePath);
       continue;
     }
 
     const imageName = path.basename(filePath);
+    const extension = path
+      .extname(entry.name)
+      .toLowerCase() as (typeof allowedImageExtensions)[number];
 
-    if (specificImageOptions[imageName] === false) {
+    if (!allowedImageExtensions.includes(extension) || specificImageOptions[imageName] === false) {
       continue;
     }
 
@@ -105,43 +61,100 @@ async function walk(directory: string) {
       ...defaultOptions,
       ...specificImageOptions[imageName],
     };
-
-    const metadata = await sharp(filePath).metadata();
-    const width = metadata.width ?? 0;
-    const height = metadata.height ?? 0;
-
-    const needsResize = width > options.maxWidth || height > options.maxHeight;
-    if (needsResize) {
-      console.log(`✔ Redimensionando ${imageName}...`);
-
-      await resizeImage(filePath, options);
-    }
-
-    const outputPath = filePath.replace(/\.[^.]+$/, '.avif');
-
-    try {
-      await fs.access(outputPath);
-      continue;
-    } catch {
-      // File doesn't exist.
-    }
-
-    console.log(`✔ Convertendo ${imageName} para .avif...`);
-
-    await convertToAvif(filePath, options);
-
-    optimizedCount++;
+    await optimizeImage(filePath, options);
   }
 }
 
-walk(imagesDir).then(() => {
-  console.log(`\nOptimized ${optimizedCount} image(s).`);
-});
+async function optimizeImage(filePath: string, options: ImageOptions) {
+  const fileName = path.basename(filePath);
+  const extension = path.extname(filePath).toLowerCase();
+
+  const pipeline = sharp(filePath);
+  const metadata = await pipeline.metadata();
+
+  const width = metadata.width ?? 0;
+  const height = metadata.height ?? 0;
+  const needsResize = width > options.maxWidth || height > options.maxHeight;
+
+  let output = pipeline;
+
+  if (needsResize) {
+    console.log(`Redimensionando ${fileName}...`);
+
+    output = pipeline.resize({
+      width: options.maxWidth,
+      height: options.maxHeight,
+      fit: options.fit,
+      withoutEnlargement: options.withoutEnlargement,
+    });
+
+    let formatPipeline = output.clone();
+
+    if (metadata.format === 'jpeg') {
+      formatPipeline = formatPipeline.jpeg({
+        quality: options.quality,
+      });
+    } //
+    else if (metadata.format === 'png') {
+      formatPipeline = formatPipeline.png({
+        quality: Math.min(100, options.quality + 10),
+        compressionLevel: 6,
+      });
+    } //
+    else if (metadata.format === 'webp') {
+      formatPipeline = formatPipeline.webp({
+        quality: options.webpQuality ?? options.quality,
+        effort: 5,
+      });
+    }
+
+    const tempPath = filePath.replace(/(\.[^.]+)$/, '.tmp$1');
+    await formatPipeline.toFile(tempPath);
+    await fs.rename(tempPath, filePath);
+  }
+
+  // Convert to AVIF
+  const avifOutputPath = filePath.replace(/\.[^.]+$/, '.avif');
+  if (!(await fileExists(avifOutputPath))) {
+    console.log(`Convertendo ${fileName} para .avif...`);
+    await output
+      .clone()
+      .avif({
+        quality: options.avifQuality,
+        effort: 4,
+      })
+      .toFile(avifOutputPath);
+  }
+
+  // Convert to WebP
+  // const webpOutputPath = filePath.replace(/\.[^.]+$/, '.webp');
+  // if (!(await fileExists(webpOutputPath)) && extension !== '.webp') {
+  //   await output
+  //     .clone()
+  //     .webp({
+  //       quality: options.webpQuality,
+  //       effort: 5,
+  //     })
+  //     .toFile(webpOutputPath);
+  //   console.log(`Convertendo ${fileName} para .webp...`);
+  // }
+}
+
+async function fileExists(filePath: string): Promise<boolean> {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 interface ImageOptions {
   maxWidth: number;
   maxHeight: number;
-  quality: NonNullable<AvifOptions['quality']>;
+  quality: NonNullable<AvifOptions['quality']> | NonNullable<WebpOptions['quality']>;
+  avifQuality: ImageOptions['quality'];
+  webpQuality: ImageOptions['quality'];
   fit: NonNullable<ResizeOptions['fit']>;
   withoutEnlargement: boolean;
 }
