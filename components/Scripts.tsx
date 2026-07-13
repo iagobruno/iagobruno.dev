@@ -12,8 +12,7 @@ export default function Scripts() {
             appName: 'Iago Bruno',
             appNameDisplay: 'standalone',
             appIconUrl: 'favicon.png',
-            assetUrl:
-              'https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@3.4/dist/assets/img/',
+            assetUrl: 'https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@3.4/dist/assets/img/',
             maxModalDisplayCount: -1,
             displayOptions: {
               showMobile: true,
