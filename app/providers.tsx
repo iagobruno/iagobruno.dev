@@ -37,6 +37,10 @@ export function Providers({ children }: PropsWithChildren) {
       // posthog.debug(); // Debug captured events
     }
 
+    setTimeout(() => {
+      document.documentElement.classList.remove('loading');
+    }, 1000);
+
     return () => {
       lenis.destroy();
     };

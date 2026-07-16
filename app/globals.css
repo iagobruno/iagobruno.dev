@@ -300,13 +300,13 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
     filter: blur(0px);
   }
 }
-::view-transition-group(page-transition) {
+html:not(.loading)::view-transition-group(page-transition) {
   animation-duration: 500ms;
 }
-::view-transition-old(page-transition) {
+html:not(.loading)::view-transition-old(page-transition) {
   animation-name: slide-out-to-top;
 }
-::view-transition-new(page-transition) {
+html:not(.loading)::view-transition-new(page-transition) {
   animation-name: slide-in-from-bottom;
   animation-duration: 700ms;
   animation-delay: 300ms;

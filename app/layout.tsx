@@ -26,7 +26,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="pt-BR"
-      className={`${interFont.variable} ${caveatFont.variable}`}
+      className={`${interFont.variable} ${caveatFont.variable} ${archivoFont.variable} loading`}
       suppressHydrationWarning
     >
       <head>
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0 pointer-events-none" />
 
           <ViewTransition name="page-transition">
+            {/* main content */}
             {children}
           </ViewTransition>
           
@@ -70,7 +71,20 @@ export const metadata: Metadata = {
     startupImage: '/favicon.png',
   },
   icons: {
-    apple: '/me.JPEG',
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    // icon: [
+    //   {
+    //     url: '/favicon.ico',
+    //     media: '(prefers-color-scheme: light)',
+    //     type: 'image/x-icon',
+    //   },
+    //   {
+    //     url: '/favicon-dark.ico',
+    //     media: '(prefers-color-scheme: dark)',
+    //     type: 'image/x-icon',
+    //   },
+    // ],
   },
   manifest: '/manifest.json',
 };
