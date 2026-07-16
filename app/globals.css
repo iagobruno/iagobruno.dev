@@ -11,6 +11,9 @@
 
   --font-inter: var(--font-family-inter);
   --font-caveat: var(--font-family-caveat);
+  --font-archivo: var(--font-family-archivo);
+
+  --breakpoint-2xl: 100rem;
 }
 
 /*
@@ -31,12 +34,12 @@
 :root {
   --max-content-width: 1024px;
 
-  @apply scroll-smooth overflow-x-hidden xl:[--max-content-width:1320px];
+  @apply scroll-smooth overflow-x-hidden xl:[--max-content-width:1400px];
 }
 
 @layer base {
   body {
-    @apply font-inter relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
+    @apply font-archivo relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
     @apply selection:bg-primary selection:text-white;
   }
 

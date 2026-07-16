@@ -98,7 +98,7 @@ interface CardProps extends PropsWithChildren {
 
 function Card({ icon, heading, children, className }: CardProps) {
   return (
-    <div className={cn('service-card rounded-lg w-full max-w-[400px] md:w-1/3', className)}>
+    <div className={cn('service-card rounded-lg w-full md:w-1/3', className)}>
       <img
         src={icon}
         className="block object-contain size-[45px] mb-3 md:mb-5"

@@ -49,6 +49,12 @@ export function DesktopNav() {
             <Link
               href="/"
               className="shrink-0 brightness-106! mr-1"
+              onClick={(evt) => {
+                if (location.pathname === '/') {
+                  evt.preventDefault();
+                  window.scrollTo({ top: 0 });
+                }
+              }}
             >
               <HomeIcon className="size-[1.2em] scale-x-105 text-neutral-800/85 dark:text-white/90" />
             </Link>

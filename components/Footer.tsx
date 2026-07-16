@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa6';
 import { HiOutlineEnvelope as EmailIcon } from 'react-icons/hi2';
 import copy from 'copy-to-clipboard';
-import { cn, selectElementText, showFloatTooltip } from '@/lib/utils';
+import { cn, selectElementText, showFloatTooltip, sleep } from '@/lib/utils';
 import gsap from 'gsap';
 import posthog from 'posthog-js';
 import Button from './Button';
@@ -65,7 +65,9 @@ const socialLinks = [
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
-  useMount(() => {
+  useMount(async () => {
+    await sleep(200);
+
     const footerHeight = footerRef.current!.getBoundingClientRect().height + 'px';
     document.querySelector<HTMLElement>('#contact')!.style.height = footerHeight;
 
@@ -107,7 +109,7 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="fixed z-0 left-0 bottom-0 w-full pt-20 pb-12 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden in-[:active-view-transition]:not-in-[.theme-animation]:relative"
+        className="fixed z-0 left-0 bottom-0 w-full pt-20 pb-6 md:pb-10 px-safe-offset-6 text-center bg-neutral-200/50 dark:bg-neutral-900/80 overflow-hidden in-[:active-view-transition]:not-in-[.theme-animation]:relative"
         ref={footerRef}
       >
         <div className="footer-content max-w-(--max-content-width) mx-auto origin-bottom relative z-1">
@@ -116,7 +118,8 @@ export default function Footer() {
               Contato
             </div>
             <h3 className="text-4xl md:text-5xl/14 font-semibold mb-4">
-              Vamos conversar sobre o seu projeto
+              Vamos conversar sobre o<br className="not-md:hidden" />
+              seu projeto
             </h3>
             <p className="sm:text-lg opacity-85">
               Solicite um orçamento sem compromisso ou tire suas dúvidas.
@@ -211,7 +214,7 @@ export default function Footer() {
 
         <GridPattern
           strokeDasharray="4 5"
-          className="mask-radial-at-top mask-radial-from-0% mask-radial-to-75%"
+          className="mask-radial-at-top mask-radial-from-0% mask-radial-to-80%"
         />
         <div className="aspect-20/10 w-[25%] z-0 absolute top-full left-2/4 rounded-full blur-3xl bg-white/7 -translate-2/4 pointer-events-none"></div>
       </footer>

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { PropsWithChildren } from 'react';
-import { Inter, Caveat } from 'next/font/google';
+import { Inter, Caveat, Archivo } from 'next/font/google';
 import MobileNav from '@/components/MobileNav';
 import TailwindBreakpoints from '@/components/TailwindBreakpoints ';
 import Scripts from '@/components/Scripts';
@@ -21,6 +21,11 @@ const caveatFont = Caveat({
   display: 'swap',
   variable: '--font-family-caveat',
 });
+const archivoFont = Archivo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-archivo',
+});
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
@@ -40,13 +45,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body>
         <Providers>
-          <div className="blurred-background absolute z-4 min-h-svh w-full top-0 left-0 pointer-events-none" />
-
           <ViewTransition name="page-transition">
             {/* main content */}
             {children}
           </ViewTransition>
-          
+
           <MobileNav />
           <ProgressBar />
         </Providers>
