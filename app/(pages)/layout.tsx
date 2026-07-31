@@ -3,24 +3,25 @@ import type { PropsWithChildren } from 'react';
 import Hero from '@/components/Hero';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import Footer from '@/components/Footer';
 
 export default function PagesLayout({ children }: PropsWithChildren) {
-  const maxContentWidth = usePathname() === '/labs' ? '1200px' : '800px';
-  const hideNav = usePathname() === '/links';
+  const path = usePathname();
+  const maxContentWidth = path === '/labs' ? '1200px' : '800px';
+  const hideNav = path === '/links';
 
   return (
     <div>
-      <div className="blurred-background absolute z-1 min-h-svh w-full top-0 left-0 pointer-events-none" />
-
       <div
-        className="px-safe-offset-7 relative z-2"
+        className="px-safe-offset-7 relative z-2 bg-white dark:bg-neutral-950"
         style={{ '--max-content-width': maxContentWidth } as React.CSSProperties}
       >
+        <div className="blurred-background absolute z-1 min-h-svh w-full top-0 left-0 pointer-events-none" />
         {!hideNav && <Hero className="px-0" />}
 
         <main
           className={cn(
-            'w-full max-w-(--max-content-width) mx-auto pb-20',
+            'w-full max-w-(--max-content-width) mx-auto pb-20 relative z-2',
             'prose prose-lg dark:prose-invert font-inter',
             'prose-headings:font-semibold prose-headings:mt-8 prose-headings:mb-4  prose-h1:text-[1.66rem] md:prose-h1:text-3xl  prose-h2:text-2xl  prose-h3:text-xl prose-h3:mb-2.5',
             'prose-p:my-3 prose-p:text-lg',
@@ -33,6 +34,8 @@ export default function PagesLayout({ children }: PropsWithChildren) {
           {children}
         </main>
       </div>
+
+      {/* <Footer key={path} /> */}
     </div>
   );
 }

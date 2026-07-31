@@ -1,153 +1,147 @@
 'use client';
-import { DesktopNav } from '@/components/DesktopNav';
+import { useRef } from 'react';
+import useMount from 'react-use/esm/useMount';
 import { cn } from '@/lib/utils';
+import { LuArrowUpRight as ArrowForward } from 'react-icons/lu';
+import { FaWhatsapp as WhatsappIcon } from 'react-icons/fa6';
 import posthog from 'posthog-js';
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
-import useMount from 'react-use/esm/useMount';
-import { useRef } from 'react';
+import DesktopNav from '@/components/DesktopNav';
+import Aurora from '@/components/Aurora';
+import HeroCards from '@/components/HeroCards';
+import Button from '@/components/Button';
+import { whatsappLink } from '@/components/WhatsappButton';
 
 interface HeroProps {
   compact?: boolean;
   className?: string;
 }
 
-const socialLinks = [
-  {
-    name: 'WhatsApp',
-    href: 'https://wa.me/558897174708?text=Ol%C3%A1!%20Vim%20do%20seu%20site%20para%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20seus%20servi%C3%A7os.',
-    badge:
-      'https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white',
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/iagobruno',
-    badge:
-      'https://img.shields.io/badge/GitHub-242424?style=flat&logo=github&logoColor=white',
-  },
-  {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/iagobruno.dev',
-    badge:
-      'https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white',
-  },
-  {
-    name: 'Discord',
-    href: 'https://discordapp.com/users/724201631348162592',
-    badge:
-      'https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white',
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/iagobruno',
-    badge:
-      'https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=logmein&logoColor=white',
-  },
-];
-
 export default function Hero({ compact = true, className }: HeroProps) {
   const headerRef = useRef<HTMLElement>(null);
 
   useMount(async () => {
-    headerRef
-      .current!.querySelector<HTMLElement>('& > .invisible')
-      ?.classList.remove('invisible');
+    headerRef.current!.querySelector<HTMLElement>('& > .invisible')?.classList.remove('invisible');
 
     gsap.context(() => {
-      const split = SplitText.create('h2.headline', {
+      const splitHeading = SplitText.create('h2.headline', {
+        type: 'words, lines',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      const headingWords = splitHeading.words.filter(
+        (word) => !word.classList.contains('memorable'),
+      );
+      const splitSub = SplitText.create('.sub-headline', {
         type: 'words, lines',
         linesClass: 'line',
         wordsClass: 'word',
       });
 
-      const greeting =
-        headerRef.current!.querySelector<HTMLElement>('.greeting');
-      greeting!.style.removeProperty('width');
+      const memorable = document.querySelector('h2.headline .memorable');
+      const word = memorable?.querySelector('& > .word')!;
+      // @ts-ignore Unwrap char elements
+      if (word) word.replaceWith(...word.childNodes);
+      const splitMemorable = SplitText.create(memorable!, {
+        type: 'chars',
+      });
+      gsap.set(splitMemorable.chars, { y: 100 });
 
       gsap
         .timeline()
         .fromTo(
-          greeting,
-          { width: 0 },
+          '.aurora canvas',
           {
-            width: greeting!.getBoundingClientRect().width + 5,
-            duration: 1.3,
-            ease: 'power2.inOut',
-          }
-        )
-        .from(
-          split.words,
-          {
-            y: 100,
             opacity: 0,
-            duration: 1.3,
-            ease: 'power3.inOut',
-            stagger: 0.08,
-            onComplete: () => split.revert(), // unsplit
           },
-          '<'
+          {
+            opacity: 1,
+            duration: 3,
+          },
         )
         .fromTo(
-          '.profile-photo',
-          {
-            scale: 0,
-            filter: 'blur(10px)',
-          },
+          '.greeting img',
+          { scale: 0 },
           {
             scale: 1,
-            filter: 'blur(0px)',
-            duration: 1.3,
-            ease: 'power4',
+            duration: 1.6,
+            ease: 'power2.inOut',
           },
-          '<0.5'
+          '<',
         )
         .fromTo(
-          '.profile-photo .decorations > *',
+          '.greeting > div > div',
+          { x: -240, opacity: 0 },
           {
+            x: 0,
+            opacity: 1,
+            duration: 1.6,
+            ease: 'power2.inOut',
+          },
+          '<',
+        )
+        .from(
+          headingWords.concat('h2.headline svg'),
+          {
+            y: 100,
+            scale: 0.9,
             opacity: 0,
-          },
-          {
-            opacity: 1,
-            duration: 1.3,
-            stagger: 0.25,
-          },
-          '<0.2'
-        )
-        .fromTo(
-          '.sub-heading',
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 1.3,
-          },
-          '-=1.2'
-        )
-        .fromTo(
-          '.social-links a',
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 1.3,
+            rotate: 37,
+            transformOrigin: 'left bottom',
+            duration: 1.34,
+            ease: 'power3.inOut',
             stagger: 0.06,
+            onComplete: () => {
+              // unsplit
+              setTimeout(splitHeading.revert, 100);
+            },
           },
-          '-=1.1'
+          '<',
+        )
+        .to(
+          splitMemorable.chars,
+          {
+            keyframes: {
+              fontWeight: [700, 800, 700],
+              scale: [1, 1.2, 1],
+              y: [100, 0, 0],
+              rotate: [40, 3, 0],
+            },
+            transformOrigin: 'left bottom',
+            duration: 0.92,
+            ease: 'power1.out',
+            stagger: 0.05,
+          },
+          '<+=0.8',
+        )
+        .from(
+          splitSub.words,
+          {
+            y: 50,
+            scale: 0.9,
+            opacity: 0,
+            duration: 1.34,
+            ease: 'power3.inOut',
+            stagger: 0.014,
+            onComplete: () => splitSub.revert(), // unsplit
+          },
+          '-=2.3',
         )
         .fromTo(
           '.more-cta',
           { opacity: 0 },
           {
             opacity: 1,
-            duration: 2.55,
+            duration: 2.4,
           },
-          '<0.9'
+          '-=0.4',
         );
     }, headerRef.current!);
   });
 
-  function handleLinkClick(name: string) {
-    posthog.capture(`${name}_link_click`, {
-      location: 'header',
-    });
+  function handleCTAClick() {
+    posthog.capture('whatsapp_button_clicked', { location: 'hero_cta' });
   }
 
   return (
@@ -156,99 +150,86 @@ export default function Hero({ compact = true, className }: HeroProps) {
       className={cn(
         'hero w-full px-safe-offset-6 pt-safe-offset-6 pb-7 flex flex-col justify-between text-center md:text-left relative z-10',
         {
-          'min-h-svh blurred-background': !compact,
+          'min-h-svh': !compact,
         },
-        className
+        className,
       )}
     >
-      <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5 invisible">
+      {!compact && <Aurora />}
+
+      <div className="grow w-full max-w-(--max-content-width) mx-auto flex flex-col justify-between gap-5 relative z-2 invisible">
         <DesktopNav />
 
         {compact === false && (
           <>
-            <div className="flex flex-col justify-center items-center gap-5 h-full w-full md:flex-row">
-              <Photo />
+            <div className="flex flex-col justify-between items-center gap-5 h-full w-full md:flex-row">
+              <div className="order-1 md:order-2"></div>
 
-              <div className="md:grow order-2 md:order-1 md:-mt-2.5">
-                <div className="greeting font-caveat text-[1.8rem] font-medium text-gray-600 dark:text-gray-100 dark:[text-shadow:0_0_2px_BLACK] flex items-center justify-start gap-2 mb-1 w-fit not-md:mx-auto text-left text-nowrap overflow-clip">
-                  <img
-                    src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
-                    className="size-[1em]"
-                  />
-                  Oi, me chamo Iago
+              <div className="md:grow order-2 md:order-1 lg:max-w-[68%] text-center! 2xl:text-left! not-2xl:*:mx-auto not-2xl:mx-auto">
+                <div className="greeting flex flex-col md:flex-row items-center not-2xl:justify-center gap-x-3 gap-y-2 mb-4 md:mb-3 text-[1rem] sm:text-[1.1rem]">
+                  <picture>
+                    <source
+                      srcSet="/me.avif"
+                      type="image/avif"
+                    />
+                    <img
+                      src="/me.jpeg"
+                      fetchPriority="high"
+                      className="size-[4rem] md:size-[3em] rounded-full block"
+                      alt="Foto de perfil"
+                    />
+                  </picture>
+                  <div className="space-y-0.5 font-inter text-center md:text-left md:tracking-wide overflow-clip text-black">
+                    <div className="opacity-80 text-[0.8em] font-medium uppercase [word-spacing:.06em]">
+                      Senior Software Engineer
+                    </div>
+                    <div className="text-[0.69em] uppercase">+10 anos xp</div>
+                  </div>
                 </div>
-                <h2 className="headline font-bold text-[2.1rem]/[2.8rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.4rem]/[6rem] text-wrap dark:text-gray-100 dark:drop-shadow-md [&_.line]:overflow-clip">
-                  Sou programador
+                <h2 className="headline font-inters font-bold text-[2.55rem]/[3rem] md:text-[3.7rem]/[4.5rem] xl:text-[4.5rem]/[5.4rem] 2xl:text-[4.5rem]/[5.7rem] text-wrap dark:text-gray-100 dark:drop-shadow-lg [&_.line]:overflow-clip">
+                  Crio websites <span className="memorable text-nowrap">memoráveis</span> e produtos
+                  digitais,
                   <br />
-                  Full-Stack
-                  <span className="text-neutral-600/40 dark:text-neutral-300/60 scale-135 ml-3.5 md:ml-6.5 font-[arial] leading-0 drop-shadow-none inline-block">
-                    &
-                  </span>
-                  <br />
-                  especialista em Front
+                  do zero à escala
+                  <ArrowForward className="size-[1.1em] inline-block ml-1 not-sm:hidden" />
                 </h2>
-                <p className="sub-heading font-medium text-[1.12rem]/6 text-green-600 dark:text-green-500 mt-5 not-md:max-w-[300px] not-md:mx-auto">
-                  Estou disponível para novas oportunidades!
+                <p className="sub-headline text-[0.96rem]/6 md:text-[1.2rem]/8 dark:drop-shadow-md max-w-[660px] mt-5 [&_.line]:overflow-clip">
+                  {/* Nada de layouts sem personalidade e landing pages genéricas.{' '} */}
+                  Ajudo marcas a alcançarem resultados com designs que se alinham à estratégia de
+                  produto e aos objetivos do negócio.
+                  <br className="not-md:hidden" />
+                  Mais do que bonito, um bom design é lembrado, respeitado e escolhido.
                 </p>
-                <div className="social-links flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-7.5 px-10 md:px-0">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      onClick={() => handleLinkClick(link.name.toLowerCase())}
-                    >
-                      <img src={link.badge} alt={link.name} />
-                    </a>
-                  ))}
+
+                <div className="more-cta mt-8 flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 w-fit">
+                  <Button
+                    href={whatsappLink}
+                    target="_blank"
+                    className="mt-2 text-nowrap"
+                    onClick={handleCTAClick}
+                  >
+                    <WhatsappIcon className="size-[1.4em] mb-0.5" />
+                    Solicitar orçamento
+                  </Button>
+                  <a
+                    href="#projects"
+                    className="text-[.84em] opacity-90"
+                  >
+                    Meus projetos{' '}
+                    <span className="inline-block relative top-[3px] animate-bounce [animation-duration:1.3s]">
+                      👇
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="w-full max-w-(--max-width) mx-auto more-cta">
-              <a href="#about">
-                Sobre mim{' '}
-                <span className="inline-block animate-bounce relative top-[3px]">
-                  👇
-                </span>
-              </a>
-            </div>
+            <div className="w-full max-w-(--max-width) mx-auto"></div>
           </>
         )}
       </div>
+
+      {!compact && <HeroCards />}
     </header>
-  );
-}
-
-function Photo() {
-  return (
-    <div className="profile-photo relative order-1 md:order-2">
-      <img
-        src="/me.JPEG?v"
-        className="rounded-full aspect-1/1 w-[260px] md:w-[340px] xl:w-[420px] border-[5px] md:border-[6px] bg-white border-white shadow-lg relative z-10 animate-[morph_8s_ease-in-out_infinite] will-change-[border-radius]"
-        alt="Foto de perfil"
-      />
-
-      <div className="hidden md:block pointer-events-none decorations">
-        <img
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-          width="40px"
-          height="40px"
-          className="absolute blur-[0px] -top-2 -right-2 animate-spin [animation-duration:10s]"
-        />
-        <img
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-          width="50px"
-          height="50px"
-          className="absolute blur-[0.45px] -bottom-13 right-10 opacity-70 animate-[whale_8s_linear_infinite]"
-        />
-        <div className="absolute top-[52px] -left-[28px] text-xs z-0 flex flex-col text-black/60 dark:text-gray-200">
-          <span className="ml-8.5">{'<body>'}</span>
-          <span className="-ml-2">{'<div class="card">'}</span>
-          <span className="ml-4.5">{'<header>'}</span>
-          <span className="ml-1.5">{'<img src="">'}</span>
-        </div>
-      </div>
-    </div>
   );
 }

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import posthog from 'posthog-js';
 import { links } from './MobileNav';
 
-export function DesktopNav() {
+export default function DesktopNav() {
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
