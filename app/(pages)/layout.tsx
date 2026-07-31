@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export default function PagesLayout({ children }: PropsWithChildren) {
   const maxContentWidth = usePathname() === '/labs' ? '1200px' : '800px';
+  const hideNav = usePathname() === '/links';
 
   return (
     <div>
@@ -15,7 +16,7 @@ export default function PagesLayout({ children }: PropsWithChildren) {
         className="px-safe-offset-7 relative z-2"
         style={{ '--max-content-width': maxContentWidth } as React.CSSProperties}
       >
-        <Hero className="px-0" />
+        {!hideNav && <Hero className="px-0" />}
 
         <main
           className={cn(
