@@ -64,8 +64,8 @@ export default function Button({ children, className, growOnHover = true, ...pro
     zoneElement.addEventListener('mouseleave', function () {
       gsap.to(btnElement, {
         transform: `translate(-50%, -50%)`,
-        duration: 0.6,
-        ease: 'power2.out',
+        duration: 1.5,
+        ease: 'elastic.out(1,0.3)',
         overwrite: true,
       });
     });
