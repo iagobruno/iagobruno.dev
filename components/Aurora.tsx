@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
+import useIsMobile from '@/hooks/useIsMobile';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -178,7 +179,6 @@ interface AuroraProps {
   time?: number;
   speed?: number;
   verticalOffset?: number;
-  flutedLineWidth?: number;
   flutedDistortion?: number;
   flutedOpacity?: number;
   flutedFade?: number;
@@ -197,7 +197,6 @@ const DEFAULTS: AuroraProps = {
   blend: 0.8,
   speed: 0.75,
   flutedEnabled: true,
-  flutedLineWidth: window.matchMedia('(max-width: 768px)').matches ? 0.6 : 1, // 0.7 mobile e 1 no desktop
   flutedDistortion: 0.92,
   flutedOpacity: 0.11,
   flutedFade: 0,
@@ -211,6 +210,7 @@ export default function Aurora(p: AuroraProps) {
     ...DEFAULTS,
     ...p,
   };
+  const flutedLineWidth = useIsMobile() ? 0.5 : 1;
 
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -265,7 +265,7 @@ export default function Aurora(p: AuroraProps) {
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
         uBlend: { value: props.blend },
         uVerticalOffset: { value: props.verticalOffset },
-        uFlutedLineWidth: { value: props.flutedLineWidth },
+        uFlutedLineWidth: { value: flutedLineWidth },
         uFlutedDistortion: { value: props.flutedDistortion },
         uFlutedOpacity: { value: props.flutedOpacity },
         uFlutedFade: { value: props.flutedFade },
@@ -291,7 +291,7 @@ export default function Aurora(p: AuroraProps) {
         program.uniforms.uAmplitude.value = props.amplitude;
         program.uniforms.uBlend.value = props.blend;
         program.uniforms.uVerticalOffset.value = props.verticalOffset;
-        program.uniforms.uFlutedLineWidth.value = props.flutedLineWidth;
+        program.uniforms.uFlutedLineWidth.value = flutedLineWidth;
         program.uniforms.uFlutedDistortion.value = props.flutedDistortion;
         program.uniforms.uFlutedOpacity.value = props.flutedOpacity;
         program.uniforms.uFlutedFade.value = props.flutedFade;

@@ -72,7 +72,7 @@ export default function Advantages() {
               mesmo do primeiro contato.
             </p>
 
-            <div className="space-y-8 mt-9">
+            <div className="space-y-5 md:space-y-8 mt-9">
               {[
                 {
                   title: 'Visibilidade 24/7',
@@ -112,7 +112,7 @@ export default function Advantages() {
             </div>
           </div>
 
-          <div className="order-2 md:w-2/4 grid place-items-center relative md:-translate-y-5">
+          <div className="order-0 md:order-2 md:w-2/4 grid place-items-center relative md:-translate-y-5">
             <div className="relative z-1">
               {/* <img
                 src="/images/safari-toolbar.png"
