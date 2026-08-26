@@ -97,7 +97,7 @@ export default function ProjectCard({ project }: CardProps) {
         <div className="font-medium text-[1.6rem] md:text-[1.8rem] leading-[2rem]">
           {project.title}
         </div>
-        <div className="mt-0.5 text-[.9em] tabular-nums">
+        <div className="mt-0.5 text-[.83em]">
           <span className="opacity-70">{project.year}</span>
           {project.current && (
             <>

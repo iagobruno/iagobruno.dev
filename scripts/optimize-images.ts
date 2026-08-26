@@ -18,9 +18,11 @@ const defaultOptions: ImageOptions = {
 
 const specificImageOptions: Record<string, Partial<ImageOptions> | false> = {
   'icon.png': false,
+  'favicon.png': false,
   'icon-dark.png': false,
   'apple-touch-icon.png': false,
   'sign.png': false,
+  'sign2.png': false,
   'logo.png': false,
   'me.JPEG': {
     maxWidth: 600,

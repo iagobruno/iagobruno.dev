@@ -7,7 +7,6 @@ import {
   FaGithub as GithubIcon,
   FaWhatsapp as WhatsappIcon,
   FaLinkedin as LinkedinIcon,
-  FaDiscord as DiscordIcon,
 } from 'react-icons/fa6';
 import { HiOutlineEnvelope as EmailIcon } from 'react-icons/hi2';
 import copy from 'copy-to-clipboard';
@@ -23,7 +22,6 @@ const socialLinks = [
     name: 'Email',
     href: 'mailto:contato@iagobruno.dev',
     Icon: EmailIcon,
-    dataPointto: 'mail',
     className: 'size-[1.08em]',
   },
   {
@@ -32,32 +30,22 @@ const socialLinks = [
     Icon: WhatsappIcon,
     className: 'size-[1em]',
   },
-  // {
-  //   name: 'Discord',
-  //   href: 'https://discordapp.com/users/724201631348162592',
-  //   Icon: DiscordIcon,
-  //   dataPointto: 'user',
-  //   className: 'size-[1em]',
-  // },
   {
     name: 'GitHub',
     href: 'https://github.com/iagobruno',
     Icon: GithubIcon,
-    dataPointto: 'name',
     className: 'size-[1em]',
   },
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/iagobruno',
     Icon: LinkedinIcon,
-    dataPointto: 'name',
     className: 'size-[1em]',
   },
   {
     name: 'Instagram',
     href: 'https://instagram.com/iagobruno.dev',
     Icon: InstaIcon,
-    dataPointto: 'user',
     className: 'size-[1em]',
   },
 ];
@@ -126,7 +114,7 @@ export default function Footer() {
             </p>
           </header>
 
-          <div className="mb-10 w-full">
+          <div className="mb-5 w-full">
             <Button
               href={whatsappLink}
               target="_blank"
@@ -134,19 +122,13 @@ export default function Footer() {
               onClick={handleCTAClick}
             >
               <WhatsappIcon className="size-[1.4em] mb-0.5" />
-              Fazer orçamento
+              Solicitar orçamento
             </Button>
           </div>
 
-          <img
-            src="/logo.png"
-            className="h-[0.96rem] mt-4 mb-6 inline transition-transform active:scale-94 dark:invert"
-            alt="Iago Bruno"
-          />
-
           <div
             className={cn(
-              'icons text-[1.52rem] flex gap-y-1 gap-x-[0.9em] justify-center items-center flex-wrap mx-auto mb-6',
+              'icons text-[1.52rem] flex gap-y-1 gap-x-[0.9em] justify-center items-center flex-wrap mx-auto',
               '*:opacity-90 *:text-inherit *:hover:text-primary *:transition-all *:hover:scale-118 *:hover:rotate-15 *:duration-200',
             )}
           >
@@ -157,7 +139,6 @@ export default function Footer() {
                   key={link.href + idx}
                   href={link.href}
                   target="_blank"
-                  data-pointto={link.dataPointto}
                   onClick={() => handleLinkClick(link.name.toLowerCase())}
                 >
                   <Icon className={link.className} />
@@ -165,6 +146,16 @@ export default function Footer() {
               );
             })}
           </div>
+
+          <div className="mt-15 mb-6 scale-90">
+            <ThemeToggle />
+          </div>
+
+          <img
+            src="/sign2.png"
+            className="h-[2.1rem] md:h-[2.4rem] mb-3 inline transition-transform active:scale-94 not-dark:invert opacity-80 scale-x-102"
+            alt="Iago Bruno"
+          />
 
           <div className="mx-auto w-fit flex items-center gap-2 not-sm:flex-col text-stone-600 dark:text-stone-400 text-[0.68rem] opacity-80">
             <a
@@ -205,10 +196,6 @@ export default function Footer() {
             >
               Changelog
             </a>
-          </div>
-
-          <div className="mt-6 scale-90">
-            <ThemeToggle />
           </div>
         </div>
 
