@@ -6,9 +6,9 @@ import { cn } from '@/lib/utils';
 const cards = [
   '/images/descontai-print.jpg',
   '/images/danc-print.png',
-  '/images/filament-print.png',
   '/images/voltsolar-print.jpg',
   '/images/safepag-dash.png',
+  '/images/filament-print.png',
   // '/images/hero-design.png',
   '/images/aurenpay-print.png',
 ];
@@ -165,35 +165,62 @@ export default function HeroCards({
   }, [cardDistance, verticalDistance, delay, skewAmount]);
 
   return (
-    <div className="absolute z-1 top-2/4 left-2/4 -translate-2/4 h-full w-full max-w-[2000px] max-h-[1800px] not-2xl:hidden pointer-events-none">
-      <div
-        ref={container}
-        className="header-cards h-[45%] max-h-[550px] aspect-16/10 absolute bottom-0 right-0 transform translate-x-[2%] translate-y-[10%] origin-bottom-right perspective-[900px] overflow-visible max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55] transition-opacity duration-1200"
-        style={{
-          opacity: isMounted ? 1 : 0,
-        }}
-      >
-        {children}
+    <>
+      {/* Mobile */}
+      <div className="2xl:hidden absolute z-1 top-full -mt-0 left-0 w-full aspect-16/10 pointer-events-none">
+        {cards.map((img, i) => (
+          <Card
+            key={i}
+            image={img}
+            className="top-0 left-0 [&_.browser-toolbar]:hidden"
+            style={{
+              zIndex: 10 - i,
+              marginTop: -(22 * i) - 22,
+              transform: `scale(${1 - (0.06 * i) - 0.06})`,
+              filter: `blur(${0.4 * i}px)`,
+            }}
+          />
+        ))}
       </div>
-    </div>
+
+      {/* Desktop */}
+      <div className="not-2xl:hidden absolute z-1 top-2/4 left-2/4 -translate-2/4 h-full w-full max-w-[2000px] max-h-[1800px] pointer-events-none">
+        <div
+          ref={container}
+          className="header-cards h-[45%] max-h-[550px] aspect-16/10 absolute bottom-0 right-0 transform translate-x-[2%] translate-y-[10%] origin-bottom-right perspective-[900px] overflow-visible max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55] transition-opacity duration-1200"
+          style={{
+            opacity: isMounted ? 1 : 0,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </>
   );
 }
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   image: string;
   customClass?: string;
+  style?: Record<string, any>;
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ customClass, image, ...rest }, ref) => (
+  ({ customClass, image, style, ...rest }, ref) => (
     <div
       ref={ref}
       {...rest}
-      className={`size-full absolute top-1/2 left-1/2 rounded-lg overflow-clip bg-black shadow-xl [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ''} ${rest.className ?? ''}`.trim()}
+      className={cn(
+        `size-full absolute top-1/2 left-1/2 rounded-lg overflow-clip bg-black shadow-xl [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden]`,
+        customClass,
+        rest.className,
+      )}
+      style={style}
     >
       <img
         src="/images/safari-toolbar.png"
         fetchPriority="high"
+        className="browser-toolbar"
       />
       <picture>
         <source

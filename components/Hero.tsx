@@ -165,7 +165,7 @@ export default function Hero({ compact = true, className }: HeroProps) {
             <div className="flex flex-col justify-between items-center gap-5 h-full w-full md:flex-row">
               <div className="order-1 md:order-2"></div>
 
-              <div className="md:grow order-2 md:order-1 lg:max-w-[68%] text-center! 2xl:text-left! not-2xl:*:mx-auto not-2xl:mx-auto">
+              <div className="md:grow order-2 md:order-1 lg:max-w-[68%] text-center! 2xl:text-left! not-2xl:*:mx-auto not-2xl:mx-auto not-md:-mt-10">
                 <div className="greeting flex flex-col md:flex-row items-center not-2xl:justify-center gap-x-3 gap-y-2 mb-4 md:mb-3 text-[1rem] sm:text-[1.1rem]">
                   <picture>
                     <source
@@ -193,15 +193,17 @@ export default function Hero({ compact = true, className }: HeroProps) {
                   do zero à escala
                   <ArrowForward className="size-[1.1em] inline-block ml-1 not-sm:hidden" />
                 </h2>
-                <p className="sub-headline text-[0.96rem]/6 md:text-[1.2rem]/8 dark:drop-shadow-md max-w-[660px] mt-5 [&_.line]:overflow-clip">
+                <p className="sub-headline text-[0.92rem]/6 md:text-[1.2rem]/8 dark:drop-shadow-md max-w-[660px] mt-2 md:mt-5 [&_.line]:overflow-clip">
                   {/* Nada de layouts sem personalidade e landing pages genéricas.{' '} */}
-                  Ajudo marcas a alcançarem resultados com designs que se alinham à estratégia de
-                  produto e aos objetivos do negócio.
+                  Ajudo empresas a se destacarem com produtos digitais premium, combinando
+                  elegância, estratégia e os objetivos do negócio.{` `}
                   <br className="not-md:hidden" />
-                  Mais do que bonito, um bom design é lembrado, respeitado e escolhido.
+                  <div className="not-md:hidden">
+                    Mais do que bonito, um bom design é lembrado, respeitado e escolhido.
+                  </div>
                 </p>
 
-                <div className="more-cta mt-8 flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 w-fit">
+                <div className="more-cta mt-4 md:mt-8 flex flex-col md:flex-row items-center justify-center md:justify-start gap-x-4 gap-y-2 w-fit">
                   <Button
                     href={whatsappLink}
                     target="_blank"
@@ -213,12 +215,9 @@ export default function Hero({ compact = true, className }: HeroProps) {
                   </Button>
                   <a
                     href="#projects"
-                    className="text-[.84em] opacity-90"
+                    className="text-[.9em] opacity-90"
                   >
-                    Meus projetos{' '}
-                    <span className="inline-block relative top-[3px] animate-bounce [animation-duration:1.3s]">
-                      👇
-                    </span>
+                    Meus projetos
                   </a>
                 </div>
               </div>

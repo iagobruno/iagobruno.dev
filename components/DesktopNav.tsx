@@ -40,7 +40,7 @@ export default function DesktopNav() {
         <NavLinksTemplate
           links={links.filter((link) => link[0] !== 'Sobre')}
           className={cn(
-            'fixed top-3 left-2/4 -translate-x-2/4 z-50! p-2 pl-6 gap-3.5 shadow-xl dark:shadow-white/5 ring ring-black/6 dark:ring-white/7 transition-transform origin-top not-hover:scale-92',
+            'fixed top-3 left-2/4 -translate-x-2/4 z-50! p-2 pl-6 gap-3.5 shadow-xl dark:shadow-white/5 ring ring-black/6 dark:ring-white/7 transition-transform origin-top not-hover:scale-94',
             sticky
               ? 'translate-y-0 ease-out duration-600'
               : '-translate-y-60 ease-linear duration-400',

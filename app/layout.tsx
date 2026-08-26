@@ -64,7 +64,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 export const metadata: Metadata = {
   title: {
     template: '%s | Iago Bruno',
-    default: 'Iago Bruno | Full-Stack Developer',
+    default: 'Iago Bruno | Senior Software Engineer',
   },
   description: "Iago's portfolio",
   metadataBase: new URL('https://iagobruno.dev'),

@@ -197,7 +197,7 @@ const DEFAULTS: AuroraProps = {
   blend: 0.8,
   speed: 0.75,
   flutedEnabled: true,
-  flutedLineWidth: 1, // 0.7 mobile e 1 no desktop
+  flutedLineWidth: window.matchMedia('(max-width: 768px)').matches ? 0.6 : 1, // 0.7 mobile e 1 no desktop
   flutedDistortion: 0.92,
   flutedOpacity: 0.11,
   flutedFade: 0,
