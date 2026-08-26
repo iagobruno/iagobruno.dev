@@ -1,5 +1,4 @@
 import Photos from './Photos';
-import Age from '@/components/Age';
 import { cn } from '@/lib/utils';
 import CommitsHistory from './CommitsHistory';
 import { FaFileDownload as DownloadIcon } from 'react-icons/fa';
@@ -21,6 +20,8 @@ const skills: Skills = [
   { name: 'GSAP', icon: 'gsap-dark.png' },
   { name: 'Tailwind', icon: 'tailwind.svg' },
   { name: 'GraphQL', icon: 'graphql.svg' },
+  { name: 'WebSockets', icon: 'socket.io-light.svg' },
+  { name: 'WebSockets', icon: 'socket.io-dark.svg' },
   { name: 'Bun', icon: 'bun.svg' },
   { name: 'MySQL', icon: 'mysql.svg' },
   { name: 'PostgreSQL', icon: 'postgresql.svg' },
@@ -42,16 +43,16 @@ export default function About() {
   return (
     <section className="w-full px-safe-offset-6 py-6 md:py-16 relative z-11 bg-neutral-100 dark:bg-neutral-900">
       <div className="max-w-(--max-content-width) mx-auto">
-        <div className="flex flex-col md:flex-row gap-y-10 gap-x-12">
+        <div className="flex flex-col md:flex-row gap-y-6 gap-x-13">
+          <AboutHeading className="md:hidden pt-4" />
+
           <Photos />
 
           <div
             id="about"
-            className="flex-1 text-[1.13rem]/[1.82rem] md:text-[1.28rem]/[2.35rem] space-y-5 scroll-mt-13"
+            className="flex-1 text-[1.13rem]/[1.82rem] md:text-[1.28rem]/[2.35rem] [&_p]:font-inter space-y-4 md:space-y-5 scroll-mt-13"
           >
-            <h3 className="text-primary text-center md:text-left text-base font-medium uppercase tracking-wider scroll-mt-6">
-              Sobre
-            </h3>
+            <AboutHeading className="not-md:hidden pb-2" />
 
             {/* <div className="flex justify-evenly md:justify-between gap-3 text-[0.9em] mb-10">
               {numbers.map(({ value, label }) => (
@@ -66,24 +67,22 @@ export default function About() {
             </div> */}
 
             <p>
-              Tenho <Age /> anos e atualmente moro no Ceará, Brasil. Sou
-              apaixonado por programação <strong>há mais de 10 anos</strong> e
-              aprendi tudo o que sei sozinho, movido pela curiosidade de saber
-              como funciona a web, desde então, venho estudando novas linguagens
-              programação e desenvolvendo websites.
+              Estou na área de desenvolvimento de software <strong>há mais de 10 anos</strong> e
+              aprendi tudo o que sei sozinho, movido pela curiosidade de saber como funciona a web,
+              desde então, venho estudando novas linguagens programação, desenvolvendo websites e
+              projetos pessoais.
             </p>
             <p>
-              Tenho vasta experiência com JavaScript e PHP com Laravel, mas
-              estou sempre buscando ampliar meus conhecimentos. Cada projeto é
-              uma oportunidade para aprender algo novo, sempre com foco na
-              qualidade do produto final.
+              Tenho vasta experiência na criação de produtos digitais, seja ferramenta
+              pessoal/interna ou uma aplicação de grande porte. Sempre prezo pelos detalhes:
+              interface elegante, excelente desempenho e um código organizado. Cada projeto é uma
+              oportunidade para aprender algo novo, sempre com foco na qualidade do produto final.
             </p>
-            {/* <p>Você pode conferir minhas outras habilidades abaixo.</p> */}
 
             <a
-              href="https://drive.google.com/file/d/1J1RBxhNYlWX5MmC5Q-2wUZxIxyFyYRZf/view"
+              href="https://drive.google.com/file/d/1MX9vEqTQWVnkYO6c_71aoh6udbgcn2fF/view"
               target="_blank"
-              className="inline-flex items-center gap-2 p-1 text-[0.825em]/5 text-inherit hover:underline hover:text-primary transition-colors group -ml-1"
+              className="inline-flex items-center gap-2 p-1 text-[0.85em]/5 text-inherit hover:underline hover:text-primary transition-colors group -ml-1"
             >
               <DownloadIcon className="size-[1.16em] transition-transform group-hover:scale-115 group-hover:-rotate-12" />
               Ver currículo
@@ -105,9 +104,11 @@ export default function About() {
                   <img
                     src={'/icons/' + skill.icon}
                     className="size-11 md:size-12 object-contain"
+                    fetchPriority="low"
+                    decoding="async"
                     alt={skill.name + ' Logo'}
                   />
-                  <span className="block text-[0.5rem] xl:text-[0.6rem] opacity-70 dark:opacity-52 mt-0">
+                  <span className="block text-[0.5rem] xl:text-[0.6rem] tracking-wide opacity-70 dark:opacity-52 mt-0">
                     {skill.name}
                   </span>
                 </span>
@@ -117,8 +118,28 @@ export default function About() {
         </div>
       </div>
 
-      {/*<CommitsHistory />*/}
-      <div className="block h-3" />
+      <CommitsHistory />
+
+      {/* <div className="block h-3" /> */}
+      <div className="text-[0.75em] tracking-wider text-center opacity-56 mt-4 md:mt-2 not-md:mb-3">
+        Mais de 6k de contribuições no total
+      </div>
     </section>
+  );
+}
+
+function AboutHeading({ className = '' }) {
+  return (
+    <div className={cn(`space-y-1.5 md:space-y-2`, className)}>
+      <h3 className="text-primary text-left text-base font-medium uppercase tracking-wider scroll-mt-6">
+        Sobre
+      </h3>
+
+      <h2 className="text-[1.62rem]/9 md:text-3xl/11">
+        Sou programador <span className="text-nowrap">Full-Stack</span>
+        <br />
+        especialista em Front
+      </h2>
+    </div>
   );
 }

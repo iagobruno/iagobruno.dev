@@ -18,12 +18,7 @@ export default function ProjectCard({ project }: CardProps) {
   function handleTransformation(evt: React.PointerEvent<HTMLImageElement>) {
     if (evt.pointerType !== 'mouse') return;
 
-    const {
-      left,
-      top,
-      width: w,
-      height: h,
-    } = evt.currentTarget.getBoundingClientRect();
+    const { left, top, width: w, height: h } = evt.currentTarget.getBoundingClientRect();
     const x = evt.clientX - left;
     const y = evt.clientY - top;
     const MAGNETIC_INTENSITY = 9;
@@ -39,11 +34,11 @@ export default function ProjectCard({ project }: CardProps) {
           ${(x / w - 0.5) * MAGNETIC_INTENSITY}px,
           ${(y / h - 0.5) * MAGNETIC_INTENSITY}px
         )
-      `
+      `,
     );
     imgRef.current!.style.setProperty(
       'box-shadow',
-      `${(x / w - 0.5) * 32}px 10px 20px rgb(var(--shadow-color) / 16%)`
+      `${(x / w - 0.5) * 32}px 10px 20px rgb(var(--shadow-color) / 16%)`,
     );
     // glowRef.current!.style.setProperty(
     //   'background-image',
@@ -78,13 +73,21 @@ export default function ProjectCard({ project }: CardProps) {
         onPointerLeave={handleMouseLeave}
       >
         <ClickToExpandImg>
-          <img
-            ref={imgRef}
-            src={project.image}
-            className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-[inherit] border border-stone-400/40 dark:border-white/5"
-            loading="lazy"
-            onClick={handleMouseLeave}
-          />
+          <picture>
+            <source
+              srcSet={project.image.replace(/\.(jpe?g|png|webp)$/i, '.avif')}
+              type="image/avif"
+            />
+            <img
+              ref={imgRef}
+              src={project.image}
+              className="object-cover object-top relative z-1 bg-white/20 w-full aspect-16/10 rounded-xl border border-stone-400/40 dark:border-white/5"
+              alt={`Print de demonstração de como era visualmente o projeto ${project.title}`}
+              loading="lazy"
+              fetchPriority="low"
+              onClick={handleMouseLeave}
+            />
+          </picture>
         </ClickToExpandImg>
 
         {/*<a href={project.url} ref={glowRef} className="absolute inset-0 z-3 cursor-pointer rounded-[inherit] opacity-0 transition-opacity group-hover:opacity-5 not-sm:!opacity-0" target="_blank" rel="noopener noreferrer" />*/}
@@ -94,8 +97,8 @@ export default function ProjectCard({ project }: CardProps) {
         <div className="font-medium text-[1.6rem] md:text-[1.8rem] leading-[2rem]">
           {project.title}
         </div>
-        <div className="mt-0.5 hidden">
-          <span className="opacity-90">{project.year}</span>
+        <div className="mt-0.5 text-[.83em]">
+          <span className="opacity-70">{project.year}</span>
           {project.current && (
             <>
               {' '}
@@ -116,9 +119,7 @@ export default function ProjectCard({ project }: CardProps) {
             growOnHover
             className="dark:bg-white/26 !px-4 !rotate-0 md:group-odd/card:origin-left md:group-even/card:origin-right dark:hover:bg-white dark:hover:!text-black"
           >
-            {project.url.includes('github.com') && (
-              <GithubIcon className="size-4.5 mr-0.5" />
-            )}
+            {project.url.includes('github.com') && <GithubIcon className="size-4.5 mr-0.5" />}
             Ver {project.url.includes('github.com') ? 'no Github' : 'projeto'}
             <ArrowForward className="size-4" />
           </Button>

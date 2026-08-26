@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'tailwindcss-safe-area';
 @plugin "@tailwindcss/typography";
+@import "tw-animate-css";
 
 /* Use a selector-based strategy in your project for dark mode */
 @variant dark (&:is(.dark *));
@@ -11,6 +12,9 @@
 
   --font-inter: var(--font-family-inter);
   --font-caveat: var(--font-family-caveat);
+  --font-archivo: var(--font-family-archivo);
+
+  --breakpoint-2xl: 100rem;
 }
 
 /*
@@ -31,12 +35,12 @@
 :root {
   --max-content-width: 1024px;
 
-  @apply scroll-smooth overflow-x-hidden xl:[--max-content-width:1280px];
+  @apply scroll-smooth overflow-x-hidden not-md:scrollbar-thin xl:[--max-content-width:1400px];
 }
 
 @layer base {
   body {
-    @apply font-inter relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
+    @apply font-archivo relative dark:bg-neutral-950 dark:text-neutral-200 text-[17px] xl:text-[19px];
     @apply selection:bg-primary selection:text-white;
   }
 
@@ -53,6 +57,11 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
   @apply relative z-5;
 }
 
+#devtools-indicator,
+[data-nextjs-dialog-overlay="true"] {
+  @apply z-999!;
+}
+
 .prose {
   --tw-prose-body: inherit;
   --tw-prose-invert-body: inherit;
@@ -62,7 +71,51 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
 }
 
 .blurred-background {
-  @apply bg-[url(/images/blurred-background.webp)] bg-top [background-size:120%_90%] md:[background-size:100%_108%] bg-no-repeat bg-white dark:bg-neutral-950;
+  @apply bg-top [background-size:120%_90%] md:[background-size:100%_108%] bg-no-repeat bg-white dark:bg-neutral-950 saturate-140;
+  background-image: url("/images/blurred-background.webp");
+  background-image: image-set(
+    url("/images/blurred-background.avif") type("image/avif"),
+    url("/images/blurred-background.webp") type("image/webp")
+  );
+}
+
+.line-grid-background {
+    --line-color: rgb(255 255 255 / 20%);
+    background-image:linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+    background-size:20px 20px;
+    background-position:0 0, 0 0;
+    mask-image:repeating-linear-gradient(
+        to right,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+        ),
+        repeating-linear-gradient(
+        to bottom,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+        ),
+        radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%);
+    -webkit-mask-image:repeating-linear-gradient(
+        to right,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+        ),
+        repeating-linear-gradient(
+        to bottom,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+        ),;
+    mask-composite:intersect;
+     -webkit-mask-composite:source-in;
 }
 
 .project img,
@@ -92,6 +145,33 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
   transform: perspective(1000px) rotateY(0) rotateX(0) rotate(0) scale(1)
     translate(0) translateY(0) !important;
   box-shadow: 0px 4px 10px rgb(var(--shadow-color) / 12%);
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
 }
 
 @keyframes morph {
@@ -147,6 +227,15 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
 @keyframes opacity {
   from {
     opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-50 {
+  from {
+    opacity: 0.5;
   }
   to {
     opacity: 1;
@@ -251,13 +340,13 @@ body > *:not(.blurred-background, [class*='z-'], .adhs-container, footer) {
     filter: blur(0px);
   }
 }
-::view-transition-group(page-transition) {
+html:not(.loading)::view-transition-group(page-transition) {
   animation-duration: 500ms;
 }
-::view-transition-old(page-transition) {
+html:not(.loading)::view-transition-old(page-transition) {
   animation-name: slide-out-to-top;
 }
-::view-transition-new(page-transition) {
+html:not(.loading)::view-transition-new(page-transition) {
   animation-name: slide-in-from-bottom;
   animation-duration: 700ms;
   animation-delay: 300ms;

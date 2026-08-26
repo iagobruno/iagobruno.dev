@@ -1,6 +1,5 @@
 'use client';
 import ProjectCard from './ProjectCard';
-import ProjectsMoreSection from './ProjectsMoreSection';
 import gsap from 'gsap';
 import useMount from 'react-use/esm/useMount';
 
@@ -38,7 +37,7 @@ const projects = [
     url: 'https://tulipa-cake.web.app/',
   },
   {
-    image: '/images/descontaiv2-print.jpg',
+    image: '/images/descontai-print.jpg',
     title: 'Descontaí',
     year: '2019',
     description:
@@ -61,13 +60,12 @@ const projects = [
       'Um app de delivery para uma hamburgueria que buscava se desvincular das grandes plataformas. \nFeito com React, Typescript e Firebase.',
     url: 'https://pointburguer.web.app/',
   },
-  {
-    image: '/images/tecbolt-print.jpg',
-    title: 'TecBolt',
-    year: '2017',
-    description:
-      'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
-  },
+  // {
+  //   image: '/images/tecbolt-print.jpg',
+  //   title: 'TecBolt',
+  //   year: '2017',
+  //   description: 'O TecBolt era um portal de notícias curtas no formato consolidado de stories.',
+  // },
   {
     image: '/images/lembretes-print.jpg',
     title: 'Lembretes App',
@@ -80,7 +78,7 @@ const projects = [
     title: 'Rede Social Beta',
     year: '2012',
     description:
-      'O Rede Social Beta foi meu primeiro grande trabalho, na época o portal recebia uma grande quantidade de visitas e fui encarregado de cuidar do site.',
+      'O Rede Social Beta foi meu primeiro trabalho, na época o portal recebia uma grande quantidade de visitas e fui encarregado de cuidar do site.',
   },
 ];
 
@@ -88,7 +86,7 @@ export type Project = (typeof projects)[number];
 
 export default function Projects() {
   useMount(() => {
-    const items = gsap.utils.toArray('.project');
+    const items = document.querySelectorAll('.project');
 
     items.forEach((element, i) => {
       gsap.fromTo(
@@ -103,7 +101,7 @@ export default function Projects() {
             end: 'top 50%',
             scrub: true,
           },
-        }
+        },
       );
     });
   });
@@ -111,23 +109,34 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-white w-full px-safe-offset-8 py-10 md:py-16 relative z-10 dark:bg-neutral-950"
+      className="w-full px-safe-offset-8 py-10 md:py-16 relative z-10 bg-white dark:bg-neutral-950"
     >
       <div className="max-w-(--max-content-width) mx-auto">
-        <div className="text-primary text-base font-medium uppercase text-center tracking-wider mb-1">
-          Portfólio
-        </div>
-        <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 md:mb-14">
-          Meus trabalhos e projetos selecionados
-        </h3>
+        <header className="text-center mb-10 md:mb-14">
+          <div className="text-primary text-base font-medium uppercase tracking-widest mb-1">
+            Portfólio
+          </div>
+          <h3 className="text-3xl md:text-[2.5rem] font-semibold mb-4">
+            Meus trabalhos e projetos selecionados
+          </h3>
+          <p className="sm:text-lg opacity-85 lg:max-w-[600px] mx-auto">
+            Cada projeto é pensado do zero, unindo estratégia, design e desenvolvimento.
+          </p>
+        </header>
 
         <div className="space-y-7 md:space-y-12 mx-auto max-w-[1210px]">
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+            />
           ))}
         </div>
 
-        <ProjectsMoreSection />
+        <div className="text-center text-2xl/7 font-medium max-w-[340px] mx-auto mt-8 md:mt-11 -mb-1 opacity-[90%] ">
+          <div className="[word-spacing:1px] tracking-wide">O próximo projeto</div>
+          pode ser o seu!
+        </div>
       </div>
     </section>
   );

@@ -5,22 +5,18 @@ import { list as devices } from '@/app/(pages)/uses/devices';
 
 export default function SetupImgMap() {
   const setupDevices = devices.filter(
-    (item) => item.displayOnImgMap && typeof item.position !== 'undefined'
+    (item) => item.displayOnImgMap && typeof item.position !== 'undefined',
   );
   const containerRef = useRef<HTMLDivElement>(null);
   const currentCaption = useRef<HTMLElement>(null);
   const currentPathLine = useRef<any>(null);
 
-  function handleItemMouseEnter(
-    evt: MouseEvent,
-    item: (typeof devices)[number]
-  ) {
+  function handleItemMouseEnter(evt: MouseEvent, item: (typeof devices)[number]) {
     const caption = document.createElement('div');
     caption.className =
       'caption text-base px-2 absolute -translate-y-2/4 max-w-[200px] w-full transition-opacity duration-400 opacity-0';
     caption.style.top = item.position![0] + '%';
-    caption.style[item.position![1] >= 50 ? 'left' : 'right'] =
-      'calc(100% + 12px)';
+    caption.style[item.position![1] >= 50 ? 'left' : 'right'] = 'calc(100% + 12px)';
     caption.style.textAlign = item.position![1] >= 50 ? 'left' : 'right';
     caption.innerText = item.name;
     containerRef.current?.append(caption);
@@ -53,14 +49,25 @@ export default function SetupImgMap() {
     currentCaption.current?.remove();
   }
 
+  const src = '/images/workstation.jpeg';
+
   return (
-    <div className="relative w-full" ref={containerRef}>
+    <div
+      className="relative w-full"
+      ref={containerRef}
+    >
       <ClickToExpandImg>
-        <img
-          src="/images/workstation.jpeg"
-          className="aspect-800/480 w-full rounded-lg object-cover object-center mt-7"
-          alt="Meu mesa de trabalho"
-        />
+        <picture>
+          <source
+            srcSet={src.replace(/\.(jpe?g|png|webp)$/i, '.avif')}
+            type="image/avif"
+          />
+          <img
+            src={src}
+            className="aspect-800/480 w-full rounded-lg object-cover object-center mt-7"
+            alt="Foto da minha mesa de trabalho"
+          />
+        </picture>
       </ClickToExpandImg>
 
       {setupDevices.map((item) => (

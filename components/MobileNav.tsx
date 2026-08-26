@@ -55,7 +55,7 @@ export default function MobileNav() {
   }
 
   function handleIconClick(name: string) {
-    posthog.capture(`${name}_link_click`, {
+    posthog.capture(`${name}_link_clicked`, {
       location: 'mobile_nav',
     });
   }
@@ -67,9 +67,7 @@ export default function MobileNav() {
         className="md:hidden fixed! z-50 top-safe-or-2 right-3.5 px-3 py-5 cursor-pointer outline-0"
         type="button"
       >
-        <div
-          className={cn('hamburger-icon', { 'close-icon': showMobileNav })}
-        />
+        <div className={cn('hamburger-icon', { 'close-icon': showMobileNav })} />
       </button>
 
       <CSSTransition
@@ -96,7 +94,7 @@ export default function MobileNav() {
               {
                 '*:-translate-x-[125%]!': !showMobileNav,
                 '*:translate-x-0': showMobileNav,
-              }
+              },
             )}
           >
             <Link href="/#">Início</Link>
@@ -114,9 +112,7 @@ export default function MobileNav() {
           <div
             className={cn(
               'flex items-center gap-5 *:transition-opacity',
-              showMobileNav
-                ? '*:opacity-100 *:duration-400'
-                : '*:opacity-0 *:duration-0'
+              showMobileNav ? '*:opacity-100 *:duration-400' : '*:opacity-0 *:duration-0',
             )}
           >
             {socialLinks.map(([name, Icon, url], index) => (
@@ -126,9 +122,7 @@ export default function MobileNav() {
                 target="_blank"
                 className="text-inherit cursor-pointer"
                 style={{
-                  transitionDelay: showMobileNav
-                    ? 400 + 60 * index + 'ms'
-                    : '0ms',
+                  transitionDelay: showMobileNav ? 400 + 60 * index + 'ms' : '0ms',
                 }}
                 onClick={() => handleIconClick(name)}
               >
@@ -140,9 +134,7 @@ export default function MobileNav() {
           <div
             className={cn(
               'transition-opacity',
-              showMobileNav
-                ? 'opacity-100 duration-400 delay-650'
-                : 'opacity-0 duration-0'
+              showMobileNav ? 'opacity-100 duration-400 delay-650' : 'opacity-0 duration-0',
             )}
           >
             <ThemeToggle onClick={(e) => e.stopPropagation()} />

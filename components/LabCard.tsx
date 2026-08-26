@@ -50,6 +50,8 @@ export default function LabCard({ title, description, image, link, repo }) {
         {image && (
           <img
             src={image}
+            loading="lazy"
+            fetchPriority="low"
             className="object-cover size-full w-full group-hover/card:scale-105 transition-all duration-500"
           />
         )}

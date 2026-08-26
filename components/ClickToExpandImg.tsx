@@ -8,15 +8,21 @@ import { IoClose as CloseIcon } from 'react-icons/io5';
 export default function ClickToExpandImg({ children }) {
   const [expanded, setExpanded] = useState(false);
   const thumbnailRef = useRef<HTMLImageElement | null>(null);
-  const src = children.props.src;
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
 
   function handleClick(e: React.MouseEvent<HTMLImageElement>) {
     if (children.props.onClick) children.props.onClick(e);
 
-    const el = e.currentTarget;
+    let el = e.currentTarget;
+    if (el.tagName.toLowerCase() === 'picture') {
+      el = el.querySelector('img')!;
+    }
     thumbnailRef.current = el;
 
-    flushSync(() => setExpanded(true));
+    flushSync(() => {
+      setImgSrc(el.currentSrc);
+      setExpanded(true);
+    });
 
     const img = document.querySelector('.image-fullscreen img') as HTMLElement;
     const overlay = document.querySelector('.image-fullscreen') as HTMLElement;
@@ -48,7 +54,7 @@ export default function ClickToExpandImg({ children }) {
         rotation: 0,
         duration: 0.4,
         ease: 'power2.out',
-      }
+      },
     );
   }
 
@@ -133,11 +139,11 @@ export default function ClickToExpandImg({ children }) {
               }}
             />
             <img
-              src={src}
+              src={imgSrc}
               className="max-h-[86vh] max-w-[92vw] object-cover rounded-md"
             />
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

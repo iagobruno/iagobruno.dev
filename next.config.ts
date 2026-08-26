@@ -9,10 +9,12 @@ const nextConfig: NextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  allowedDevOrigins: ['*.ngrok-free.app'],
   experimental: {
     mdxRs: true,
     viewTransition: true,
   },
+  devIndicators: false,
 };
 
 const withMDX = createMDX({
