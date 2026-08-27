@@ -106,7 +106,9 @@ export default function Footer() {
               Contato
             </div>
             <h3 className="text-4xl md:text-5xl/14 font-semibold mb-4">
-              Vamos conversar sobre o<br className="not-md:hidden" />
+              Vamos conversar sobre o
+              <br className="not-md:hidden" />
+              {` `}
               seu projeto
             </h3>
             <p className="sm:text-lg opacity-85">
