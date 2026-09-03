@@ -53,8 +53,8 @@ export default function Photos() {
                 'desktop-photos block rounded-xl border-[5px] bg-white border-white shadow-xl relative object-cover overflow-clip hover:scale-106',
                 {
                   'w-[60%] z-3 ml-4 rounded-2xl -rotate-5 hover:!-rotate-10': index === 0,
-                  'w-[50%] z-2 ml-auto -top-[13%] -left-3 rotate-7 hover:!rotate-3': index === 1,
-                  'w-[42%] z-1 ml-auto -top-[20%] -left-53 -rotate-12 hover:!-rotate-6 object-bottom':
+                  'w-[50%] z-2 ml-auto -mt-[20%] -left-3 rotate-7 hover:!rotate-3': index === 1,
+                  'w-[42%] z-1 ml-auto -mt-[14%] -left-53 -rotate-12 hover:!-rotate-6 object-bottom':
                     index === 2,
                 },
               )}
