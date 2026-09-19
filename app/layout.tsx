@@ -74,20 +74,20 @@ export const metadata: Metadata = {
     startupImage: '/favicon.png',
   },
   icons: {
-    icon: '/favicon.ico',
+    // icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
-    // icon: [
-    //   {
-    //     url: '/favicon.ico',
-    //     media: '(prefers-color-scheme: light)',
-    //     type: 'image/x-icon',
-    //   },
-    //   {
-    //     url: '/favicon-dark.ico',
-    //     media: '(prefers-color-scheme: dark)',
-    //     type: 'image/x-icon',
-    //   },
-    // ],
+    icon: [
+      {
+        url: '/favicon.ico',
+        media: '(prefers-color-scheme: light)',
+        type: 'image/x-icon',
+      },
+      {
+        url: '/favicon-dark.ico',
+        media: '(prefers-color-scheme: dark)',
+        type: 'image/x-icon',
+      },
+    ],
   },
   manifest: '/manifest.json',
 };
